@@ -21,6 +21,25 @@ public class NoticeDao {
       Context context = new InitialContext();
       ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
    }
+   
+	public int deleteOne(int noticeNo) {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(
+					"delete " +
+					"from notice " +
+					"where notice_no = ?"
+			);
+			pstmt.setInt(1, noticeNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return result;
+	}
 
    public int getTotalCount() {
       int count = 0;
