@@ -39,15 +39,19 @@
 				<span class="list-body">관리자</span><br /> <span class="date">${requestScope.date}</span><br />
 				<hr />
 				<p class="review-body">${requestScope.content}</p>
-					<a href="${request.getContextPath}noticeEdit.do?no=${requestScope.number}">
-						<input type="button" value="수정하기" class="culture-btn" />
-					</a> 
-				<br/>
-				<br/>
-					<form action="${request.getContextPath}noticeDelete.do" method="get">
-						<input type="hidden" name="no" value="${requestScope.number}">
-						<input type="submit" value="삭제하기" class="culture-btn" />
-					</form>
+				<a href="${request.getContextPath}noticeEdit.do?no=${requestScope.number}">
+					<input type="button" value="수정하기" class="culture-btn" />
+				</a> 
+				<br /> 
+				<br />
+				<form action="${request.getContextPath}noticeDelete.do" method="get">
+					<input type="hidden" name="no" value="${requestScope.number}">
+					<input type="submit" value="삭제하기" class="culture-btn" />
+				</form>
+				<br /> 
+				<a href="${request.getContextPath}management.do?type=notice">
+					<input type="button" value="목록가기" class="culture-btn" />
+				</a>
 			</div>
 		</div>
 	</div>
