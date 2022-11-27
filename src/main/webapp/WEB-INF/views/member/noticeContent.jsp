@@ -44,9 +44,10 @@
 					</a> 
 				<br/>
 				<br/>
-					<a href="noticeDelete.do?no=\${notice.number}">
-						<input type="button" value="삭제하기" class="culture-btn" />
-					</a>
+					<form action="${request.getContextPath}noticeDelete.do" method="get">
+						<input type="hidden" name="no" value="${requestScope.number}">
+						<input type="submit" value="삭제하기" class="culture-btn" />
+					</form>
 			</div>
 		</div>
 	</div>

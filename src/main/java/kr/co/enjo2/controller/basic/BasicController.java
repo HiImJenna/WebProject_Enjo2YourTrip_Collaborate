@@ -27,6 +27,7 @@ import kr.co.enjo2.service.member.MyMenuService;
 import kr.co.enjo2.service.member.NickNameCheckService;
 import kr.co.enjo2.service.notice.NoticeAddService;
 import kr.co.enjo2.service.notice.NoticeContentService;
+import kr.co.enjo2.service.notice.NoticeDeleteOkService;
 import kr.co.enjo2.service.notice.NoticeEditOkService;
 import kr.co.enjo2.service.notice.NoticeEditService;
 import kr.co.enjo2.service.notice.NoticeListService;
@@ -120,6 +121,11 @@ public class BasicController extends HttpServlet {
          } else if(url_Command.equals("/noticeEditOk.do")) {
              // 공지사항 게시글 수정 완료하기
              action = new NoticeEditOkService();
+             forward = action.execute(request, response);
+             // noticeDelete.do
+         } else if(url_Command.equals("/noticeDelete.do")) {
+             // 공지사항 게시글 수정 완료하기
+             action = new NoticeDeleteOkService();
              forward = action.execute(request, response);
          }
     	
