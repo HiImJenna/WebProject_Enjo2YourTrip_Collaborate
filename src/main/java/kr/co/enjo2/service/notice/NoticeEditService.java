@@ -30,6 +30,7 @@ public class NoticeEditService implements Action {
 				action.setRedirect(true);
 				action.setPath(request.getContextPath() + "/noticeContent.do");
 			} else {
+				request.setAttribute("number", notice.getNoticeNo());
 				request.setAttribute("title", notice.getTitle());
 				request.setAttribute("content", notice.getContent());
 				action = new ActionForward();

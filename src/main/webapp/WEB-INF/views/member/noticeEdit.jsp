@@ -45,12 +45,13 @@
 
 			 	<form name="noticeEditOk" id="gathering-form" action="${pageContext.request.contextPath}/noticeEditOk.do" method="POST">
 					<div class="text-size text-size-margin">제목</div>
+					<input type="hidden" name="no" value="${requestScope.number}">
 					<textarea name="title" form="gathering-form" cols="51" rows="1" maxlength="" class="post-gap">${requestScope.title}</textarea>
 					<div class="text-size text-size-margin">내용</div>
 					<textarea name="content" form="gathering-form" cols="51" rows="20"
 						maxlength="" class="post-gap">${requestScope.content}</textarea>
 					<div class="right">
-						<input type="submit" value="수정완료" class="culture-btn">
+						<input type="submit" value="수정" class="culture-btn">
 					</div>
 				</form>
 			</div>

@@ -17,9 +17,6 @@ public class NoticeAddService implements Action {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		
-		System.out.println(title);
-		System.out.println(content);
-		
 		int result = 0;
 		
 		NoticeDto dto= new NoticeDto();

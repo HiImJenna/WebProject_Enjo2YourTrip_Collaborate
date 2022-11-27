@@ -1,5 +1,7 @@
 package kr.co.enjo2.service.notice;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,48 +14,35 @@ public class NoticeEditOkService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		ActionForward action = new ActionForward();
-		String noticeNo = request.getParameter("no");
-
-		String msg = "";
-		String url = "";
-
-		NoticeDto notice = new NoticeDto();
-
+		ActionForward forward = null;
 		try {
 			NoticeDao dao = new NoticeDao();
-
-			if (noticeNo == null || noticeNo.trim().equals("")) {
-				action.setRedirect(true);
-				// 리다이렉트 어디로 해야하는지...??
-				action.setPath(request.getContextPath() + "/noticeContent.do");
-				return action;
-			}
-
-			notice = dao.findOne(Integer.parseInt(noticeNo));
-
-			if (notice == null) {
-				msg = "데이터 오류";
-				url = "management.do";
-				
-				request.setAttribute("msg", msg);
-				request.setAttribute("url", url);
-				
-				action = new ActionForward();
-				action.setRedirect(false);
-				action.setPath(request.getContextPath() + "/noticeContent.do");
-
+			
+			String noticeNo = request.getParameter("no"); 
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			System.out.println(noticeNo);
+			System.out.println(title);
+			System.out.println(content);
+			
+			NoticeDto notice = dao.findOne(Integer.parseInt(noticeNo));
+			notice.setTitle(title);
+			notice.setContent(content);
+			
+			int result = dao.updateOne(notice);
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			if(result > 0) {
+				out.println("<script>alert('공지사항이 수정되었습니다'); location.href=\"" + request.getContextPath() + "/noticeContent.do?no="+ noticeNo +"\";</script>");
 			} else {
-				request.setAttribute("noticeNo", noticeNo);
-				request.setAttribute("notice", notice);
-
-				action = new ActionForward();
-				action.setRedirect(false);
-				action.setPath(request.getContextPath() + "/noticeEdit.do");
+				//out.println("<script>alert('잠시후 다시 시도해주세요'); location.href=\"" + request.getContextPath() + "/noticeContent.do\";</script>");
+				out.println("<script>alert('잠시후 다시 시도해주세요'); history.go(-1);</script>");
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		}catch(Exception e){
+			System.out.println(e.getMessage());
+			System.out.println(e.getStackTrace().toString());
 		}
-		return action;
+		return forward;
 	}
 }

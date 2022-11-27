@@ -169,6 +169,27 @@ public class NoticeDao {
       }
       return notice;
    }
+   public int updateOne(NoticeDto notice) {
+	      int result = 0;
+	      Connection conn = null;
+	      PreparedStatement pstmt = null;
+	      try {
+	         conn = ds.getConnection();
+	         String sql = "update notice " + 
+	                    "set noti_title = ?, noti_content = ? " + 
+	                    "where notice_no = ?";
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, notice.getTitle());
+	         pstmt.setString(2, notice.getContent());
+	         pstmt.setInt(3, notice.getNoticeNo());
+	         result = pstmt.executeUpdate();
+	      } catch (Exception e) {
+	         System.out.println(e.getMessage());
+	      }
+	      return result;
+	   }
+   
+   
 }
 
 //package kr.co.enjo2.dao.notice;
