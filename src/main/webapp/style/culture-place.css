@@ -183,7 +183,6 @@ hr {
   flex-direction: column;
   gap: 1rem;
   flex-wrap: no-wrap;
-  overflow-x: scroll;
   overflow-y: hidden;
 }
 

@@ -59,10 +59,12 @@
 
 	</div>
 
-	<!-- footer -->
-	<%
-	pageContext.include("/WEB-INF/views/include/footer.jsp");
-	%>
+	<footer>
+		<!-- footer -->
+		<%
+		pageContext.include("/WEB-INF/views/include/footer.jsp");
+		%>
+	</footer>
 
 </body>
 </html>

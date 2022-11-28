@@ -47,9 +47,11 @@
 
 		</div>
 	</div>
-	<!-- footer -->
-	<%
+	<footer>
+		<!-- footer -->
+		<%
 		pageContext.include("/WEB-INF/views/include/footer.jsp");
-	%>
+		%>
+	</footer>
 </body>
 </html>
