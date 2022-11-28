@@ -125,3 +125,13 @@ a {
   background-color:rgba(0, 0, 0, 0.8);
   display: none;
 }
+
+body {
+  min-height: 100vh; /* 최소 높이를 지정 */
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto; /* 최소 높이 하단에서 자동으로 뻗어나가도록 설정 */
+}

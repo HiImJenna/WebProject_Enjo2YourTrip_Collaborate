@@ -17,6 +17,8 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+	<link href="style/common.css" rel="stylesheet" type="text/css" />
+	<link href="style/header-Footer.css" rel="stylesheet" type="text/css" />
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -26,10 +28,10 @@
 
 </head>
 <body>
-
-<!-- 예약 부분 -->
-<div class = "blank"></div>
-
+<!-- header -->
+<%
+pageContext.include("/WEB-INF/views/include/header.jsp");
+%>
 <div class = passticket>
 <table class="table">
   <thead style = "color: #f05542">
@@ -70,7 +72,7 @@
 
 <!-- ********************************************************************************************************* -->
 
-<div class="maincontent overlay container-fluid">
+<div class="maincontent overlay ">
     <br />
     <br />
 
@@ -119,13 +121,18 @@
   	</div>
   	
 <div class = "pageNm" id = "pages">
-	<input type = "button" name = "page1" value = "1" style = "background-color: #ef6351; color: white;" onclick = "showFlight(1)" />
-	<input type = "button" name = "page2" value = "2" style = "background-color: #ef6351; color: white;" onclick = "showFlight(2)"/>
-	<input type = "button" name = "page3" value = "3" style = "background-color: #ef6351; color: white;" onclick = "showFlight(3)"/>
-	<input type = "button" name = "page4" value = "4" style = "background-color: #ef6351; color: white;" onclick = "showFlight(4)"/>
-	<input type = "button" name = "page5" value = "5" style = "background-color: #ef6351; color: white;" onclick = "showFlight(3)"/>
-
+	<input type = "button" name = "page1" value = "1" style = "background-color: #ef6351; color: white; width: 20px;" onclick = "showFlight(1)" />
+	<input type = "button" name = "page2" value = "2" style = "background-color: #ef6351; color: white; width: 20px;" onclick = "showFlight(2)"/>
+	<input type = "button" name = "page3" value = "3" style = "background-color: #ef6351; color: white; width: 20px;" onclick = "showFlight(3)"/>
+	<input type = "button" name = "page4" value = "4" style = "background-color: #ef6351; color: white; width: 20px;" onclick = "showFlight(4)"/>
+	<input type = "button" name = "page5" value = "5" style = "background-color: #ef6351; color: white; width: 20px;" onclick = "showFlight(3)"/>
 </div>
+
+<!-- footer -->
+<%
+pageContext.include("/WEB-INF/views/include/footer.jsp");
+%>
+
 
 </body>
 

@@ -35,9 +35,11 @@ public class NoticeListService implements Action {
 				obj.put("date", n.getCreatedAt());
 				// 조회수 수정 필요
 				obj.put("count", String.valueOf(1));
+				//JSONOBJ.put("가나다","123");
+				//JSONOBJ = {가나다 : 123 , 가나다 :123 }
 				noticeList.add(obj);
 			}
-			
+			//[{가나다 : 123 , 가나다 :123 },{가나다 : 123 , 가나다 :123 },{가나다 : 123 , 가나다 :123 }]
 			//////////// 페이지 계산 ////////////
 			
 			// 게시글의 총 수
@@ -96,3 +98,33 @@ public class NoticeListService implements Action {
 	}
 
 }
+/*
+ * 
+ * {
+ * 	noticeList = [{가나다 : 123 , 가나다 :123 },{가나다 : 123 , 가나다 :123 },{가나다 : 123 , 가나다 :123 }]
+ * }
+ {
+ 	pageInfo = {
+		  		prev : 1,
+		  		next :2,
+		  		start : 이전페이지번호,
+		  		end : 다음페이지번호
+		  },
+	noticeList = {
+			  		[
+			  			{1,2,3,4,},
+			  			{1,2,3,4,5}
+			  			{1,2,3,4,5}
+			  		]
+			  } 
+  }
+  
+  
+  
+  
+ * pageobj = 
+ * */
+/*
+ * jsonobj = 
+ * 
+ * */

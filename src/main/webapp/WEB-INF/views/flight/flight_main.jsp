@@ -25,6 +25,8 @@
     <!-- ********* codepen ************* -->   
 <!--      <script type="text/javascript" src="codepen.js"></script>
  -->    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="style/common.css" rel="stylesheet" type="text/css" />
+<link href="style/header-Footer.css" rel="stylesheet" type="text/css" />
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -38,6 +40,10 @@
 
 </head>
 <body>
+	<!-- header -->
+	<%
+	pageContext.include("/WEB-INF/views/include/header.jsp");
+	%>
 
     <!-- 배경 -->
     <div class = "mainbackground">
@@ -82,7 +88,7 @@
 	         <input type="button" value = "항공권 검색" href="#" class="booking-submit" onclick="search()"/> 
 	      </form>   
     </div>
-s
+
     <!-- 광고 -->
 <!--     <div class = "ad">
 
@@ -97,6 +103,14 @@ s
         </div>
     </div>
  -->
+ 
+    <footer>
+      <!-- footer -->
+      <%
+      pageContext.include("/WEB-INF/views/include/footer.jsp");
+      %>
+   </footer>
+   
 </body>
 
 
