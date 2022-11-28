@@ -21,13 +21,9 @@
 	%>
 	<!-- main -->
 	<div class="menu-container">
-		<a href="javascript:history.back();">
-			<div class="back-btn">
-				<iconify-icon icon="bx:arrow-back" width="30" height="30"></iconify-icon>
-			</div>
-		</a>
 		<div class="user-information">
-			<img src="images/big-man.svg" class="profile" /> <span>${nickName} 님</span>
+			<img src="images/big-man.svg" class="profile" /> <span>${nickName}
+				님</span>
 		</div>
 
 		<div class="menu">

@@ -21,9 +21,6 @@
 	<br>
 	<!-- main -->
 	<div class="information-container">
-		<div class="back-btn">
-			<iconify-icon icon="bx:arrow-back" width="30" height="30"></iconify-icon>
-		</div>
 
 		<div class="information">
 			<div class="project-name">
