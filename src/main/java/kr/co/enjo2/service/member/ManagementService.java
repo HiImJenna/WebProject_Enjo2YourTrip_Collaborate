@@ -14,28 +14,24 @@ public class ManagementService implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		String type = request.getParameter("type");
-		
+
 		ActionForward action = new ActionForward();
 		action.setRedirect(false);
-		
+
 		String path = request.getContextPath();
-		
+
 		if (type.equals("notice")) {
-			// 1. 공지사항 데이터를 DAO를 통해 가져온다
-			// 2. 가져온 데이터를 setAttribute ==> forward로 jsp에 넘겨준다. 넘겨준다
-			
 			path = "/WEB-INF/views/member/management.jsp";
-			
 		} else if (type.equals("qna")) {
-			
+			path = "/WEB-INF/views/member/managementQna.jsp";
 		} else if (type.equals("flight")) {
+
+		} else if (type.equals("stastics")) {
 			
 		}
-		
+
 		action.setPath(path);
-		
-		/* else if (type.equals("stastics")) {} */
+
 		return action;
 	}
-
 }
