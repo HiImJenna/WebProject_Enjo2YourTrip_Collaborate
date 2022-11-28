@@ -43,21 +43,21 @@
 			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 		</ol>
-		<div class="carousel-inner " width="50%" height="30%" margin="auto">
+		<div class="carousel-inner" margin="auto" >
 			<div class="carousel-item active" style="text-align: center;">
 				<a href="mainView.restaurant"><img
 					src="https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/3rWZ/image/rXpMIl8sMxtoBzR1PL6OHK1KxLw.jpg"
-					width="70%" height="30%" alt="image"></a>
+					width="1280" height="720" alt="image"></a>
 			</div>
 			<div class="carousel-item" style="text-align: center;">
 				<a href=""><img
 					src="https://m.nongmin.com/upload/bbs/202209/20220906091547637/20220906091547637.jpg"
-					width="70%" height="30%" alt="image"></a>
+					width="1280" height="720" alt="image"></a>
 			</div>
 			<div class="carousel-item" style="text-align: center;">
 				<a href="mainView.flight"><img
 					src="http://res.heraldm.com/content/image/2016/11/20/20161120000213_0.jpg"
-					width="70%" height="30%" alt="image"></a>
+					width="1280" height="720 alt="image"></a>
 				<!-- class="d-block w-10" -->
 			</div>
 		</div>
