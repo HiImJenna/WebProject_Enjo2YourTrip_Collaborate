@@ -1,4 +1,21 @@
 @charset "UTF-8";
+/* body {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: azure;
+  font-family: Arial, sans-serif;
+} */
+/* @media (max-height: 600px) {
+  body {
+    justify-content: flex-start;
+  }
+} */
+
+
 .flatpickr-calendar {
   position: absolute;
   width: 100%;
@@ -385,7 +402,7 @@ span.flatpickr-weekday {
   cursor: pointer;
 }
 
-.header- {
+.header-booking {
   background-color: yellow;
   margin-top: 4em;
   width: 600px;
@@ -407,7 +424,6 @@ span.flatpickr-weekday {
   position: relative;
   left: 10vw;
   top: -10vh;
-  margin-top: 100px;
 
   /* top: 50%;  */
   /* line-height : 50%;  */
@@ -625,6 +641,7 @@ span.flatpickr-weekday {
 }
 
 .eng-airportname {
+  background-color: rgb(254, 254, 254);
   width: 78px;
   height: 50px;
   margin: auto;
@@ -641,6 +658,8 @@ span.flatpickr-weekday {
   background-color: #f38375;
   height: 450px;
   padding-top: 140px;
+  position: relative;
+  width: 100%;
   /* z-index: 2; */
 }
 
@@ -662,7 +681,7 @@ span.flatpickr-weekday {
 .intromessage {
   color: white;
   text-align: center;
-  width: 500px;
+  width: 50%;
   margin: auto;
 
 }
@@ -700,4 +719,171 @@ span.flatpickr-weekday {
   height: 250px; 
   width: 250px;
   margin-left: 70px;
+}
+
+/* ******************************************************************************************************************************************************************* */
+
+.cardWrap {
+  width: 27em;
+  /* margin: 3em auto; */
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.card {
+  background: linear-gradient(to bottom, #e84c3d 0%, #f05542 26%, #ffffff 26%, #ffffff 100%);
+  height: 11em;
+  /* float: left; */
+  position: relative;
+  padding: 1em;
+  /* margin-top: 100px; */
+}
+.cardLeft {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 10px;
+}
+
+.mainbackground h1 {
+  font-size: 2em;
+}
+
+.cardRight:before, .cardRight:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0.9em;
+  height: 0.9em;
+  background: #fff;
+  border-radius: 50%;
+  left: -0.5em;
+}
+.cardRight:before {
+  top: -0.4em;
+}
+.cardRight:after {
+  bottom: -0.4em;
+}
+h1 {
+  font-size: 1.1em;
+  margin-top: 0;
+}
+h1 span {
+  font-weight: normal;
+}
+.title, .name, .seat, .time {
+  text-transform: uppercase;
+  font-weight: normal;
+  display: flex;
+}
+.title h2, .name h2, .seat h2, .time h2 {
+  font-size: 0.9em;
+  color: #525252;
+  margin: 0;
+  margin-right: 10px;
+}
+.title span, .name span, .seat span, .time span {
+  font-size: 0.7em;
+  color: #a2aeae;
+  margin-right: 10px;
+}
+.title {
+  margin: 2em 0 0 0;
+}
+
+.title h1 {
+  color: black;
+}
+
+.name, .seat {
+  margin: 0.7em 0 0 0;
+}
+
+.time {
+  margin: 0.7em 0 0 1em;
+}
+.seat, .time {
+  float: left;
+}
+.number {
+  text-align: center;
+  text-transform: uppercase;
+}
+.number h3 {
+  color: #e84c3d;
+  margin: 0.9em 0 0 0;
+  font-size: 2.5em;
+}
+.number span {
+  display: block;
+  color: #a2aeae;
+}
+
+.seat-time-container {
+  margin-top: 20px;
+  display: flex;
+}
+
+.passticket {
+  /* background-color: white; */
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+  position: absolute;
+  top: 40vh;
+  left: 15%;
+  width: 70%;
+  height: 30%;
+  padding: 10px;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  border-radius: 15px;
+
+}
+
+
+/* ****************************************************************************************************************** */
+
+
+.booking-input button {
+  display: inline-block;
+  padding-block: 0.7em;
+  /* padding-inline: 2.5em; */
+  line-height: 1;
+  background-color: #EF6351;
+  border: 2px solid #EF6351;
+  border-radius: 0.25em;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.5s;
+  width: 20vw;
+}
+
+.booking-submit button :hover{
+  background-color: #f15540;
+
+}
+
+@media (max-width: 1600px) {
+  .booking-input button {
+    padding-inline: 1.5em;
+  }
+}
+
+.button {
+  margin-top: 100px;
+  justify-content: center;
+  text-align: center;
+}
+
+input[type="text"] {
+	border: 0;
 }
