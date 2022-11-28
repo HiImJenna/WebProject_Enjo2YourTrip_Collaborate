@@ -12,7 +12,6 @@
 	crossorigin="anonymous">
 <script
 	src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
-<link href="style/header-Footer.css" rel="stylesheet" type="text/css" />
 <link href="style/culture-place.css" rel="stylesheet" type="text/css" />
 <link href="style/common.css" rel="stylesheet" type="text/css" />
 <link href="style/management-page.css" rel="stylesheet" type="text/css" />
@@ -43,22 +42,25 @@
 			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 		</ol>
-		<div class="carousel-inner" margin="auto" >
+		<div class="carousel-inner" margin="auto">
+			<!-- 항공 -->
 			<div class="carousel-item active" style="text-align: center;">
-				<a href="mainView.restaurant"><img
-					src="https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/3rWZ/image/rXpMIl8sMxtoBzR1PL6OHK1KxLw.jpg"
-					width="1280" height="720" alt="image"></a>
+				<a href="mainView.flight"><img
+					src="https://www.rd.com/wp-content/uploads/2022/04/GettyImages-1140602972-e1651249657746.jpg"
+					width="830" height="430" alt="image"></a>
+				<!-- class="d-block w-10" -->
 			</div>
+			<!-- 맛집 -->
+			<div class="carousel-item" style="text-align: center;">
+				<a href="mainView.restaurant"><img
+					src="https://zahramediagroup.com/wp-content/uploads/2018/07/shutterstock_394775977.jpg"
+					width="830" height="430" alt="image"></a>
+			</div>
+			<!-- 문화공간 -->
 			<div class="carousel-item" style="text-align: center;">
 				<a href=""><img
-					src="https://m.nongmin.com/upload/bbs/202209/20220906091547637/20220906091547637.jpg"
-					width="1280" height="720" alt="image"></a>
-			</div>
-			<div class="carousel-item" style="text-align: center;">
-				<a href="mainView.flight"><img
-					src="http://res.heraldm.com/content/image/2016/11/20/20161120000213_0.jpg"
-					width="1280" height="720 alt="image"></a>
-				<!-- class="d-block w-10" -->
+					src="https://i.insider.com/57f3ccc78c6c5022008b458b?width=1000&format=jpeg&auto=webp"
+					width="830" height="430" alt="image"></a>
 			</div>
 		</div>
 		<button class="carousel-control-prev" type="button"
@@ -105,9 +107,11 @@
 </div>
 </div>
 --%>
-	<!-- footer -->
-	<%
-	pageContext.include("/WEB-INF/views/include/footer.jsp");
-	%>
+	<footer>
+		<!-- footer -->
+		<%
+		pageContext.include("/WEB-INF/views/include/footer.jsp");
+		%>
+	</footer>
 </body>
 </html>
