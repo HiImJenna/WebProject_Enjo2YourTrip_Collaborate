@@ -48,6 +48,7 @@
 </style>
 <script type="text/javascript">
 	/////onload/////
+	
 	$(function(){
 		showNotice(1);
 	});
@@ -61,6 +62,23 @@
 				data:{
 					page : num
 				},
+				
+				/* 
+					data={
+						 	pageInfo = {
+								  		prev : 1,
+								  		next :2,
+								  		start : 이전페이지번호,
+								  		end : 다음페이지번호
+								  },
+							noticeList = [
+											{1,2,3,4,},
+									  		{1,2,3,4,5}
+									  		{1,2,3,4,5}
+									  	  ]
+									  
+						  }
+				*/
 				success: function(data){
 					const noticeList = data.noticeList;
 					console.log(data);

@@ -14,6 +14,7 @@
 	src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 <link href="style/culture-place.css" rel="stylesheet" type="text/css" />
 <link href="style/common.css" rel="stylesheet" type="text/css" />
+<link href="style/header-Footer.css" rel="stylesheet" type="text/css" />
 <link href="style/management-page.css" rel="stylesheet" type="text/css" />
 <link href="style/culture-gathering.css" rel="stylesheet"
 	type="text/css" />

@@ -15,9 +15,17 @@
     <!-- ********* codepen ************* -->   
     <!-- <script type="text/javascript" src="codepen.js"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="style/common.css" rel="stylesheet" type="text/css" />
+	<link href="style/header-Footer.css" rel="stylesheet" type="text/css" />
     
 </head>
 <body>
+
+	<!-- header -->
+	<%
+	pageContext.include("/WEB-INF/views/include/header.jsp");
+	%>
+
 
 <!-- 승객수 -->
 <!-- <b>승객 수</b>
@@ -32,7 +40,8 @@
  -->
  
 <!-- 입력 폼 시작 -->
- 	 <form name = passInfo action = "totalCheck.flight" method = "GET" "> 
+<div class = "whole">
+ 	 <form name = passInfo action = "totalCheck.flight" method = "GET"> 
 		<div id="search-form">
 		
 		    <div id="header">
@@ -91,7 +100,7 @@
 		
 					  <div id="flight-search">
 					    <div class="info-box-submit" >
-					      <input type="button" id="submitPass" value="확인" onclick = "check(this.form);"/>
+					      <input type="button" id="submitPass" value="확인" onclick = "check(this.form)";/>
 <!--  				      <input type="submit" id="submitPass" value="확인" onclick = "check(); return false;"/> -->
 					      
 					    </div>												
@@ -115,6 +124,12 @@
 		<input type = "hidden" id = "eprice" name = "eprice" value = "${eprice}"/>
 
 	</form> 	      
+</div>
+	<!-- footer -->
+	<%
+	pageContext.include("/WEB-INF/views/include/footer.jsp");
+	%>
+
 
 </body>
 
@@ -127,47 +142,38 @@ function check(form) {
 	let passSnm = $('#passSnm').val();
 	let passLnm = $('#passLnm').val();
 	let bday = $('#bday').val();
-
-	console.log(passSnm);
-	console.log(passLnm);
-	console.log(bday);
+	
+	let checkBd = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/; 
+	let checkNm = /^[A-Z]+$/; //이름 영문
 
 	if(passSnm == "") {
-		console.log(1);
 		alert('승객 성을 입력해주세요.');
 		return ;
 	}
 
 	if(passLnm == "") {
-		console.log("2");
 		alert('승객 이름을 입력해주세요.');
 		return ;
 	}
 	
 	if(bday == "") {
-		console.log("3");
 		alert('생년월일을 입력해주세요.');		
 		return ;
 	}  
-	
-	let checkNm = /^[A-Z]+$/; //이름 영문
 
 	if(!checkNm.test(passSnm)) {
-		console.log("4");
 		alert('승객 성은 영문 대문자만 입력 가능합니다.');
 		return ;
 	}
 	
 	if(!checkNm.test(passLnm)) {
-		console.log("5");
 		alert('승객 이름은 영문 대문자만 입력 가능합니다.');
 		return ;
 	}
 	
-	let checkBd = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/; 
+	
 	
 	if(!checkBd.test(bday)) {
-	//	console.log("if(!checkBd.test(bday))");
 		alert('생년월일을 숫자 8자리로 재입력해주세요.');
 		return true;
 	}

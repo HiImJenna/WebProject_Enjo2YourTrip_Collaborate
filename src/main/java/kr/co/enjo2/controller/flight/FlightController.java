@@ -19,6 +19,7 @@ import kr.co.enjo2.service.flight.PassengerInfoService;
 import kr.co.enjo2.service.flight.PaymentService;
 import kr.co.enjo2.service.flight.ReturnsearchService;
 import kr.co.enjo2.service.flight.TotalCheckService;
+import kr.co.enjo2.service.flight.MyFlightListService;
 
 @WebServlet({ "/FlightController", "*.flight" })
 public class FlightController extends HttpServlet {
@@ -67,6 +68,10 @@ public class FlightController extends HttpServlet {
    		
     	} else if (url_Command.equals("/confirm.flight")) {
     		action = new ConfirmService();
+    		forward = action.execute(request, response);
+   		
+    	}  else if (url_Command.equals("/myFlight.flight")) {
+    		action = new MyFlightListService();
     		forward = action.execute(request, response);
    		
     	}

@@ -4,13 +4,15 @@
   align-items: center;
   gap: 2rem;
   padding: 2rem 0;
+  
 }
 
 .list-gathering {
   border-radius: 5px;
   border: solid 1px var(--border-color);
   padding: 1.562rem;
-  width: 30.813rem;
+  width: 60.813rem;
+  height: 40.813rem;
 }
 
 .list-gathering-body {
@@ -45,5 +47,10 @@
 }
 
 .culture-sub-heading-container {
-  width: 30.813rem;
+  width: 60.813rem;
+}
+
+.editButton {
+	width: 60.813rem;
+
 }

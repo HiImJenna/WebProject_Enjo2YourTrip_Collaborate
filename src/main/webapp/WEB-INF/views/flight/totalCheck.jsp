@@ -15,6 +15,12 @@
 
 </head>
 <body>
+
+<!-- header -->
+<%
+pageContext.include("/WEB-INF/views/include/header.jsp");
+%>
+
 <%-- 
 <form name = totalCheck22 action = "payment22.flight" method = "GET" > 
 	[가는편]<br>
@@ -144,6 +150,11 @@
     	
     	
 </form>
+
+	<!-- footer -->
+<%
+pageContext.include("/WEB-INF/views/include/footer.jsp");
+%>
  
 </body>
 

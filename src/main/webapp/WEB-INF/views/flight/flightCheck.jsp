@@ -11,6 +11,8 @@
 
     <!-- ********* main css ************* -->
     <link rel="stylesheet" href="style/flight/flightCheck.css">    
+    <link href="style/common.css" rel="stylesheet" type="text/css" />
+	<link href="style/header-Footer.css" rel="stylesheet" type="text/css" />
     
     <!-- ********* codepen ************* -->   
     <script type="text/javascript" src="codepen.js"></script>
@@ -23,6 +25,12 @@
 </head>
 
 <body>
+
+	<!-- header -->
+	<%
+	pageContext.include("/WEB-INF/views/include/header.jsp");
+	%>
+
     <!-- 배경 -->
     <div class = "mainbackground">
         <div class = "intro">
@@ -117,5 +125,13 @@
 	        <button href="#" class="booking-submit">확인</button>    
     	</div>
    </form>
+   <footer>
+   
+   	<!-- footer -->
+	<%
+	pageContext.include("/WEB-INF/views/include/footer.jsp");
+	%>
+   </footer>
+   
 </body>
 </html>

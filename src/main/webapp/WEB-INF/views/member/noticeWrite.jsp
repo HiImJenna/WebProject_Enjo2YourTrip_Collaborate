@@ -45,12 +45,12 @@
 
 			 	<form name="bw" id="gathering-form" action="${pageContext.request.contextPath}/noticeWriteOk.do" method="POST">
 					<div class="text-size text-size-margin">제목</div>
-					<textarea name="title" form="gathering-form" cols="51" rows="1" maxlength="" class="post-gap"></textarea>
+					<textarea  style="resize: none;" name="title" form="gathering-form" cols="135" rows="3" maxlength="" class="post-gap"></textarea>
 					<div class="text-size text-size-margin">내용</div>
-					<textarea name="content" form="gathering-form" cols="51" rows="20"
+					<textarea  style="resize: none;" name="content" form="gathering-form" cols="135" rows="25"
 						maxlength="" class="post-gap"></textarea>
 					<div class="right">
-						<input type="submit" value="작성완료" class="culture-btn">
+						<input type="submit" value="작성완료" class="culture-btn" style = "height: 30px">
 					</div>
 				</form>
 			</div>

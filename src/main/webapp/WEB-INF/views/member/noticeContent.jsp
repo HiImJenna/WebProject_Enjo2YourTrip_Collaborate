@@ -31,7 +31,7 @@
     </div> -->
 
 		<div class="culture-sub-heading-container">
-			<span class="culture-sub-heading">공지사항</span>
+			<span class="culture-sub-heading"><b>공지사항</b></span>
 		</div>
 		<div class="list-gathering">
 			<div class="list-context">
@@ -39,21 +39,30 @@
 				<span class="list-body">관리자</span><br /> <span class="date">${requestScope.date}</span><br />
 				<hr />
 				<p class="review-body">${requestScope.content}</p>
-				<a href="${request.getContextPath}noticeEdit.do?no=${requestScope.number}">
-					<input type="button" value="수정하기" class="culture-btn" />
-				</a> 
 				<br /> 
 				<br />
+				<br /> 
+			</div>
+		</div>	
+		
+		<div class = "editButton">
 				<form action="${request.getContextPath}noticeDelete.do" method="get">
 					<input type="hidden" name="no" value="${requestScope.number}">
-					<input type="submit" value="삭제하기" class="culture-btn" />
+					<input type="submit" value="삭제하기" class="culture-btn" style = "float: right; margin-left: 7px;  height: 30px;" />
 				</form>
-				<br /> 
+		
+				<a href="${request.getContextPath}noticeEdit.do?no=${requestScope.number}">
+					<input type="button" value="수정하기" class="culture-btn" style = "float: right; margin-left: 7px;  height: 30px;" />
+				</a> 
+		
+				
 				<a href="${request.getContextPath}management.do?type=notice">
-					<input type="button" value="목록가기" class="culture-btn" />
+					<input type="button" value="목록가기" class="culture-btn" style = "float: left; margin-left: 7px; height: 30px;" `/>
 				</a>
-			</div>
-		</div>
+				
+		 </div>	
+				
+
 	</div>
 
 	<footer>

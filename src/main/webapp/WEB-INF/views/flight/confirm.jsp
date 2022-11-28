@@ -8,9 +8,15 @@
 <meta charset="UTF-8">
 <title>예약 확정 페이지</title>
 <link rel="stylesheet" href="style/flight/confirm.css">    
+<link href="style/common.css" rel="stylesheet" type="text/css" />
+<link href="style/header-Footer.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
+	<!-- header -->
+	<%
+	pageContext.include("/WEB-INF/views/include/header.jsp");
+	%>
 
     <!-- 배경 -->
     <div class = "mainbackground">
@@ -20,7 +26,8 @@
         </div>
         
 		<div id = "flight-search" class="info-box-submit" >
-	         <input type="button" value = "마이페이지" href="#" class="booking-submit" onclick="search()"/> 
+	         <input type="button" value = "마이페이지" href="#" class="booking-submit"/> 
+	         <input type="button" value = "메인페이지" href="index.jsp" class="booking-submit"/>
         </div>
     </div>    
 
@@ -37,6 +44,11 @@
             <a href="mainView.restaurant"><img src="/main/food.png" alt="맛집카테고리" class = "adimg"></a>
         </div>
     </div>
+    
+	<!-- footer -->
+	<%
+	pageContext.include("/WEB-INF/views/include/footer.jsp");
+	%>
 
 
 </body>

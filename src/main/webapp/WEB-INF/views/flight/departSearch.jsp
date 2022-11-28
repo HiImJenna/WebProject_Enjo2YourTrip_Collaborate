@@ -26,10 +26,12 @@
 
 </head>
 <body>
+<!-- header -->
+<%
+pageContext.include("/WEB-INF/views/include/header.jsp");
+%>
 
 <!-- 예약 부분 -->
-<div class = "blank"></div>
-
 <div class = passticket>
 <table class="table">
   <thead style = "color: #f05542">
@@ -61,7 +63,7 @@
 
 <!-- ********************************************************************************************************* -->
 
-<div class="maincontent overlay container-fluid">
+<div class="maincontent overlay ">
     <br />
     <br />
 
@@ -110,14 +112,21 @@
   	</div>
   	
 <div class = "pageNm" id = "pages">
-	<input type = "button" name = "page1" value = "1" style = "background-color: #ef6351; color: white;" onclick = "showFlight(1)" />
-	<input type = "button" name = "page2" value = "2" style = "background-color: #ef6351; color: white;" onclick = "showFlight(2)"/>
-	<input type = "button" name = "page3" value = "3" style = "background-color: #ef6351; color: white;" onclick = "showFlight(3)"/>
-	<input type = "button" name = "page4" value = "4" style = "background-color: #ef6351; color: white;" onclick = "showFlight(4)"/>
-	<input type = "button" name = "page5" value = "5" style = "background-color: #ef6351; color: white;" onclick = "showFlight(3)"/>
+	<input type = "button" name = "page1" value = "1" style = "background-color: #ef6351; color: white; width: 20px;" onclick = "showFlight(1)" />
+	<input type = "button" name = "page2" value = "2" style = "background-color: #ef6351; color: white; width: 20px;" onclick = "showFlight(2)"/>
+	<input type = "button" name = "page3" value = "3" style = "background-color: #ef6351; color: white; width: 20px;" onclick = "showFlight(3)"/>
+	<input type = "button" name = "page4" value = "4" style = "background-color: #ef6351; color: white; width: 20px;" onclick = "showFlight(4)"/>
+	<input type = "button" name = "page5" value = "5" style = "background-color: #ef6351; color: white; width: 20px;" onclick = "showFlight(3)"/>
 
 </div>
+<footer>
+<!-- footer -->
+	<%
+	pageContext.include("/WEB-INF/views/include/footer.jsp");
+	%>
 
+
+</footer>
 </body>
 
 <script>
