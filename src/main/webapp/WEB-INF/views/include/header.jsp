@@ -4,7 +4,7 @@
  <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 <link href="style/header-Footer.css" rel="stylesheet" type="text/css"/>
   <link href="style/common.css" rel="stylesheet" type="text/css"/>
-<div class="header">
+<div class="header" id="aheader">
 	<a href="${request.getContextPath}myMenu.do"> 
 	<iconify-icon icon="akar-icons:text-align-justified" width="30" heigth="30"></iconify-icon>
 	</a>

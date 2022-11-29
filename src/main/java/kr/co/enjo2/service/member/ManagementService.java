@@ -28,10 +28,11 @@ public class ManagementService implements Action {
 
 		} else if (type.equals("stastics")) {
 			
+		}else if (type.equals("chart")) {
+			path = "/WEB-INF/views/member/managementChart.jsp";
 		}
 
 		action.setPath(path);
-
 		return action;
 	}
 }

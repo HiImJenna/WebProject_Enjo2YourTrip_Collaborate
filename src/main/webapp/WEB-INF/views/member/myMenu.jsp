@@ -21,13 +21,9 @@
 	%>
 	<!-- main -->
 	<div class="menu-container">
-		<a href="javascript:history.back();">
-			<div class="back-btn">
-				<iconify-icon icon="bx:arrow-back" width="30" height="30"></iconify-icon>
-			</div>
-		</a>
 		<div class="user-information">
-			<img src="images/big-man.svg" class="profile" /> <span>${nickName} 님</span>
+			<img src="images/big-man.svg" class="profile" /> <span>${nickName}
+				님</span>
 		</div>
 
 		<div class="menu">
@@ -85,7 +81,7 @@
 					</a>
 					<c:choose>
 						<c:when test="${sessionScope.userid eq 'admin'}">
-							<a href="${request.getContextPath}management.do?type=statistics">
+							<a href="${request.getContextPath}management.do?type=chart">
 								<div class="btn">
 									<img src="btn-icon/stats.svg" width="45" height="45" /> <span>통계</span>
 								</div>
@@ -119,10 +115,12 @@
 	</div>
 	</div>
 
-	<!-- footer -->
-	<%
-	pageContext.include("/WEB-INF/views/include/footer.jsp");
-	%>
+	<footer>
+		<!-- footer -->
+		<%
+		pageContext.include("/WEB-INF/views/include/footer.jsp");
+		%>
+	</footer>
 
 </body>
 </html>

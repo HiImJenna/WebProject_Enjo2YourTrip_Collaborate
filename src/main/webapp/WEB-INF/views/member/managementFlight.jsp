@@ -35,7 +35,7 @@
 				<a href="${request.getContextPath}managementQna.do">
 					<li>문의사항</li>
 				</a>
-				<a href="${request.getContextPath}managementStatistics.do">
+				<a href="${request.getContextPath}managementChart.do">
 					<li>통계</li>
 				</a>
 				<a href="${request.getContextPath}managementFlight.do">
@@ -141,10 +141,12 @@
 		</div>
 	</div>
 
-	<!-- footer -->
-	<%
-	pageContext.include("/WEB-INF/views/include/footer.jsp");
-	%>
+	<footer>
+		<!-- footer -->
+		<%
+		pageContext.include("/WEB-INF/views/include/footer.jsp");
+		%>
+	</footer>
 
 	<!-- 포지션 앱솔루트 -->
 	<ul class="macgyver-btn">

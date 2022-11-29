@@ -1,5 +1,7 @@
 <!-- 관리자 페이지 공지사항 -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,37 +18,8 @@
 <link href="style/common.css" rel="stylesheet" type="text/css" />
 <link href="style/management-page.css" rel="stylesheet" type="text/css" />
 <link href="style/culture-gathering.css" rel="stylesheet" type="text/css" />
-<script src="/js/jquery.twbsPagination.js"></script>
-<!-- jQuery -->
-<script src="/js/jquery-3.6.0.min.js"></script>
-<!-- Bootstrap -->
-<script src="/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="/css/bootstrap.min.css" />
-<style>
-.center {
-  text-align: center;
-}
-.pagination {
-  display: inline-block;
-}
-
-.pagination li {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-.pagination li.active {
-  background-color: #F05400;
-  color: white;
-}
-
-.pagination li:hover:not(.active) {background-color: #ddd;}
-</style>
 <script type="text/javascript">
 	/////onload/////
-	
 	$(function(){
 		showNotice(1);
 	});
@@ -91,23 +64,18 @@
 					// 이전 붙이기
 					const start = Number(pageInfo.start)-1;
 					if (pageInfo.prev == 1){
-						let tempHtml = `<li onclick = "showNotice(\${start})">&laquo;</li>`
+						let tempHtml = `<li onclick = "showNotice(\${start})"> 이전 </li>`
 						$('#pages').append(tempHtml);
 					}
 					// 페이지 번호 붙이기
 					for(let i = pageInfo.start; i <= pageInfo.end; i++) {
 						let tempHtml = `<li onclick = "showNotice(\${i})">\${i}</li>`;
-						
-						if (num == i) {
-							tempHtml = `<li class="active" onclick = "showNotice(\${i})">\${i}</li>`;
-						}
-						
 						$('#pages').append(tempHtml);
 					}
 					// 이후 붙이기
 					const end = Number(pageInfo.end) + 1;
 					if (pageInfo.next == 1){
-						let tempHtml = `<li onclick = "showNotice(\${end})">&raquo;</li>`
+						let tempHtml = `<li onclick = "showNotice(\${end})">다음</li>`
 						$('#pages').append(tempHtml);
 					}
 					// 페이징 처리 끝
@@ -137,7 +105,7 @@
 				<a href="${request.getContextPath}management.do?type=qna">
 					<li>문의사항</li>
 				</a>
-				<a href="${request.getContextPath}management.do?type=chart">
+				<a href="${request.getContextPath}management.do?type=stastics">
 					<li>통계</li>
 				</a>
 				<a href="${request.getContextPath}management.do?type=flight">
@@ -158,21 +126,18 @@
 				<tbody id ="noticeTable">
 				</tbody>
 			</table>
-			
-			<div class="center">
-			<div class = "pagination">
-			<ul class="paging-btn" id = "pages"></ul>
-			</div>
-			</div>
-			
+			<ul class="paging-btn" id = "pages">
+			</ul>
 		</div>
 	</div>
+
 	<footer>
-	<!-- footer -->
-	<%
-	pageContext.include("/WEB-INF/views/include/footer.jsp");
-	%>
+		<!-- footer -->
+		<%
+		pageContext.include("/WEB-INF/views/include/footer.jsp");
+		%>
 	</footer>
+
 	<!-- 포지션 앱솔루트 -->
 	<ul class="macgyver-btn">
 		<li><img src="btn-icon/plus-btn.svg"

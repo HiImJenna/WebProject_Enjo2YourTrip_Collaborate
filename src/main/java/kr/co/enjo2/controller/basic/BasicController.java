@@ -23,6 +23,7 @@ import kr.co.enjo2.service.member.MemberLogoutService;
 import kr.co.enjo2.service.member.MemberRegisterOkService;
 import kr.co.enjo2.service.member.MemberUnregisterOkService;
 import kr.co.enjo2.service.member.MemberUnregisterService;
+import kr.co.enjo2.service.member.MyFlightService;
 import kr.co.enjo2.service.member.MyMeetingService;
 import kr.co.enjo2.service.member.MyMenuService;
 import kr.co.enjo2.service.member.NickNameCheckService;
@@ -75,7 +76,11 @@ public class BasicController extends HttpServlet {
     		// 나의 모임 현황
     		action = new MyMeetingService();
     		forward = action.execute(request, response);
-    	} else if(url_Command.equals("/management.do")) {
+    	}else if(url_Command.equals("/myFlight.do")) {
+    		// 나의 모임 현황
+    		action = new MyFlightService();
+    		forward = action.execute(request, response);
+    	}else if(url_Command.equals("/management.do")) {
     		// 공지사항
     		action = new ManagementService();
     		forward = action.execute(request, response);

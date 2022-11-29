@@ -29,26 +29,28 @@
 		<div class="information-frame">
 			<span class="culture-sub-heading">관리자 페이지</span>
 			<ul class="page-category">
-				<a href="${request.getContextPath}managementNotice.do">
+				<a href="${request.getContextPath}management.do?type=notice">
 					<li>공지사항</li>
 				</a>
-				<a href="${request.getContextPath}managementQna.do">
+				<a href="${request.getContextPath}management.do?type=qna">
 					<li>문의사항</li>
 				</a>
-				<a href="${request.getContextPath}managementStatistics.do">
+				<a href="${request.getContextPath}management.do?type=chart">
 					<li class="sub-heading">통계</li>
 				</a>
-				<a href="${request.getContextPath}managementFlight.do">
+				<a href="${request.getContextPath}management.do?type=flight">
 					<li>예매관리</li>
 				</a>
 			</ul>
 
 
 
-			<!-- footer -->
-			<%
-			pageContext.include("/WEB-INF/views/include/footer.jsp");
-			%>
+			<footer>
+				<!-- footer -->
+				<%
+				pageContext.include("/WEB-INF/views/include/footer.jsp");
+				%>
+			</footer>
 
 			<!-- 포지션 앱솔루트 -->
 			<ul class="macgyver-btn">
