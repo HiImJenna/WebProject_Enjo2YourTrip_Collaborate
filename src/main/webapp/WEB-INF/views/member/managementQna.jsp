@@ -35,46 +35,73 @@
 						console.log(data);
 						
 						if(qnaList.length > 0){
-							$('#qna-table').show();
+							$('#qnaTable').show();
 						} else{
-							$('#qna-table').hide();
+							$('#qnaTable').hide();
 							return;
 						}
 						
-						$('#qna-table').empty();
-						$('#qna-table').append('<thead><tr><td>게시번호</td><td>제목</td><td>작성자</td><td>작성일자</td><td>조회수</td></tr></thead>');
-						$('#qna-table').append('<tbody id = "tbody-box"></tbody>');
+						$('#qnaTable').empty();
+						$('#qnaTable').append('<thead><tr><td>게시번호</td><td>제목</td><td>작성자</td><td>작성일자</td><td>조회수</td></tr></thead>');
+						$('#qnaTable').append('<tbody id = "tbody-box"></tbody>');
 						for(const qna of qnaList){
-							let tempHtml = `<tr>
+							const childList = qna.child;
+							let tempHtml = '';
+							if (childList.length > 0) {
+								const className = "child" + qna.no;
+								tempHtml = `<tr>
+												<td>\${qna.no}</td>
+												<td>
+													\${qna.title}&nbsp;
+													<font size="2em" color="tomato" onclick="showChild(\${qna.no})">
+														[답글 보기]
+													</font>
+												</td>
+												<td>\${qna.writer}</td>
+												<td>\${qna.date}</td>
+												<td>\${qna.count}</td>
+											</tr>`;
+								for(const child of childList) {
+									tempHtml += `<tr class=\"\${qna.no}\" style="display:none;">
+													<td>\${child.no}</td>
+													<td> &nbsp;&nbsp;&nbsp;└ \${child.title}</td>
+													<td>\${child.writer}</td>
+													<td>\${child.date}</td>
+													<td>\${child.count}</td>
+												</tr>`;
+								}
+							} else {
+								tempHtml = `<tr>
 												<td>\${qna.no}</td>
 												<td>\${qna.title}</td>
 												<td>\${qna.writer}</td>
 												<td>\${qna.date}</td>
 												<td>\${qna.count}</td>
 											</tr>`
+							}
 							$('#tbody-box').append(tempHtml);
 						}
 						
 						// 페이징 처리 시작
-						$('#pages').empty();	//페이지 리셋
+						$('#page-box').empty();	//페이지 리셋
 						
 						const pageInfo = data.pageInfo;
 						// 이전 붙이기
 						const start = Number(pageInfo.start)-1;
 						if (pageInfo.prev == 1){
-							let tempHtml = `<li onclick = "showNotice(\${start})"> 이전 </li>`
-							$('#pages').append(tempHtml);
+							let tempHtml = `<li onclick = "showQna(\${start})"> 이전 </li>`
+							$('#page-box').append(tempHtml);
 						}
 						// 페이지 번호 붙이기
 						for(let i = pageInfo.start; i <= pageInfo.end; i++) {
-							let tempHtml = `<li onclick = "showNotice(\${i})">\${i}</li>`;
-							$('#pages').append(tempHtml);
+							let tempHtml = `<li onclick = "showQna(\${i})">\${i}</li>`;
+							$('#page-box').append(tempHtml);
 						}
 						// 이후 붙이기
 						const end = Number(pageInfo.end) + 1;
 						if (pageInfo.next == 1){
-							let tempHtml = `<li onclick = "showNotice(\${end})">다음</li>`
-							$('#pages').append(tempHtml);
+							let tempHtml = `<li onclick = "showQna(\${end})">다음</li>`
+							$('#page-box').append(tempHtml);
 						}
 						// 페이징 처리 끝
 					},
@@ -83,6 +110,15 @@
 					}
 				}
 			)
+	}
+	
+	function showChild(childNo) {
+		const className = "." + childNo;
+		if ($(className).is(':visible')) {
+			$(className).hide();
+		} else {
+			$(className).show();
+		}
 	}
 	
 </script>
@@ -110,7 +146,7 @@
 					<li>예매관리</li>
 				</a>
 			</ul>
-			<table class="management-table" id="qna-table">
+			<table class="management-table2" id="qnaTable">
 			</table>
 			<ul class="paging-btn" id="page-box">
 			</ul>

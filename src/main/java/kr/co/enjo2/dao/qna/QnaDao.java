@@ -62,7 +62,7 @@ public class QnaDao {
 		try {
 			
 			conn = ds.getConnection();
-	         String sql = "select q_no, mem_id, q_ref, q_title, q_content, TO_CHAR(q_created_at, 'YYYY-MM-DD HH24:MI') as timeAt "
+	         String sql = "select q_no, mem_id, q_ref, q_title, q_content, TO_CHAR(q_created_at, 'yy-MM-DD HH24:MI') as timeAt "
 	         		+     "from qna A join("
 	         		+ "                      select key "
 	         		+ "                      from ("
