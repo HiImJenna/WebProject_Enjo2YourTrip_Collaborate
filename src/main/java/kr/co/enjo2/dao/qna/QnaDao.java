@@ -89,7 +89,7 @@ public class QnaDao {
 		try {
 			
 			conn = ds.getConnection();
-	         String sql = "select q_no, mem_id, q_ref, q_title, q_content, TO_CHAR(q_created_at, 'yy-MM-DD HH24:MI') as timeAt "
+	         String sql = "select q_no, mem_id, q_ref, q_title, q_content, TO_CHAR(q_created_at, 'yy-MM-DD HH24:MI') as timeAt, q_count as cnt "
 	         		+     "from qna A join("
 	         		+ "                      select key "
 	         		+ "                      from ("
@@ -115,6 +115,7 @@ public class QnaDao {
 				qna.setTitle(rs.getString("q_title"));
 				qna.setContent(rs.getString("q_content"));
 				qna.setCreatedAt(rs.getString("timeAt"));
+				qna.setCount(rs.getInt("cnt"));
 				qnaList.add(qna);
 			}
 		} catch (Exception e) {
@@ -166,5 +167,30 @@ public class QnaDao {
 			System.out.println(e.getMessage());
 		}
 		return qna;
+	}
+
+	public int updateQnaViews(int qnaNo) {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = ds.getConnection();
+			String sql = "update qna " + 
+			             "set q_count = q_count + 1 " + 
+					     "where q_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qnaNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		return result;
 	}
 }

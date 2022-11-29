@@ -64,7 +64,7 @@
 								for(const child of childList) {
 									tempHtml += `<tr class=\"\${qna.no}\" style="display:none;">
 													<td>\${child.no}</td>
-													<td> &nbsp;&nbsp;&nbsp;└ \${child.title}</td>
+													<td> &nbsp;&nbsp;&nbsp;<a href="qnaContent.do?no=\${child.no}">└ \${child.title}</a></td>
 													<td>\${child.writer}</td>
 													<td>\${child.date}</td>
 													<td>\${child.count}</td>

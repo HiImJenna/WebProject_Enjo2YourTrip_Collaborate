@@ -26,19 +26,6 @@ public class QnaListService implements Action {
 			
 			QnaDao qnaDao = new QnaDao();
 			List<QnaDto> qnaArr = qnaDao.findAllByPage(page);
-
-			//조회수가 필요함!!!
-//QnaDto [qnaNo=7, memberId=user2, qnaRef=7, title=문의글_2, content=이 글은 테스트 문의글2 입니다., createdAt=2022-11-28 00:05]
-//QnaDto [qnaNo=8, memberId=admin, qnaRef=7, title=문의글_2의 답글_1, content=이 글은 테스트 문의글_2의 답글_1 입니다., createdAt=2022-11-28 00:05]
-//QnaDto [qnaNo=9, memberId=user2, qnaRef=7, title=문의글_2의 답글_2, content=이 글은 테스트 문의글_2의 답글_2 입니다., createdAt=2022-11-28 00:05]
-//QnaDto [qnaNo=10, memberId=admin, qnaRef=7, title=문의글_2의 답글_3, content=이 글은 테스트 문의글_2의 답글_3 입니다., createdAt=2022-11-28 00:05]
-//QnaDto [qnaNo=11, memberId=user2, qnaRef=7, title=문의글_2의 답글_4, content=이 글은 테스트 문의글_2의 답글_4 입니다., createdAt=2022-11-28 00:05]
-//QnaDto [qnaNo=1, memberId=user1, qnaRef=1, title=문의글_1, content=이 글은 테스트 문의글1 입니다., createdAt=2022-11-28 00:05]
-//QnaDto [qnaNo=2, memberId=admin, qnaRef=1, title=문의글_1의 답글_1, content=이 글은 테스트 문의글1의 답글_1 입니다., createdAt=2022-11-28 00:05]
-//QnaDto [qnaNo=3, memberId=user1, qnaRef=1, title=문의글_1의 답글_2, content=이 글은 테스트 문의글1의 답글_2 입니다., createdAt=2022-11-28 00:05]
-//QnaDto [qnaNo=4, memberId=admin, qnaRef=1, title=문의글_1의 답글_3, content=이 글은 테스트 문의글1의 답글_3 입니다., createdAt=2022-11-28 00:05]
-//QnaDto [qnaNo=5, memberId=user1, qnaRef=1, title=문의글_1의 답글_4, content=이 글은 테스트 문의글1의 답글_4 입니다., createdAt=2022-11-28 00:05]
-//QnaDto [qnaNo=6, memberId=admin, qnaRef=1, title=문의글_1의 답글_5, content=이 글은 테스트 문의글1의 답글_5 입니다., createdAt=2022-11-28 00:05]
 			
 			int len = qnaArr.size();
 			int ref = -1;
@@ -127,8 +114,7 @@ public class QnaListService implements Action {
 		obj.put("title", qna.getTitle());
 		obj.put("writer", qna.getMemberId());
 		obj.put("date", qna.getCreatedAt());
-		// 임시
-		obj.put("count", "0");
+		obj.put("count", String.valueOf(qna.getCount()));
 		return obj;
 	}
 }

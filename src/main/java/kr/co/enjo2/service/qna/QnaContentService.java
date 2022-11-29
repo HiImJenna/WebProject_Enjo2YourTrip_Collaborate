@@ -24,6 +24,10 @@ public class QnaContentService implements Action {
 				System.out.println(no);
 				QnaDao qnaDao = new QnaDao();
 				QnaDto qna = qnaDao.findOneByNo(Integer.parseInt(no));
+				if (qna != null) {
+					// 게시글 조회수 증가
+					qnaDao.updateQnaViews(Integer.parseInt(no));
+				}
 				if (userId.equals(qna.getMemberId())) {
 					// 세션 사용자와 작성자가 같은 경우
 					request.setAttribute("mine", "true");
