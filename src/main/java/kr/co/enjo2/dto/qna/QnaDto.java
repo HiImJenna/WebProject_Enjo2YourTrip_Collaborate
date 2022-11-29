@@ -7,6 +7,7 @@ public class QnaDto {
 	private String title;
 	private String content;
 	private String createdAt;
+	private int count;
 	public int getQnaNo() {
 		return qnaNo;
 	}
@@ -43,9 +44,15 @@ public class QnaDto {
 	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	@Override
 	public String toString() {
 		return "QnaDto [qnaNo=" + qnaNo + ", memberId=" + memberId + ", qnaRef=" + qnaRef + ", title=" + title
-				+ ", content=" + content + ", createdAt=" + createdAt + "]";
+				+ ", content=" + content + ", createdAt=" + createdAt + ", count=" + count + "]";
 	}
 }

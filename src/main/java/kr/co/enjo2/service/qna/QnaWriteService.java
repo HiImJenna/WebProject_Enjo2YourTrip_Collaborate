@@ -25,11 +25,15 @@ public class QnaWriteService implements Action {
 				qnaDto.setTitle(title);
 				qnaDto.setContent(content);
 				QnaDao qnaDao = new QnaDao();
-				qnaDao.saveOne(qnaDto, userId);
+				int result = qnaDao.saveOne(qnaDto, userId);
+				
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
-				//out.println("<script>alert('등록 성공'); location.href=\"/management.do?type=qna\"; </script>");
-				out.println("<script>alert('잠시 후 다시 시도해주세요'); location.href=\"" + request.getContextPath() + "/management.do?type=qna\";</script>");
+				if (result > 0) {
+					out.println("<script>alert('등록 성공'); location.href=\"" + request.getContextPath() + "/management.do?type=qna\";</script>");
+				} else {
+					out.println("<script>alert('잠시 후 다시 시도해주세요'); location.href=\"" + request.getContextPath() + "/management.do?type=qna\";</script>");
+				}
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

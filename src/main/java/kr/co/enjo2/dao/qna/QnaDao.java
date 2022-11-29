@@ -28,8 +28,8 @@ public class QnaDao {
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(
-					"insert into qna(q_no, mem_id, q_ref, q_title, q_content, q_created_at) " +
-					"values(qna_seq.nextval, ?, qna_seq.currval, ?, ?, sysdate)"
+					"insert into qna(q_no, mem_id, q_ref, q_title, q_content, q_created_at, q_count) " +
+					"values(qna_seq.nextval, ?, qna_seq.currval, ?, ?, sysdate, 0)"
 			);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, qna.getTitle());
@@ -136,5 +136,35 @@ public class QnaDao {
 		arr[0] = 10 * page - 9;
 		arr[1] = arr[0] + 10 - 1;
 		return arr;
+	}
+
+	public QnaDto findOneByNo(int no) {
+		QnaDto qna = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(
+					"select q_no, mem_id, q_ref, q_title, q_content, TO_CHAR(q_created_at, 'yy-MM-DD HH24:MI') as timeAt, q_count " +
+					"from qna " +
+					"where q_no = ?"
+			);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				qna = new QnaDto();
+				qna.setQnaNo(rs.getInt("q_no"));
+				qna.setMemberId(rs.getString("mem_id"));
+				qna.setQnaRef(rs.getInt("q_ref"));
+				qna.setTitle(rs.getString("q_title"));
+				qna.setContent(rs.getString("q_content"));
+				qna.setCreatedAt(rs.getString("timeAt"));
+				qna.setCount(rs.getInt("q_count"));
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return qna;
 	}
 }

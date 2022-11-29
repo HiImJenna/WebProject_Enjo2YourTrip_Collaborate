@@ -48,12 +48,12 @@
 							const childList = qna.child;
 							let tempHtml = '';
 							if (childList.length > 0) {
-								const className = "child" + qna.no;
+								//const className = "child" + qna.no;
 								tempHtml = `<tr>
 												<td>\${qna.no}</td>
 												<td>
-													\${qna.title}&nbsp;
-													<font size="2em" color="tomato" onclick="showChild(\${qna.no})">
+													<a href="qnaContent.do?no=\${qna.no}">\${qna.title}&nbsp;</a>
+													<font size="1em" color="tomato" onclick="showChild(\${qna.no})">
 														[답글 보기]
 													</font>
 												</td>
@@ -73,7 +73,7 @@
 							} else {
 								tempHtml = `<tr>
 												<td>\${qna.no}</td>
-												<td>\${qna.title}</td>
+												<td><a href="qnaContent.do?no=\${qna.no}">\${qna.title}</a></td>
 												<td>\${qna.writer}</td>
 												<td>\${qna.date}</td>
 												<td>\${qna.count}</td>
