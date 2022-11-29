@@ -10,6 +10,11 @@
 <script
 	src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 <script src="js/common.js" type="module"></script>
+
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+<script src="https://cdn.tiny.cloud/1/pxajvm3one4o060slmbwd9ubxhaxyqd9zz33p5tro5ks92rt/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
 <link href="style/header-Footer.css" rel="stylesheet" type="text/css" />
 <link href="style/common.css" rel="stylesheet" type="text/css" />
 <link href="style/culture-gathering.css" rel="stylesheet"
@@ -46,9 +51,9 @@
 			 	<form name="noticeEditOk" id="gathering-form" action="${pageContext.request.contextPath}/noticeEditOk.do" method="POST">
 					<div class="text-size text-size-margin"><b>제목</b></div>
 					<input type="hidden" name="no" value="${requestScope.number}">
-					<textarea style="resize: none;" name="title" form="gathering-form" cols="135" rows="3" maxlength="" class="post-gap">${requestScope.title}</textarea>
+					<input type = "text;" style="resize: none; width: 920px; height: 30px;" name="title" form="gathering-form" maxlength="" class="post-gap" value = "${requestScope.title}"/>
 					<div class="text-size text-size-margin"><b>내용</b></div>
-					<textarea style="resize: none;" name="content" form="gathering-form" cols="135" rows="25"
+					<textarea  style="resize: none;" name="content" form="gathering-form" cols="300" rows="25"
 						maxlength="" class="post-gap">${requestScope.content}</textarea>
 					<div class="right">
 						<input type="submit" value="수정" class="culture-btn" style = " height: 30px;">
@@ -56,6 +61,7 @@
 				</form>
 			</div>
 		</div>
+		
 
 	</div>
 
@@ -67,4 +73,17 @@
 	</footer>
 
 </body>
+<script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      mergetags_list: [
+        { value: 'First.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+      ]
+    });
+  </script>
 </html>

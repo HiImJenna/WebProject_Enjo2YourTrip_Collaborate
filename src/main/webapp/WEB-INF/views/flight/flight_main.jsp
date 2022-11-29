@@ -16,7 +16,7 @@
     <!-- ********* JQuery datepicker css ************* -->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     
-
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400" rel="stylesheet">
 
     <!-- ********* JQuery datepicker css ************* -->
 <!--     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
