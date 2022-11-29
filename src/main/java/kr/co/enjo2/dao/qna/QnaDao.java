@@ -193,4 +193,31 @@ public class QnaDao {
 		}
 		return result;
 	}
+
+	public int updateOne(QnaDto qna) {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = ds.getConnection();
+			String sql = "update qna " + 
+			             "set q_title = ?, q_content = ? " + 
+					     "where q_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, qna.getTitle());
+			pstmt.setString(2, qna.getContent());
+			pstmt.setInt(3, qna.getQnaNo());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		return result;
+	}
 }

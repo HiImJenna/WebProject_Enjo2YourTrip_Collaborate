@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.enjo2.action.Action;
 import kr.co.enjo2.action.ActionForward;
 import kr.co.enjo2.service.notice.NoticeWrite;
+import kr.co.enjo2.service.qna.QnaContentEditOkService;
 import kr.co.enjo2.service.qna.QnaContentEditViewService;
 import kr.co.enjo2.service.qna.QnaContentService;
 import kr.co.enjo2.service.qna.QnaListService;
@@ -159,8 +160,8 @@ public class BasicController extends HttpServlet {
              forward = action.execute(request, response);//qnaEdit.do
          } else if(url_Command.equals("/qnaEditOk.do")) {
              // 특정 QNA 수정화면
-             //action = new QnaContentEditOkService();
-             //forward = action.execute(request, response);//qnaEdit.do
+             action = new QnaContentEditOkService();
+             forward = action.execute(request, response);//qnaEdit.do
          }
     	
     	
