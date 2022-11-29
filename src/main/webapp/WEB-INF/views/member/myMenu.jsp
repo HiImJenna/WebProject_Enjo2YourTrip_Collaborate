@@ -81,7 +81,7 @@
 					</a>
 					<c:choose>
 						<c:when test="${sessionScope.userid eq 'admin'}">
-							<a href="${request.getContextPath}management.do?type=statistics">
+							<a href="${request.getContextPath}management.do?type=chart">
 								<div class="btn">
 									<img src="btn-icon/stats.svg" width="45" height="45" /> <span>통계</span>
 								</div>
