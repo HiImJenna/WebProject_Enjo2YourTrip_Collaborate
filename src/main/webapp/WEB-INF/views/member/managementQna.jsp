@@ -35,7 +35,7 @@
 				<a href="${request.getContextPath}managementQna.do">
 					<li class="sub-heading">문의사항</li>
 				</a>
-				<a href="${request.getContextPath}managementStatistics.do">
+				<a href="${request.getContextPath}managementChart.do">
 					<li>통계</li>
 				</a>
 				<a href="${request.getContextPath}managementFlight.do">
