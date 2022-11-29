@@ -6,6 +6,7 @@ public class NoticeDto {
 	private String title;
 	private String content;
 	private String createdAt;
+	private int count;
 	public NoticeDto() {}
 	public int getNoticeNo() {
 		return noticeNo;
@@ -37,9 +38,15 @@ public class NoticeDto {
 	public void setCreatedAt(String createdAt) {
 		this.createdAt = createdAt;
 	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	@Override
 	public String toString() {
 		return "NoticeDto [noticeNo=" + noticeNo + ", memberId=" + memberId + ", title=" + title + ", content="
-				+ content + ", createdAt=" + createdAt + "]";
+				+ content + ", createdAt=" + createdAt + ", count=" + count + "]";
 	}
 }
