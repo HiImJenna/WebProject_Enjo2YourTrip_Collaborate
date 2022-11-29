@@ -11,7 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/common.js" type="module"></script>
 <script src="js/macgyver.js" type="module"></script>
-<link href="style/header-footer.css" rel="stylesheet" type="text/css" />
+<link href="style/header-Footer.css" rel="stylesheet" type="text/css" />
 <link href="style/culture-place.css" rel="stylesheet" type="text/css" />
 <link href="style/common.css" rel="stylesheet" type="text/css" />
 <link href="style/management-page.css" rel="stylesheet" type="text/css" />
@@ -31,29 +31,28 @@
 						page : num
 					},
 					success: function(data){
-						const noticeList = data.qnaList;
+						const qnaList = data.qnaList;
 						console.log(data);
 						
-		/* 				return;
-						
-						if(noticeList.length > 0){
-							$('#noticeBox').show();
+						if(qnaList.length > 0){
+							$('#qna-table').show();
 						} else{
-							$('#noticeBox').hide();
+							$('#qna-table').hide();
 							return;
 						}
 						
-						$('#noticeTable').empty();
-						
-						for(const notice of noticeList){
+						$('#qna-table').empty();
+						$('#qna-table').append('<thead><tr><td>게시번호</td><td>제목</td><td>작성자</td><td>작성일자</td><td>조회수</td></tr></thead>');
+						$('#qna-table').append('<tbody id = "tbody-box"></tbody>');
+						for(const qna of qnaList){
 							let tempHtml = `<tr>
-												<td>\${notice.number}</td>
-												<td><a href="noticeContent.do?no=\${notice.number}">\${notice.title}</a></td>
-												<td>\${notice.writer}</td>
-												<td>\${notice.date}</td>
-												<td>\${notice.count}</td>
+												<td>\${qna.no}</td>
+												<td>\${qna.title}</td>
+												<td>\${qna.writer}</td>
+												<td>\${qna.date}</td>
+												<td>\${qna.count}</td>
 											</tr>`
-							$('#noticeTable').append(tempHtml);
+							$('#tbody-box').append(tempHtml);
 						}
 						
 						// 페이징 처리 시작
@@ -77,7 +76,7 @@
 							let tempHtml = `<li onclick = "showNotice(\${end})">다음</li>`
 							$('#pages').append(tempHtml);
 						}
-						// 페이징 처리 끝 */
+						// 페이징 처리 끝
 					},
 					error:function (request, status, error){
 						console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error)
@@ -111,99 +110,9 @@
 					<li>예매관리</li>
 				</a>
 			</ul>
-			<table class="management-table">
-				<thead>
-					<tr>
-						<td>게시번호</td>
-						<td>제목</td>
-						<td>작성자</td>
-						<td>작성일자</td>
-						<td>조회수</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>10</td>
-						<td>오늘 점심</td>
-						<td>세종</td>
-						<td>11-22</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>오늘 점심</td>
-						<td>세종</td>
-						<td>11-22</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>오늘 점심</td>
-						<td>세종</td>
-						<td>11-22</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>오늘 점심</td>
-						<td>세종</td>
-						<td>11-22</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>오늘 점심</td>
-						<td>세종</td>
-						<td>11-22</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>오늘 점심</td>
-						<td>세종</td>
-						<td>11-22</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>오늘 점심</td>
-						<td>세종</td>
-						<td>11-22</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>오늘 점심</td>
-						<td>세종</td>
-						<td>11-22</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>오늘 점심</td>
-						<td>세종</td>
-						<td>11-22</td>
-						<td>5</td>
-					</tr>
-					<tr>
-						<td>10</td>
-						<td>오늘 점심</td>
-						<td>세종</td>
-						<td>11-22</td>
-						<td>5</td>
-					</tr>
-				</tbody>
+			<table class="management-table" id="qna-table">
 			</table>
-
-			<ul class="paging-btn">
-				<li>이전</li>
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>5</li>
-				<li>6</li>
-				<li>다음</li>
+			<ul class="paging-btn" id="page-box">
 			</ul>
 		</div>
 	</div>

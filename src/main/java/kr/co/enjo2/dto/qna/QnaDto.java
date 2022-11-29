@@ -2,7 +2,7 @@ package kr.co.enjo2.dto.qna;
 
 public class QnaDto {
 	private int qnaNo;
-	private int memberId;
+	private String memberId;
 	private Integer qnaRef;
 	private String title;
 	private String content;
@@ -13,10 +13,10 @@ public class QnaDto {
 	public void setQnaNo(int qnaNo) {
 		this.qnaNo = qnaNo;
 	}
-	public int getMemberId() {
+	public String getMemberId() {
 		return memberId;
 	}
-	public void setMemberId(int memberId) {
+	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
 	public Integer getQnaRef() {
