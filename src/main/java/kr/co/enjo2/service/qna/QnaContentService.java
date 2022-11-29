@@ -21,7 +21,6 @@ public class QnaContentService implements Action {
 			} else {
 				// 회원인 경우
 				String no = request.getParameter("no");
-				System.out.println(no);
 				QnaDao qnaDao = new QnaDao();
 				QnaDto qna = qnaDao.findOneByNo(Integer.parseInt(no));
 				if (qna != null) {

@@ -220,4 +220,30 @@ public class QnaDao {
 		}
 		return result;
 	}
+
+	public int deleteOneByNo(int qnaNo) {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(
+					"delete " + 
+			        "from qna " + 
+					"where q_no = ?"
+			);
+			pstmt.setInt(1, qnaNo);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		return result;
+	}
 }

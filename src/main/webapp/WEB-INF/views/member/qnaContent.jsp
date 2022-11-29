@@ -37,8 +37,7 @@
 			<c:if test="${requestScope.mine eq 'true'}">
 				<form action="${request.getContextPath}qnaDelete.do" method="post">
 					<input type="hidden" name="no" value="${requestScope.no}">
-					<input type="submit" value="삭제하기" class="culture-btn"
-						style="float: right; margin-left: 7px; height: 30px;" />
+					<input type="button" value="삭제하기" onclick="deleteQna(this.form)" class="culture-btn" style="float: right; margin-left: 7px; height: 30px;" />
 				</form>
 				<a
 					href="${request.getContextPath}qnaEdit.do?no=${requestScope.no}">
@@ -59,4 +58,12 @@
 		%>
 	</footer>
 </body>
+<script type="text/javascript">
+function deleteQna(form) {
+	const result = confirm('해당 문의글을 삭제하시겠습니까?');
+	if (result) {
+		form.submit();
+	}
+}
+</script>
 </html>

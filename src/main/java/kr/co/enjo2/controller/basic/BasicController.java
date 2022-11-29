@@ -15,6 +15,7 @@ import kr.co.enjo2.service.notice.NoticeWrite;
 import kr.co.enjo2.service.qna.QnaContentEditOkService;
 import kr.co.enjo2.service.qna.QnaContentEditViewService;
 import kr.co.enjo2.service.qna.QnaContentService;
+import kr.co.enjo2.service.qna.QnaDeleteOkService;
 import kr.co.enjo2.service.qna.QnaListService;
 import kr.co.enjo2.service.qna.QnaViewService;
 import kr.co.enjo2.service.qna.QnaWriteService;
@@ -155,15 +156,18 @@ public class BasicController extends HttpServlet {
              action = new QnaContentService();
              forward = action.execute(request, response);
          } else if(url_Command.equals("/qnaEdit.do")) {
-             // 특정 QNA 수정화면
+             // 특정 QNA 수정 화면
              action = new QnaContentEditViewService();
-             forward = action.execute(request, response);//qnaEdit.do
+             forward = action.execute(request, response);
          } else if(url_Command.equals("/qnaEditOk.do")) {
-             // 특정 QNA 수정화면
+             // 특정 QNA 수정 요청
              action = new QnaContentEditOkService();
-             forward = action.execute(request, response);//qnaEdit.do
+             forward = action.execute(request, response);
+         } else if(url_Command.equals("/qnaDelete.do")) {
+             // 특정 QNA 삭제 요청
+             action = new QnaDeleteOkService();
+             forward = action.execute(request, response);
          }
-    	
     	
     	if(forward != null) {
     		if(forward.isRedirect()) { //true 
