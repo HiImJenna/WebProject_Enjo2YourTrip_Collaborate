@@ -14,6 +14,7 @@ import kr.co.enjo2.action.ActionForward;
 import kr.co.enjo2.service.notice.NoticeWrite;
 import kr.co.enjo2.service.qna.QnaListService;
 import kr.co.enjo2.service.qna.QnaViewService;
+import kr.co.enjo2.service.qna.QnaWriteService;
 import kr.co.enjo2.service.member.JoinViewService;
 import kr.co.enjo2.service.member.ManagementService;
 import kr.co.enjo2.service.member.MemberEditOkService;
@@ -141,6 +142,10 @@ public class BasicController extends HttpServlet {
          } else if(url_Command.equals("/qnaWriteView.do")) {
              // QNA 작성 페이지 이동
              action = new QnaViewService();
+             forward = action.execute(request, response);
+         } else if(url_Command.equals("/qnaWriteOk.do")) {
+             // QNA 작성 하기
+             action = new QnaWriteService();
              forward = action.execute(request, response);
          }
     	
