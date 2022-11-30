@@ -46,21 +46,30 @@
 		</div>	
 		
 		<div class = "editButton">
-				<form action="${request.getContextPath}noticeDelete.do" method="get">
-					<input type="hidden" name="no" value="${requestScope.number}">
-					<input type="submit" value="삭제하기" class="culture-btn" style = "float: right; margin-left: 7px;  height: 30px;" />
-				</form>
-		
-				<a href="${request.getContextPath}noticeEdit.do?no=${requestScope.number}">
-					<input type="button" value="수정하기" class="culture-btn" style = "float: right; margin-left: 7px;  height: 30px;" />
-				</a> 
-		
-				
-				<a href="${request.getContextPath}management.do?type=notice">
-					<input type="button" value="목록가기" class="culture-btn" style = "float: left; margin-left: 7px; height: 30px;" `/>
-				</a>
-				
-		 </div>	
+
+			<c:choose>
+				<c:when test="${sessionScope.userid eq 'admin'}">
+					<form action="${request.getContextPath}noticeDelete.do"
+						method="get">
+						<input type="hidden" name="no" value="${requestScope.number}">
+						<input type="submit" value="삭제하기" class="culture-btn"
+							style="float: right; margin-left: 7px; height: 30px;" />
+					</form>
+
+					<a
+						href="${request.getContextPath}noticeEdit.do?no=${requestScope.number}">
+						<input type="button" value="수정하기" class="culture-btn"
+						style="float: right; margin-left: 7px; height: 30px;" />
+					</a>
+				</c:when>
+			</c:choose>
+			
+			<a href="${request.getContextPath}management.do?type=notice">
+				<input type="button" value="목록가기" class="culture-btn"
+				style="float: left; margin-left: 7px; height: 30px;" `/>
+			</a>
+
+		</div>	
 				
 
 	</div>
