@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 import kr.co.enjo2.dto.member.MemberDto;
 import kr.co.enjo2.dto.notice.NoticeDto;
+import kr.co.enjo2.dto.qna.QnaDto;
 
 public class NoticeDao {
 	DataSource ds = null;
@@ -20,6 +21,45 @@ public class NoticeDao {
 	public NoticeDao() throws NamingException {
 		Context context = new InitialContext();
 		ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
+	}
+
+	public List<NoticeDto> findMainInfo() {
+		List<NoticeDto> list = new ArrayList<>();
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select title, timeAt " + 
+			                    "from(" +
+				                    	"select ROWNUM AS NUM, noti_title as title, TO_CHAR(noti_created_at,'YYYY-MM-DD') as timeAt " +
+				                    	"from notice " + 
+				                    	"order by notice_no desc " + 
+			                    	")" + 
+			              "where NUM <= 5 ";
+
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				NoticeDto notice = new NoticeDto();
+				notice.setTitle(rs.getString("title"));
+				notice.setCreatedAt(rs.getString("timeAt"));
+				list.add(notice);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		return list;
 	}
 
 	public int deleteOne(int noticeNo) {

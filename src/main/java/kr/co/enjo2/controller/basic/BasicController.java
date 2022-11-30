@@ -19,6 +19,7 @@ import kr.co.enjo2.service.qna.QnaDeleteOkService;
 import kr.co.enjo2.service.qna.QnaListService;
 import kr.co.enjo2.service.qna.QnaViewService;
 import kr.co.enjo2.service.qna.QnaWriteService;
+import kr.co.enjo2.service.basic.MainPageInfoService;
 import kr.co.enjo2.service.member.JoinViewService;
 import kr.co.enjo2.service.member.ManagementService;
 import kr.co.enjo2.service.member.MemberEditOkService;
@@ -166,6 +167,9 @@ public class BasicController extends HttpServlet {
          } else if(url_Command.equals("/qnaDelete.do")) {
              // 특정 QNA 삭제 요청
              action = new QnaDeleteOkService();
+         } else if(url_Command.equals("/mainInfo.do")) {
+             // 메인 페이지 비동기 정보 전달
+             action = new MainPageInfoService();
              forward = action.execute(request, response);
          }
     	
