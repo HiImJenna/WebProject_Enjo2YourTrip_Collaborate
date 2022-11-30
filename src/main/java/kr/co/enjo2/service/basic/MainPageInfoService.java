@@ -36,6 +36,7 @@ public class MainPageInfoService implements Action {
 			JSONArray noticeList = new JSONArray();
 			for(NoticeDto n : list1) {
 				JSONObject obj = new JSONObject();
+				obj.put("no", n.getNoticeNo());
 				obj.put("title", n.getTitle());
 				obj.put("date", n.getCreatedAt());
 				noticeList.add(obj);
@@ -43,6 +44,7 @@ public class MainPageInfoService implements Action {
 			JSONArray qnaList = new JSONArray();
 			for(QnaDto n : list2) {
 				JSONObject obj = new JSONObject();
+				obj.put("no", n.getQnaNo());
 				obj.put("title", n.getTitle());
 				obj.put("date", n.getCreatedAt());
 				qnaList.add(obj);

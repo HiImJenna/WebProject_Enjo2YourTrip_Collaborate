@@ -29,12 +29,12 @@ public class NoticeDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
+ 
 		try {
 			conn = ds.getConnection();
-			String sql = "select title, timeAt " + 
+			String sql = "select no, title, timeAt " + 
 			                    "from(" +
-				                    	"select ROWNUM AS NUM, noti_title as title, TO_CHAR(noti_created_at,'YYYY-MM-DD') as timeAt " +
+				                    	"select ROWNUM AS NUM, notice_no as no, noti_title as title, TO_CHAR(noti_created_at,'YYYY-MM-DD') as timeAt " +
 				                    	"from notice " + 
 				                    	"order by notice_no desc " + 
 			                    	")" + 
@@ -44,6 +44,7 @@ public class NoticeDao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				NoticeDto notice = new NoticeDto();
+				notice.setNoticeNo(rs.getInt("no"));
 				notice.setTitle(rs.getString("title"));
 				notice.setCreatedAt(rs.getString("timeAt"));
 				list.add(notice);

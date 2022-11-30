@@ -58,9 +58,9 @@ public List<QnaDto> findMainInfo() {
 
       try {
          conn = ds.getConnection();
-         String sql = "select title, timeAt " +
+         String sql = "select no, title, timeAt " +
                                     "from(" +
-                                    "        select ROWNUM as NUM, q_title as title, TO_CHAR(q_created_at, 'YYYY-MM-DD') as timeAt " +
+                                    "        select ROWNUM as NUM, q_no as no, q_title as title, TO_CHAR(q_created_at, 'YYYY-MM-DD') as timeAt " +
                                     "        from qna " +
                                     "        where q_no = q_ref " +
                                     "        order by q_no desc " +
@@ -71,6 +71,7 @@ public List<QnaDto> findMainInfo() {
          rs = pstmt.executeQuery();
          while (rs.next()) {
             QnaDto qna = new QnaDto();
+            qna.setQnaNo(rs.getInt("no"));
             qna.setTitle(rs.getString("title"));
             qna.setCreatedAt(rs.getString("timeAt"));
             list.add(qna);
