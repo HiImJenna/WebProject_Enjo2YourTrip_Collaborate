@@ -139,7 +139,7 @@
 				<a href="${request.getContextPath}management.do?type=qna">
 					<li class="sub-heading">문의사항</li>
 				</a>
-				<a href="${request.getContextPath}managementChart.do">
+				<a href="${request.getContextPath}management.do?type=chart">
 					<li>통계</li>
 				</a>
 				<a href="${request.getContextPath}managementFlight.do">
