@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.enjo2.action.Action;
 import kr.co.enjo2.action.ActionForward;
+import kr.co.enjo2.service.member.ChartService;
 import kr.co.enjo2.service.notice.NoticeWrite;
 import kr.co.enjo2.service.qna.QnaContentEditOkService;
 import kr.co.enjo2.service.qna.QnaContentEditViewService;
@@ -40,6 +41,7 @@ import kr.co.enjo2.service.notice.NoticeDeleteOkService;
 import kr.co.enjo2.service.notice.NoticeEditOkService;
 import kr.co.enjo2.service.notice.NoticeEditService;
 import kr.co.enjo2.service.notice.NoticeListService;
+import kr.co.enjo2.service.notice.NoticeWrite;
 
 @WebServlet({ "/BasicController", "*.do" })
 public class BasicController extends HttpServlet {
@@ -140,6 +142,10 @@ public class BasicController extends HttpServlet {
              // 공지사항 게시글 수정 완료하기
              action = new NoticeDeleteOkService();
              forward = action.execute(request, response);
+         } else if(url_Command.equals("/chart.do")) {
+             // 공지사항 게시글 수정 완료하기
+             action = new ChartService();
+             forward = action.execute(request, response);
          } else if(url_Command.equals("/qnaList.do")) {
              // QNA (문의) 리스트 JSON 전달
              action = new QnaListService();
@@ -167,6 +173,7 @@ public class BasicController extends HttpServlet {
          } else if(url_Command.equals("/qnaDelete.do")) {
              // 특정 QNA 삭제 요청
              action = new QnaDeleteOkService();
+             forward = action.execute(request, response);
          } else if(url_Command.equals("/mainInfo.do")) {
              // 메인 페이지 비동기 정보 전달
              action = new MainPageInfoService();
