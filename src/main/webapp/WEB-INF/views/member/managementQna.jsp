@@ -89,18 +89,23 @@
 						// 이전 붙이기
 						const start = Number(pageInfo.start)-1;
 						if (pageInfo.prev == 1){
-							let tempHtml = `<li onclick = "showQna(\${start})"> 이전 </li>`
+							let tempHtml = `<li onclick = "showQna(\${start})">&laquo;</li>`
 							$('#page-box').append(tempHtml);
 						}
 						// 페이지 번호 붙이기
 						for(let i = pageInfo.start; i <= pageInfo.end; i++) {
 							let tempHtml = `<li onclick = "showQna(\${i})">\${i}</li>`;
 							$('#page-box').append(tempHtml);
+							
+							if (num == i) {
+								tempHtml = `<li class="active" onclick = "showQna(\${i})">\${i}</li>`;
+							}
+							
 						}
 						// 이후 붙이기
 						const end = Number(pageInfo.end) + 1;
 						if (pageInfo.next == 1){
-							let tempHtml = `<li onclick = "showQna(\${end})">다음</li>`
+							let tempHtml = `<li onclick = "showQna(\${end})">&raquo;</li>`
 							$('#page-box').append(tempHtml);
 						}
 						// 페이징 처리 끝
