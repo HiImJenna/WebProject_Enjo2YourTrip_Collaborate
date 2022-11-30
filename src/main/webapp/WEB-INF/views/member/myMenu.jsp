@@ -26,6 +26,7 @@
 				님</span>
 		</div>
 
+		<!-- ***************************************** -->
 		<div class="menu">
 			<div>
 				<span class="sub-heading">카테고리</span>
@@ -46,9 +47,10 @@
 				</div>
 			</a>
 		</div>
-
+		
+		<!-- ***************************************** -->
 		<c:choose>
-			<c:when test="${sessionScope.userid ne null}">
+			<c:when test="${not empty sessionScope.userid}">
 				<div>
 					<span class="sub-heading">나의활동</span>
 				</div>
@@ -63,39 +65,44 @@
 						</div>
 					</a>
 				</div>
-
-				<div>
-					<span class="sub-heading">관리페이지</span>
+			</c:when>
+		</c:choose>
+		
+		<!-- ***************************************** -->
+		<div>
+			<span class="sub-heading">관리페이지</span>
+		</div>
+		<div class="menu-btn">
+			<a href="${request.getContextPath}management.do?type=notice">
+				<div class="btn">
+					<img src="btn-icon/Megaphone.svg" width="45" height="45" /> <span>공지사항</span>
 				</div>
-
-				<div class="menu-btn">
-					<a href="${request.getContextPath}management.do?type=notice">
+			</a> <a href="${request.getContextPath}management.do?type=qna">
+				<div class="btn">
+					<img src="btn-icon/InformationFile.svg" width="45" height="45" />
+					<span>문의사항</span>
+				</div>
+			</a>
+			<c:choose>
+				<c:when test="${sessionScope.userid eq 'admin'}">
+					<a href="${request.getContextPath}management.do?type=chart">
 						<div class="btn">
-							<img src="btn-icon/Megaphone.svg" width="45" height="45" /> <span>공지사항</span>
-						</div>
-					</a> <a href="${request.getContextPath}management.do?type=qna">
-						<div class="btn">
-							<img src="btn-icon/InformationFile.svg" width="45" height="45" />
-							<span>문의사항</span>
+							<img src="btn-icon/stats.svg" width="45" height="45" /> <span>통계</span>
 						</div>
 					</a>
-					<c:choose>
-						<c:when test="${sessionScope.userid eq 'admin'}">
-							<a href="${request.getContextPath}management.do?type=chart">
-								<div class="btn">
-									<img src="btn-icon/stats.svg" width="45" height="45" /> <span>통계</span>
-								</div>
-							</a>
-							<a href="${request.getContextPath}management.do?type=flight">
-								<div class="btn">
-									<img src="btn-icon/reservation-management.svg" width="45"
-										height="45" /> <span>예매관리</span>
-								</div>
-							</a>
-						</c:when>
-					</c:choose>
-				</div>
-
+					<a href="${request.getContextPath}management.do?type=flight">
+						<div class="btn">
+							<img src="btn-icon/reservation-management.svg" width="45"
+								height="45" /> <span>예매관리</span>
+						</div>
+					</a>
+				</c:when>
+			</c:choose>
+		</div>
+		
+		<!-- ***************************************** -->
+		<c:choose>
+			<c:when test="${not empty sessionScope.userid}">
 				<div>
 					<span class="sub-heading">마이페이지</span>
 				</div>
