@@ -47,3 +47,8 @@
     padding: 0.875rem 2rem;
   } 
 }
+
+.headerContainer {
+    width: 100%;
+    background-color: white;
+}
