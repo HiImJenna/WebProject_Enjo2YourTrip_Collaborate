@@ -1,5 +1,7 @@
 package kr.co.enjo2.service.notice;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,32 +18,33 @@ public class NoticeContentService implements Action {
 		String noticeNo = request.getParameter("no");
 		try {
 			NoticeDao dao = new NoticeDao();
-
+			
 			if (noticeNo == null || noticeNo.trim().equals("")) {
 				action.setRedirect(true);
-				// 리다이렉트 어디로 해야하는지...??
 				action.setPath(request.getContextPath() + "/management.do");
 				return action;
 			}
 			noticeNo = noticeNo.trim();
-
-			String title = request.getParameter("title");
-			String createdat = request.getParameter("createdat");
-			String content = request.getParameter("content");
 			
 			NoticeDto notice = dao.findOne(Integer.parseInt(noticeNo));
 			
-			request.setAttribute("number", notice.getNoticeNo());
-			request.setAttribute("title", notice.getTitle());
-			request.setAttribute("content", notice.getContent());
-			request.setAttribute("date", notice.getCreatedAt());
-
-			action.setRedirect(false);
-			action.setPath("/WEB-INF/views/member/noticeContent.jsp");
+			if (notice != null) {
+				dao.updateNoticeViews(Integer.parseInt(noticeNo));
+				request.setAttribute("number", notice.getNoticeNo());
+				request.setAttribute("title", notice.getTitle());
+				request.setAttribute("content", notice.getContent());
+				request.setAttribute("date", notice.getCreatedAt());
+				action.setRedirect(false);
+				action.setPath("/WEB-INF/views/member/noticeContent.jsp");
+			} else {
+				action = null;
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('죄송합니다.\n 잠시후 다시 시도해주세요.'); history.go(-1); </script>");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return action;
 	}
-
 }

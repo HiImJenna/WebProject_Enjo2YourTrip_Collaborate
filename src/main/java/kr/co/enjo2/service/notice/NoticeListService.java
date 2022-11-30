@@ -34,7 +34,7 @@ public class NoticeListService implements Action {
 				obj.put("writer", n.getMemberId());
 				obj.put("date", n.getCreatedAt());
 				// 조회수 수정 필요
-				obj.put("count", String.valueOf(1));
+				obj.put("count", n.getCount());
 				//JSONOBJ.put("가나다","123");
 				//JSONOBJ = {가나다 : 123 , 가나다 :123 }
 				noticeList.add(obj);

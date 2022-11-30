@@ -1,42 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+	<head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-	integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-	crossorigin="anonymous">
-<script
-	src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+<title>ENJO2 YOUR TRIP</title>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- 이미지 모아주는 cdn --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<!-- 이미지 슬라이드 --><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 <link href="style/culture-place.css" rel="stylesheet" type="text/css" />
 <link href="style/common.css" rel="stylesheet" type="text/css" />
+<link href="style/table.css" rel="stylesheet" type="text/css" />
 <link href="style/header-Footer.css" rel="stylesheet" type="text/css" />
 <link href="style/management-page.css" rel="stylesheet" type="text/css" />
-<link href="style/culture-gathering.css" rel="stylesheet"
-	type="text/css" />
-
+<link href="style/culture-gathering.css" rel="stylesheet" type="text/css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			type : "get",
+			url : "mainInfo.do",
+			success : function(data) {
+				
+				const noticeList = data.noticeList;
+				const qnaList = data.qnaList;
+				console.log(data);
+				
+				if(noticeList.length > 0){
+					$('#noticeBox').show();
+				} else{
+					$('#noticeBox').hide();
+					return;
+				}
+				
+				$('#noticeTable').empty();
+				
+				for(const notice of noticeList){
+					let tempHtml = `<tr>
+										<td><a href="noticeContent.do?no=\${notice.no}">\${notice.title}</a></td>
+										<td style="font-size : 10pt; text-align:right">\${notice.date}</td>
+									</tr>`
+					$('#noticeTable').append(tempHtml);
+				}
+				for(const qna of qnaList){
+					let tempHtml = `<tr>
+										<td><a href="noticeContent.do?no=\${qna.no}">\${qna.title}</a></td>
+										<td style="font-size : 10pt; text-align:right">\${qna.date}</td>
+									</tr>`
+					$('#qnaTable').append(tempHtml);
+				}
+			},
+			error : function(request, status, error) {
+				console.log("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error)
+			}
+		});
+	});
+</script>
 </head>
 <body>
 	<!-- header -->
-	<%
-	pageContext.include("/WEB-INF/views/include/header.jsp");
-	%>
+	<% pageContext.include("/WEB-INF/views/include/header.jsp"); %>
 	<!-- main -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
-		crossorigin="anonymous"></script>
-
-	<div id="carouselExampleIndicators" class="carousel slide"
-		data-ride="carousel">
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 			<li data-target="#carouselExampleIndicators" data-slide-to="0"
 				class="active"></li>
@@ -75,44 +104,33 @@
     <span class="sr-only">Next</span> -->
 		</button>
 	</div>
-	<div style="text-align: center;">
-
-		<!-- <br> <br> <br> <img src="images/main/메인게시판1.PNG"
-			width="70%" height="20%" margin="auto" alt="image"> <br> <br> -->
-		<br>
+	<div style="text-align:center">
+	<img src="images/icon.PNG" width="830" height="120" alt="image">
 	</div>
-
-	<%-- https://cms.kookmin.ac.kr/apply/notice/faq.do?mode=view&articleNo=1191
-<div class = "main-mini-box main-mini-box02">
-   <div class = "mini-tab-box>
-    <ul>
-    <li class="active><a class="mini-board-tab" href="#a" title="공지사항"> 공지사항 </a>
-       <!-- 게시판 타입 1 -->
-       <c:import charEncoding="utf-8" url="/cms/content/widget.do">
-          <c:param name="widgetKey" value="/_share/_widget/miniboard-board-type01.jsp"/>
-          <c:param name="miniBoardNo" value="24"/> <!-- 게시판 번호 -->
-          <c:param name="boardUrl" value="etc-board/board03.do"/> <!-- 이동할 게시판 주소 -->
-          <c:param name="articleCount" value="5"/> <!-- 출력할 게시물 갯수 -->
-          <c:param name="categoryId" value=""/>   <!-- 카테고리 아이디 -->
-        </c:import><a class="viewmore" href="etc-board/board03.do" title="공모/대외활동 바로가기"> 더보기</a></li>
-   <li class="active><a class="mini-board-tab" href="#a" title="문의사항"> 문의사항 </a>
-       <!-- 게시판 타입 2 -->
-       <c:import charEncoding="utf-8" url="/cms/content/widget.do">
-          <c:param name="widgetKey" value="/_share/_widget/miniboard-board-type01.jsp"/>
-          <c:param name="miniBoardNo" value="24"/> <!-- 게시판 번호 -->
-          <c:param name="boardUrl" value="etc-board/board03.do"/> <!-- 이동할 게시판 주소 -->
-          <c:param name="articleCount" value="5"/> <!-- 출력할 게시물 갯수 -->
-          <c:param name="categoryId" value=""/>   <!-- 카테고리 아이디 -->
-        </c:import><a class="viewmore" href="etc-board/board03.do" title="공모/대외활동 바로가기"> 더보기</a></li>
-   </ul>
-</div>
-</div>
---%>
+	<!-- 공지사항 QNA -->
+	<div style="margin: 0pt auto; max-width: 100%; min-width: 830px;">
+		<div>
+			<table class="content-table" style="float : left;">
+				<thead>
+					<th scope="col" colspan="2" width="100%">
+					<a href="${request.getContextPath}management.do?type=notice"><b>NOTICE</b></a></th>
+				</thead>
+				<tbody id="noticeTable"></tbody>
+			</table>
+		</div>
+		<div>
+			<table class="content-table" style="float : right;">
+				<thead>
+					<th scope="col" colspan="2" width="100%">
+					<a href="${request.getContextPath}management.do?type=qna"><b>QNA</b></a></th>
+				</thead>
+				<tbody id="qnaTable"></tbody>
+			</table>
+		</div>
+	</div>
 	<footer>
 		<!-- footer -->
-		<%
-		pageContext.include("/WEB-INF/views/include/footer.jsp");
-		%>
+		<% pageContext.include("/WEB-INF/views/include/footer.jsp"); %>
 	</footer>
 </body>
 </html>
