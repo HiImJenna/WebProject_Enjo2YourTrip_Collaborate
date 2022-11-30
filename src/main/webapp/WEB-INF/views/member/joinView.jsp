@@ -28,7 +28,7 @@
 			return false;
 		}
 		if (!bbs.pw_confirm.value) {
-			alert("비밀번호를 입력하세요");
+			alert("재확인 비밀번호를 입력하세요");
 			bbs.pw_confirm.focus();
 			return false;
 		}
@@ -49,6 +49,13 @@
 		}
 		if (bbs.pw.value != bbs.pw_confirm.value) {
 			alert("비밀번호가 일치하지 않습니다.");
+			bbs.pw.focus();
+			return;
+		}
+		var regex = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+		if (!regex.test(bbs.email.value)) {
+			alert("올바른 이메일 형식이 아닙니다");
+			bbs.email.focus();
 			return;
 		}
 		// alert("비밀번호가 일치합니다.");
