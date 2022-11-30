@@ -6,12 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.enjo2.action.Action;
 import kr.co.enjo2.action.ActionForward;
 
-public class RestaurantMainPageService implements Action {
+public class RestaurantRecommandChickenService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 		ActionForward forward = new ActionForward();
-		forward.setPath("/WEB-INF/views/restaurant/restaurantMain.jsp");
+		forward.setPath("/WEB-INF/views/restaurant/restaurantRecommandChicken.jsp");
 		return forward;
 	}
 
