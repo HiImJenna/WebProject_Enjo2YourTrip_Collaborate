@@ -18,6 +18,8 @@
     <link href="style/common.css" rel="stylesheet" type="text/css" />
 	<link href="style/header-Footer.css" rel="stylesheet" type="text/css" />
     
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 </head>
 <body>
 
@@ -147,34 +149,34 @@ function check(form) {
 	let checkNm = /^[A-Z]+$/; //이름 영문
 
 	if(passSnm == "") {
-		alert('승객 성을 입력해주세요.');
+	   	swal ( "잠깐!" ,  "승객 성을 입력해주세요.!" ,  "error" )
 		return ;
 	}
 
 	if(passLnm == "") {
-		alert('승객 이름을 입력해주세요.');
+	   	swal ( "잠깐!" ,  "승객 이름을 입력해주세요.!" ,  "error" )
 		return ;
 	}
 	
 	if(bday == "") {
-		alert('생년월일을 입력해주세요.');		
+	   	swal ( "잠깐!" ,  "생년월일을 입력해주세요.!" ,  "error" )
 		return ;
 	}  
 
 	if(!checkNm.test(passSnm)) {
-		alert('승객 성은 영문 대문자만 입력 가능합니다.');
+	   	swal ( "잠깐!" ,  "승객 성은 영문 대문자만 입력 가능합니다.!" ,  "error" )
 		return ;
 	}
 	
 	if(!checkNm.test(passLnm)) {
-		alert('승객 이름은 영문 대문자만 입력 가능합니다.');
+	   	swal ( "잠깐!" ,  "승객 이름은 영문 대문자만 입력 가능합니다.!" ,  "error" )
 		return ;
 	}
 	
 	
 	
 	if(!checkBd.test(bday)) {
-		alert('생년월일을 숫자 8자리로 재입력해주세요.');
+	   	swal ( "잠깐!" ,  "생년월일을 숫자 8자리로 재입력해주세요.!" ,  "error" )
 		return true;
 	}
 	

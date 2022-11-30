@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     
 	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400" rel="stylesheet">
-
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- ********* JQuery datepicker css ************* -->
 <!--     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="datepickerCss.css">
@@ -161,31 +161,26 @@ function search() {
     		
      if (sdateM == '가는 날') {
     	 console.log("if (sdateM == '가는 날')");
-         alert('가는 날을 지정해주세요');
+    	 swal ( "잠깐!" ,  "가는 날을 지정해주세요" ,  "error" )
+
     	 return ;
      } 
      if(edateM == '오는 날') {
     	 console.log("if(edateM == '오는 날')");
-         alert('오는 날을 지정해주세요');
+    	 swal ( "잠깐!" ,  "오는 날을 지정해주세요!" ,  "error" )
     	 return ;
      }
      
      if(sdateF-edateF >= 1 ) {
       	console.log("if((sdateM2-edateM2) >= 1 )");
-        alert('가는 날과 오는 날 날짜를 다시 선택해주세요');
+      	swal ( "잠깐!" ,  "가는 날과 오는 날 날짜를 다시 선택해주세요!" ,  "error" )
       	return ;
-      } 
+      }
      
      
      document.bookingform.submit();
      
-/*      if (sdateM != '가는 날' && edateM != '오는 날' && ((sdateM-edateM) >= 1) ) {
-    	console.log("else")
-     	alert('선택한 일정의 항공편을 검색합니다!');
-		
-     }
- */     
-     
+    
 }
  
 </script>

@@ -26,8 +26,8 @@
         </div>
         
 		<div id = "flight-search" class="info-box-submit" >
-	         <input type="button" value = "마이페이지" href="#" class="booking-submit"/> 
-	         <input type="button" value = "메인페이지" href="index.jsp" class="booking-submit"/>
+	         <input type="button" value = "마이페이지" href="#" onclick="location.href='index.html'" class="booking-submit"/> 
+	         <input type="button" value = "메인페이지" href="#" onclick="location.href='index.html'" class="booking-submit"/>
         </div>
     </div>    
 
