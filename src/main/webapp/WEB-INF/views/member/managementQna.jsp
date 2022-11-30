@@ -48,12 +48,12 @@
 							const childList = qna.child;
 							let tempHtml = '';
 							if (childList.length > 0) {
-								const className = "child" + qna.no;
+								//const className = "child" + qna.no;
 								tempHtml = `<tr>
 												<td>\${qna.no}</td>
 												<td>
-													\${qna.title}&nbsp;
-													<font size="2em" color="tomato" onclick="showChild(\${qna.no})">
+													<a href="qnaContent.do?no=\${qna.no}">\${qna.title}&nbsp;</a>
+													<font size="1em" color="tomato" onclick="showChild(\${qna.no})">
 														[답글 보기]
 													</font>
 												</td>
@@ -64,7 +64,7 @@
 								for(const child of childList) {
 									tempHtml += `<tr class=\"\${qna.no}\" style="display:none;">
 													<td>\${child.no}</td>
-													<td> &nbsp;&nbsp;&nbsp;└ \${child.title}</td>
+													<td> &nbsp;&nbsp;&nbsp;<a href="qnaContent.do?no=\${child.no}">└ \${child.title}</a></td>
 													<td>\${child.writer}</td>
 													<td>\${child.date}</td>
 													<td>\${child.count}</td>
@@ -73,7 +73,7 @@
 							} else {
 								tempHtml = `<tr>
 												<td>\${qna.no}</td>
-												<td>\${qna.title}</td>
+												<td><a href="qnaContent.do?no=\${qna.no}">\${qna.title}</a></td>
 												<td>\${qna.writer}</td>
 												<td>\${qna.date}</td>
 												<td>\${qna.count}</td>
@@ -164,8 +164,8 @@
 	<ul class="macgyver-btn">
 		<li><img src="btn-icon/plus-btn.svg"
 			style="background-color: #ffff; border-radius: 50%;"></li>
-		<li><iconify-icon icon="iconoir:edit-pencil"
-				style="color: #ef6351;" width="30" height="30"></iconify-icon></li>
+		<li><a href="${request.getContextPath}qnaWriteView.do"><iconify-icon icon="iconoir:edit-pencil"
+				style="color: #ef6351;" width="30" height="30"></iconify-icon></a></li>
 	</ul>
 </body>
 </html>

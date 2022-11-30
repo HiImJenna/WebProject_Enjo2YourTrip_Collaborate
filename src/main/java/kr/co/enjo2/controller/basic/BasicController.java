@@ -12,7 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import kr.co.enjo2.action.Action;
 import kr.co.enjo2.action.ActionForward;
 import kr.co.enjo2.service.notice.NoticeWrite;
+import kr.co.enjo2.service.qna.QnaContentEditOkService;
+import kr.co.enjo2.service.qna.QnaContentEditViewService;
+import kr.co.enjo2.service.qna.QnaContentService;
+import kr.co.enjo2.service.qna.QnaDeleteOkService;
 import kr.co.enjo2.service.qna.QnaListService;
+import kr.co.enjo2.service.qna.QnaViewService;
+import kr.co.enjo2.service.qna.QnaWriteService;
 import kr.co.enjo2.service.basic.MainPageInfoService;
 import kr.co.enjo2.service.member.JoinViewService;
 import kr.co.enjo2.service.member.ManagementService;
@@ -138,12 +144,34 @@ public class BasicController extends HttpServlet {
              // QNA (문의) 리스트 JSON 전달
              action = new QnaListService();
              forward = action.execute(request, response);
+         } else if(url_Command.equals("/qnaWriteView.do")) {
+             // QNA 작성 페이지 이동
+             action = new QnaViewService();
+             forward = action.execute(request, response);
+         } else if(url_Command.equals("/qnaWriteOk.do")) {
+             // QNA 작성 하기
+             action = new QnaWriteService();
+             forward = action.execute(request, response);
+         } else if(url_Command.equals("/qnaContent.do")) {
+             // 특정 QNA 보기
+             action = new QnaContentService();
+             forward = action.execute(request, response);
+         } else if(url_Command.equals("/qnaEdit.do")) {
+             // 특정 QNA 수정 화면
+             action = new QnaContentEditViewService();
+             forward = action.execute(request, response);
+         } else if(url_Command.equals("/qnaEditOk.do")) {
+             // 특정 QNA 수정 요청
+             action = new QnaContentEditOkService();
+             forward = action.execute(request, response);
+         } else if(url_Command.equals("/qnaDelete.do")) {
+             // 특정 QNA 삭제 요청
+             action = new QnaDeleteOkService();
          } else if(url_Command.equals("/mainInfo.do")) {
              // 메인 페이지 비동기 정보 전달
              action = new MainPageInfoService();
              forward = action.execute(request, response);
          }
-    	
     	
     	if(forward != null) {
     		if(forward.isRedirect()) { //true 

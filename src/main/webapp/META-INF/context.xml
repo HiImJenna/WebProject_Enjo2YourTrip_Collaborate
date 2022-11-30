@@ -16,7 +16,7 @@
 		maxIdle="20" 
 		maxActive="20"
 		password="1004" 
-		username="SEVENTH"
+		username="EIGHT"
 		url="jdbc:oracle:thin:@192.168.0.89:1521:XE"
 		driverClassName="oracle.jdbc.OracleDriver" 
 		type="javax.sql.DataSource"
