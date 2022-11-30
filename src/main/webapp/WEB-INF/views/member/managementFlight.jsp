@@ -35,12 +35,16 @@
 				<a href="${request.getContextPath}managementQna.do">
 					<li>문의사항</li>
 				</a>
-				<a href="${request.getContextPath}managementChart.do">
-					<li>통계</li>
-				</a>
-				<a href="${request.getContextPath}managementFlight.do">
-					<li class="sub-heading">예매관리</li>
-				</a>
+				<c:choose>
+					<c:when test="${not empty sessionScope.userid}">
+						<a href="${request.getContextPath}management.do?type=chart">
+							<li>통계</li>
+						</a>
+						<a href="${request.getContextPath}management.do?type=flight">
+							<li>예매관리</li>
+						</a>
+					</c:when>
+				</c:choose>
 			</ul>
 			<table class="management-table">
 				<thead>

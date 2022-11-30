@@ -139,8 +139,8 @@ public class MemberDao {
 		
 		try {
 			conn = ds.getConnection();
-			String sql="insert into member(mem_id, mem_nic, mem_pwd, mem_email, mem_type) "+
-			           "values(?, ?, ?, ?, ?)";
+			String sql="insert into member(mem_id, mem_nic, mem_pwd, mem_email, mem_type, mem_pro) "+
+			           "values(?, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getNickName());
@@ -148,6 +148,7 @@ public class MemberDao {
 			pstmt.setString(4, member.getEmail());
 			// 나중에 바뀔 수 있음
 			pstmt.setString(5, "user");
+			pstmt.setString(6, "images/culture/ma2.svg");
 			row = pstmt.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
