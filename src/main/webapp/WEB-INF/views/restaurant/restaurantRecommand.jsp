@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <!-- kakao Map -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9c03c207a75ea2160da8230b4594e227&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d357e5d2dcf9e6683d44f9bceb4b4612&libraries=services"></script>
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <!-- Bootstrap -->
