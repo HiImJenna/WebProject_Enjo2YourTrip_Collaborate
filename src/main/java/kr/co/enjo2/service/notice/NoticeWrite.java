@@ -29,7 +29,10 @@ public class NoticeWrite implements Action {
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
 				//out.println("<script>alert('로그인이 필요한 서비스 입니다.'); history.go(-1);</script>");
-				out.println("<script>const result = confirm('로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?'); if(result){location.href=\"/loginView.do\"}else{history.go(-1);}</script>");
+				out.println("<script>const result = confirm('로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?'); "
+												+ "if(result){location.href=\"" + request.getContextPath() + "/loginView.do\"}"
+												+ "else{history.go(-1);}"
+												+ "</script>");
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
