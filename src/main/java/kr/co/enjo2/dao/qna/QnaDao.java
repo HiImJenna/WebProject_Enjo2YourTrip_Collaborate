@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import kr.co.enjo2.dto.notice.NoticeDto;
 import kr.co.enjo2.dto.qna.QnaDto;
 
 public class QnaDao {
@@ -19,6 +20,46 @@ public class QnaDao {
 	public QnaDao() throws NamingException {
 		Context context = new InitialContext();
 		ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
+	}
+	
+	public List<QnaDto> findMainInfo() {
+		List<QnaDto> list = new ArrayList<>();
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select title, timeAt " +
+					                     "from(" +
+					                     "        select ROWNUM as NUM, q_title as title, TO_CHAR(q_created_at, 'YYYY-MM-DD') as timeAt " +
+					                     "        from qna " +
+					                     "        where q_no = q_ref " +
+					                     "        order by q_no desc " +
+					                     "     ) " +
+					                     "where NUM <= 5 ";
+
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				QnaDto qna = new QnaDto();
+				qna.setTitle(rs.getString("title"));
+				qna.setCreatedAt(rs.getString("timeAt"));
+				list.add(qna);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		return list;
 	}
 	
 	public int getTotalCount() {
