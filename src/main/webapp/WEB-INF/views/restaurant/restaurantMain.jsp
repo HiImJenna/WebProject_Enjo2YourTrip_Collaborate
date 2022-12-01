@@ -54,7 +54,7 @@
 								<div class="job-card">
 									<div class="job-card-header"></div>
 									<div class="job-card-title">서울시 치킨 맛집</div>
-									<img id="matzip" src="images/치킨.jpg" alt="">
+									<img id="matzip" src="images/치킨.jpg" alt="" style="border-radius: 10px;">
 									<div class="job-card-subtitle"></div>
 									<div class="job-card-buttons">
 
@@ -69,8 +69,8 @@
 								<div class="job-card-header"></div>
 								<div class="job-card-title">내가 찜한 맛집</div>
 								<img id="matzip"
-									src="https://ldb-phinf.pstatic.net/20210809_123/1628489870455uLydz_JPEG/Z1BdXNv-dMoIzASYz24TlofA.jpg"
-									alt="">
+									src="https://img.siksinhot.com/insta/1445486809578714.jpg"
+									alt="" style="border-radius: 10px;">
 								<div class="job-card-subtitle"></div>
 								<div class="job-card-buttons">
 									<button class="search-buttons card-buttons">보러가기</button>
@@ -79,7 +79,7 @@
 						</a>
 						<!-- 내 근처 맛집 -->
 						<!-- 내 근처 맛집 -->
-						<a href="recommand.restaurant?&value=맛집" alt="한식"><div
+						<a href="recommand.restaurant?&value=맛집" alt="한식" style="border-radius: 10px;"><div
 								class="job-card">
 								<div class="job-card-header"></div>
 								<div class="job-card-title">가까운 맛집</div>

@@ -9,9 +9,16 @@
 
 #chartwrapper1{
 	position : relative;
+	width: 80%
 }
 #chartwrapper2{
 	position : relative;
+	width: 80%
+}
+
+#chartwrapper3{
+	position : relative;
+	width: 80%
 }
 .highcharts-data-table table {
     font-family: Verdana, sans-serif;

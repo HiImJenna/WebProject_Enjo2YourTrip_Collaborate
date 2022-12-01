@@ -61,14 +61,6 @@ public class ChartService implements Action {
 				airline.add(airlineObj);		
 			}
 			
-			// 공지사항 조회수 순위
-			/*
-			 * List<ChartDto> rsvArr4 = chartDao.airCount(); JSONArray airline = new
-			 * JSONArray(); for (int i = 0; i < rsvArr3.size(); ++i) { JSONObject airlineObj
-			 * = new JSONObject(); int airlineCnt = rsvArr3.get(i).getCount(); String
-			 * airlineNm = rsvArr3.get(i).getInfoAirNm(); airlineObj.put("name", airlineNm);
-			 * airlineObj.put("y", airlineCnt); airline.add(airlineObj); }
-			 */
 			/* 위에서 만든 JASON을 하나에 다 넣기 */
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("application/json;charset=UTF-8");

@@ -38,7 +38,6 @@
 			url : "chart.do",
 			data : {},
 			success : function(data) {
-				//swal("정원아 이젠 한계다", "태우한테 가봐!","");
 				console.log(data);
  				makeChart(data.categories, data.data);
 				makeChart2(data.genderList);
@@ -51,7 +50,6 @@
 	})
 
  	function makeChart(list1, list2) {
-		// Data retrieved https://en.wikipedia.org/wiki/List_of_cities_by_average_temperature
 		var chart1 = new Highcharts.chart('container2', {
 			colors: ['#F05542', '#fc9292', '#555555', '#777777', '#dddddd'],
 			chart1 : {
@@ -74,7 +72,8 @@
 					dataLabels : {
 						enabled : true
 					},
-					enableMouseTracking : false
+					enableMouseTracking : false,
+					responsive: false,
 				}
 			},
 			series : [ {
@@ -86,7 +85,6 @@
 	}; 
 
  	function makeChart2(genderList) {
-		// Data retrieved from https://netmarketshare.com
 		var chart2 = new Highcharts.chart(
 				'container1',
 				{
@@ -132,7 +130,6 @@
 	} 
 	
 	function makeChart3(airline) {
-		// Data retrieved from https://netmarketshare.com
 		var chart3 = new Highcharts.chart('container', {
 			  colors: ['#6274EC', '#9562EC', '#DA62EC', '#EC62B9', '#EC6274', '#EC9562'],
 
@@ -238,7 +235,7 @@
 		</section>
 		
 		<section>
-			<div id="chartwrapper2">
+			<div id="chartwrapper3">
 				<figure class="highcharts-figure">
 					  <div id="container"></div>
 					  <p class="highcharts-description"> </p>

@@ -8,6 +8,38 @@ ul {
   list-style: none;
 }
 
+.imageDiv {
+	width : 830px;
+	height : 140px;
+	margin: auto;
+	justify-content: center;
+	margin: auto;
+	padding: 10px;
+	
+/* 	padding-left: 200px;
+	padding-right: 200px;
+ */	
+}
+
+.img {
+    background-color: white;
+    margin-left: 85px;
+    margin-right: 85px;
+    float: left;
+    width: 90px;
+    height: 110px;
+
+}
+
+.imgdiv {
+	width: 800px;
+	height: 140px;
+	display: flex;
+	margin: auto;
+	padding: 10px;
+
+}
+
 :root {
   --footer-color : #495058;
   --culture-page-btn : #EF6351;

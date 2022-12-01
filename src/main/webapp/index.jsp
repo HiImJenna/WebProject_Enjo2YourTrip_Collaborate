@@ -104,8 +104,13 @@
     <span class="sr-only">Next</span> -->
 		</button>
 	</div>
-	<div style="text-align:center">
-	<img src="images/icon.PNG" width="830" height="120" alt="image">
+	<div class = "imageDiv">
+		<div class = "imgdiv">
+	 		<a href="mainView.restaurant"><img src="images/맛집메인.png" alt="image" class = "img"></a>
+			<a href="mainView.restaurant"><img src="images/문화메인.png" alt="image" class = "img" ></a>
+			<a href="mainView.flight"><img src="images/항공메인.png" alt="image" class = "img" ></a>
+		</div>
+		
 	</div>
 	<!-- 공지사항 QNA -->
 	<div style="margin: 0pt auto; max-width: 100%; min-width: 830px;">
