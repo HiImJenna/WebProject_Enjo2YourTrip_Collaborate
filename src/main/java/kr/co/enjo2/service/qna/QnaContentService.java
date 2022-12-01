@@ -27,6 +27,9 @@ public class QnaContentService implements Action {
 					request.setAttribute("mine", "true");
 				}
 			}
+			if (qna.getQnaNo() == qna.getQnaRef()) {
+				request.setAttribute("replyStatus", "true");
+			}
 			request.setAttribute("no", qna.getQnaNo());
 			request.setAttribute("title", qna.getTitle());
 			request.setAttribute("date", qna.getCreatedAt());
