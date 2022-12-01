@@ -210,7 +210,7 @@
 				<li>문의사항</li>
 			</a>
 			<c:choose>
-				<c:when test="${not empty sessionScope.userid}">
+				<c:when test="${sessionScope.userid eq 'admin'}">
 					<a href="${request.getContextPath}management.do?type=chart">
 						<li>통계</li>
 					</a>
