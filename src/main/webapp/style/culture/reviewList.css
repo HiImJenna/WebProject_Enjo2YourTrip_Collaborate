@@ -1,0 +1,25 @@
+.review-list {
+  /* width: 67.75rem; */
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.review-list-part {
+    border-radius: 5px;
+    border: solid 1px var(--border-color);
+   /*  display: flex; */
+    flex-direction: column;
+    gap: 1rem;
+    overflow: auto;
+    padding: 1.562rem;
+    width: 30.813rem;
+    height: 30rem;
+}
+
+.culture-sub-container {
+	display : flex;
+	font-size: 1.25rem;
+    font-weight: bold;
+}

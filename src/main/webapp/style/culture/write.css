@@ -1,0 +1,19 @@
+.post > textarea {
+  border: none;
+  padding: .2rem .5rem; 
+  resize: none;
+  border: solid 1px var(--border-color);
+}
+
+.post-gap {
+  margin-bottom: 1.2rem;
+}
+
+.text-size-margin {
+  margin-bottom: .5rem;
+}
+
+.right{
+  display: flex;
+  justify-content: flex-end;
+}
