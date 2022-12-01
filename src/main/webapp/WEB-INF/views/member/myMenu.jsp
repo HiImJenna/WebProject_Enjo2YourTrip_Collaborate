@@ -41,7 +41,7 @@
 				<div class="btn">
 					<img src="btn-icon/famous-restaurant.svg" /> <span>맛집</span>
 				</div>
-			</a> <a href="${request.getContextPath}       .do">
+			</a> <a href="${request.getContextPath}mainView.culture">
 				<div class="btn">
 					<img src="btn-icon/culture-place.svg" width="45" height="45" /> <span>문화공간</span>
 				</div>
@@ -59,7 +59,7 @@
 						<div class="btn">
 							<img src="btn-icon/reservation.svg" /> <span>예매</span>
 						</div>
-					</a> <a href="${request.getContextPath}myMeeting.do">
+					</a> <a href="${request.getContextPath}culture-join-list.culture">
 						<div class="btn">
 							<img src="btn-icon/gathering.svg" /> <span>모임</span>
 						</div>

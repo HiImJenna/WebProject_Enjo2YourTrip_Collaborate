@@ -88,7 +88,7 @@
 			</div>
 			<!-- 문화공간 -->
 			<div class="carousel-item" style="text-align: center;">
-				<a href=""><img
+				<a href="mainView.culture"><img
 					src="https://i.insider.com/57f3ccc78c6c5022008b458b?width=1000&format=jpeg&auto=webp"
 					width="830" height="430" alt="image"></a>
 			</div>
@@ -107,7 +107,7 @@
 	<div class = "imageDiv">
 		<div class = "imgdiv">
 	 		<a href="mainView.restaurant"><img src="images/맛집메인.png" alt="image" class = "img"></a>
-			<a href="mainView.restaurant"><img src="images/문화메인.png" alt="image" class = "img" ></a>
+			<a href="mainView.culture"><img src="images/문화메인.png" alt="image" class = "img" ></a>
 			<a href="mainView.flight"><img src="images/항공메인.png" alt="image" class = "img" ></a>
 		</div>
 		

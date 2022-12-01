@@ -1,6 +1,7 @@
 .gu{
   display: flex;
   gap: 0.562rem;
+  overflow: auto;
 }
 
 .gu > li {
@@ -9,6 +10,8 @@
   color: var(--information-page-btn);
   font-size: 0.875rem;
   padding: .188rem 0.562rem;
+  /* width: 4.5rem; */
+  white-space: nowrap;
 }
 
 .gu > .gu-selected {
@@ -18,7 +21,9 @@
 
 .culture-table {
   border-collapse: collapse;
-  /* width: 67.75rem; */
+  /* display: inline-block; */
+  /* height: 30rem;
+  overflow: auto; */
 }
 
 .culture-table > thead {
@@ -37,15 +42,28 @@
 .culture-table tbody tr:hover {background-color: #ddd;}
 
 .list-summary {
-  width: 16.188rem;
+ /*  width: 16.188rem; */
+  height: 14.75rem;
   border-radius: 5px;
   border: solid 1px var(--border-color);
   padding: 0.688rem;
+  white-space: nowrap;
+}
+
+.list-summary-review {
+  display: flex;
+  flex-direction: column;
+  /* gap: 0.625rem; */
+  width: 16.188rem;
+  height: 14.75rem;
+  border-radius: 5px;
+  border: solid 1px var(--border-color);
+  padding: 0.688rem;
+  overflow: auto;
 }
 
 .date {
   color: var(--date-color);
-  font-size: .8rem;
 }
 
 .nickname-date {
@@ -62,14 +80,14 @@
 }
 
 .list-title {
-  font-size: 1.5rem;
+  font-size: .9rem;
   font-weight: bold;
   margin-bottom: .625rem;
   margin-top: .625rem;
 }
 
 .list-body {
-  font-size: 1.0rem;
+  font-size: 0.8rem;
   height: 5.25rem;
 }
 
@@ -83,6 +101,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  white-space: nowrap;
+  gap: 3.5rem;
 }
 
 .comment {
@@ -99,13 +119,18 @@
 }
 
 .participant-2 {
-  position: absolute; 
+ /*  position: absolute;  */
   right: 2.25rem; 
 }
 
 .participant-1 {
-  position: absolute;
-  right: 1.5rem;  
+ /*  position: absolute; */
+  right: 1.25rem;  
+}
+
+.participant-0 {
+ /*  position: absolute; */
+  right: 0.25rem;
 }
 
 .comment-number, .participant-number {
@@ -118,20 +143,32 @@
 }
 
 .participant-number {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
   color: var( --date-color);
+  background-color: white;
+  border-radius: 50%;
 }  
 
 .list-context {
   margin: .3rem;
   height: 8rem;
+  overflow: auto;
+}
+
+.list-context2 {
+  margin: .3rem;
+  height: 10rem;
+  overflow: auto;
 }
 
 .list {
+  /* width: 67.75rem; */
   display: flex;
   gap: 1.75rem;
-  flex-wrap: no-wrap;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  flex-wrap: nowrap;
+  overflow: auto;
 }
 
 .more {
@@ -153,9 +190,9 @@
 
 .review-body {
   font-size: 0.8rem;
-  height: 1.6rem;
+/*   height: 1.6rem;
   margin-top: .6rem;
-  margin-bottom: .6rem;
+  margin-bottom: .6rem; */
 }
 
 .review-address {
@@ -185,11 +222,81 @@ hr {
   flex-direction: column;
   gap: 1rem;
   flex-wrap: no-wrap;
-  overflow-y: hidden;
+  /* overflow-x: scroll;
+  overflow-y: hidden; */
+  /* height: 30rem;  */
 }
 
 @media (width < 1100px) {
   .culture-container {
     padding: 1.438rem 2rem 3rem 2rem;
   }
+}
+
+::-webkit-scrollbar {
+  display: none;
+  }
+  
+.tooltip {
+  position: relative;
+  display: inline-block;
+/*   border-bottom: 1px dotted black; */
+}
+
+.tooltiptext{
+  display: none;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  display: inline-block;
+} 
+
+.crud {
+  font-size: 0.75rem;
+  color: var(--date-color);
+  padding: 0.25rem 0.625rem 0.25rem 0;
+}
+
+.crud-btn {
+   display : flex;
+   text-align: center;
+}
+
+.nickname-date-detail {
+   justify-content: space-between;
+}
+
+.profile-container {
+	display: flex;
+    flex-direction: column;
+}
+
+.review-comment, .review-culture-info {
+	display : flex;
+	flex-direction : column;
+	gap : 0.625rem;
+}
+
+.review-comment {
+	border-left: .3rem solid var(--culture-page-btn);
+    padding: 0.3rem;
+    margin: 1rem 0;
 }

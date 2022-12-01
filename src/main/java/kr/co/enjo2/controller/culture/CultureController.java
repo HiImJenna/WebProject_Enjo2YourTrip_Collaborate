@@ -11,7 +11,27 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.enjo2.action.Action;
 import kr.co.enjo2.action.ActionForward;
-import kr.co.enjo2.service.basic.GatherPageMoveService;
+import kr.co.enjo2.service.culture.CultureCommentDelete;
+import kr.co.enjo2.service.culture.CultureCommentWrite;
+import kr.co.enjo2.service.culture.CultureGathering;
+import kr.co.enjo2.service.culture.CultureGatheringDetail;
+import kr.co.enjo2.service.culture.CultureGatheringDetailFromJoin;
+import kr.co.enjo2.service.culture.CultureJoin;
+import kr.co.enjo2.service.culture.CultureJoinFromCulturePlace;
+import kr.co.enjo2.service.culture.CultureJoinFromJoinList;
+import kr.co.enjo2.service.culture.CultureJoinlist;
+import kr.co.enjo2.service.culture.CultureJoinlistDelete;
+import kr.co.enjo2.service.culture.CultureMainViewService;
+import kr.co.enjo2.service.culture.CultureMeetBoardDelete;
+import kr.co.enjo2.service.culture.CultureReview;
+import kr.co.enjo2.service.culture.CultureReviewComment;
+import kr.co.enjo2.service.culture.CultureReviewDetail;
+import kr.co.enjo2.service.culture.CultureReviewList;
+import kr.co.enjo2.service.culture.CultureReviewWrite;
+import kr.co.enjo2.service.culture.CultureUpdate;
+import kr.co.enjo2.service.culture.CultureUpdatePage;
+import kr.co.enjo2.service.culture.CultureWrite;
+import kr.co.enjo2.service.culture.CultureWritePage;
 
 @WebServlet("*.culture")
 public class CultureController extends HttpServlet {
@@ -28,12 +48,120 @@ public class CultureController extends HttpServlet {
     	Action action = null;
     	ActionForward forward = null;
     	
-    	if (url_Command.equals("/.culture")) {
-    		//action = new ~~~~~~Service();
-    		//forward = action.execute(request, response);
-    	}
+    	if (url_Command.equals("/mainView.culture")) {
+   
+    		action = new CultureMainViewService();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/culture-gathering.culture")) {
+ 
+    		action = new CultureGathering();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/culture-review.culture")) {
+ 
+    		action = new CultureReview();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/writePage.culture")) {
+
+    	    action = new CultureWritePage();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/write.culture")) {
+ 
+    		action = new CultureWrite();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/culture-gathering-detail.culture")) {
+    		
+            
+    		action = new CultureGatheringDetail();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/culture-gathering-comment-write.culture")) {
+ 
+    		action = new CultureCommentWrite();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/culture-gathering-join.culture")) {
+    		
+    		action = new CultureJoin();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/culture-gathering-board-update-page.culture")) {
+    		
+    		action = new CultureUpdatePage();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/culture-gathering-board-update.culture")) {
+    		
+    		action = new CultureUpdate();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/culture-gathering-board-comment-delete.culture")) {
+    		 
+    	    action = new CultureCommentDelete();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/culture-place-search.culture")) {
+
+   		    action = new CultureReview();
+	   		forward = action.execute(request, response);
+	   		
+	   	}else if(url_Command.equals("/culture-review-comment.culture")) {   		
+   		  
+   		    action = new CultureReviewComment();
+	   		forward = action.execute(request, response);
+	   		
+	   	}else if(url_Command.equals("/culture-review-detail.culture")) {
+ 
+    		action = new CultureReviewDetail();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/culture-review-write.culture")) {
+ 
+    		action = new CultureReviewWrite();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/culture-join-list.culture")) {
+    		
+    		action = new CultureJoinlist();
+    		forward = action.execute(request, response);
+    		
+    	}else if(url_Command.equals("/culture-join-list-delete.culture")) {
+    		
+             action = new CultureJoinlistDelete();
+    		 forward = action.execute(request, response);
+    		 
+    	}else if(url_Command.equals("/culture-Review-list.culture")) {
+    		
+            action = new CultureReviewList();
+   		    forward = action.execute(request, response);
+   	    }else if(url_Command.equals("/culture-gathering-join-from-list.culture")) {
+    		
+            action = new CultureJoinFromJoinList();
+   		    forward = action.execute(request, response);
+   	    }else if(url_Command.equals("/culture-gathering-join-from-culture-place.culture")) {
+    		
+            action = new CultureJoinFromCulturePlace();
+   		    forward = action.execute(request, response);
+   		    
+   	    }else if(url_Command.equals("/culture-gathering-detail-from-join.culture")) {
+    		
+            action = new CultureGatheringDetailFromJoin();
+   		    forward = action.execute(request, response);
+   	    }
+   	    
+   	    
+   	    else if(url_Command.equals("/culture-gathering-board-delete.culture")) {
+    		
+            action = new CultureMeetBoardDelete();
+   		    forward = action.execute(request, response);
+   	    }
+    	  
     	
-    	// 위 if 블록 실행 후 redirect or for
+    	
     	if(forward != null) {
     		if(forward.isRedirect()) { //true 
     			response.sendRedirect(forward.getPath());
