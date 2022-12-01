@@ -136,47 +136,4 @@ public class ChartDao {
 		}
 		return rsvlist;
 	}
-
-	public List<ChartDto> notiCount() {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		List<ChartDto> rsvlist = new ArrayList<ChartDto>();
-		
-		try {
-			conn = ds.getConnection();
-			String sql = "select info_air_nm as airline, count (info_air_nm) as air_count "
-						+ "from reserve r join rsv_info ri on r.rsv_no = ri.rsv_no  "
-						+ "group by info_air_nm order by airline";
-			
-            pstmt = conn.prepareStatement(sql);
-            rs = pstmt.executeQuery();
-            
-            while (rs.next()) {
-            	ChartDto chartdto = new ChartDto();
-            	chartdto.setCount(rs.getInt("air_count"));
-            	chartdto.setInfoAirNm(rs.getString("airline"));
-            	rsvlist.add(chartdto);
-			}
-
-		} catch (Exception e) {
-			System.out.println("message333 : " +e.getMessage());
-			
-		} finally {
-			 try {
-		            pstmt.close();
-		            rs.close();
-		            conn.close();
-		         } catch (Exception e2) {
-		            System.out.println(e2.getMessage());
-		         }
-		}
-		return rsvlist;
-	}
-
-	
-	
-	
-	
 }

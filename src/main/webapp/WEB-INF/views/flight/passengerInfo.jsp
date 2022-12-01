@@ -29,18 +29,6 @@
 	%>
 
 
-<!-- 승객수 -->
-<!-- <b>승객 수</b>
-	 <form name = passNm action = "finalCheck.flight" method = "GET" > 
-		<select style="width: 10%;">
-		  <option value="0" name = "1">성인 1명</option>
-		  <option value="1" name = "tadult" id = "tadult">성인 2명</option>
-		  <option value="1" name = "sadult" id = "sadult">성인 3명</option>
-		  <option value="1" name = "fadult" id = "fadult">성인 4명</option>
-		</select>
-	  </form>
- -->
- 
 <!-- 입력 폼 시작 -->
 <div class = "whole">
  	 <form name = passInfo action = "totalCheck.flight" method = "GET"> 
@@ -102,9 +90,7 @@
 		
 					  <div id="flight-search">
 					    <div class="info-box-submit" >
-					      <input type="button" id="submitPass" value="확인" onclick = "check(this.form)";/>
-<!--  				      <input type="submit" id="submitPass" value="확인" onclick = "check(); return false;"/> -->
-					      
+					      <input type="button" id="submitPass" value="확인" onclick = "check(this.form)"; />		      
 					    </div>												
 					  </div>
 				 </div>

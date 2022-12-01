@@ -75,7 +75,7 @@
             </div>
 
         </div>
-        <form name = "bookingform" action="${pageContext.request.contextPath}/departSearch.flight">
+        <form name = "bookingform" action="${pageContext.request.contextPath}/departSearch.flight" >
 	         <div class="booking-input date">
 	             <input type="text" class="datebutton" name="sdateM" id="sdateM" value = "가는 날" readonly/>
 	             <i class="fa-regular fa-calendar-days"></i>
@@ -88,7 +88,6 @@
 	         <input type="button" value = "항공권 검색" href="#" class="booking-submit" onclick="search()"/> 
 	      </form>   
     </div>
-
     <!-- 광고 -->
 <!--     <div class = "ad">
 

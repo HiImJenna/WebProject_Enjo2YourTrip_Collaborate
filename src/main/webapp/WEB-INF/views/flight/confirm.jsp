@@ -26,24 +26,11 @@
         </div>
         
 		<div id = "flight-search" class="info-box-submit" >
-	         <input type="button" value = "마이페이지" href="#" onclick="location.href='index.html'" class="booking-submit"/> 
-	         <input type="button" value = "메인페이지" href="#" onclick="location.href='index.html'" class="booking-submit"/>
+			
+<!--  	         <input type="button" value = "마이페이지" href="#" onclick="location.href='/WEB-INF/views/member/myMenu.jsp'" class="booking-submit"/> 
+ -->	         <input type="button" value = "메인페이지로" href="#" onclick="location.href='index.jsp'" class="booking-submit"/>
         </div>
     </div>    
-
-    <!-- 광고 -->
-    <div class = "ad">
-
-        <div class = "admat">
-            <h4 style="text-align: center;"># 제주도 맛집 보러가기</h4>
-            <a href="mainView.restaurant"><img src="images/분식.jpg" alt="맛집카테고리" class = "adimg"></a>
-        </div>
-
-        <div class = "adfev">
-            <h4 style="text-align: center;"># 제주도 문화 행사 보러가기</h4>
-            <a href="mainView.restaurant"><img src="https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/40Qx/image/1e9xDGgVUa1Q4aYS63r68t3Vups.jpg" alt="맛집카테고리" class = "adimg"></a>
-        </div>
-    </div>
     
 	<!-- footer -->
 	<%

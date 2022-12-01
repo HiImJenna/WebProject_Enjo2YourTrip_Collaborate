@@ -4,10 +4,6 @@ public class ChartDto {
 	private String infoBoaringDate;
 	private String rsvGender;
 	private String infoAirNm;
-	private int noticeNo;
-	private String notiTitle;
-	private int notiCount;
-	
 	private int count;
 	
 	public ChartDto() {
@@ -37,29 +33,6 @@ public class ChartDto {
 		this.infoAirNm = infoAirNm;
 	}
 
-	public int getNoticeNo() {
-		return noticeNo;
-	}
-
-	public void setNoticeNo(int noticeNo) {
-		this.noticeNo = noticeNo;
-	}
-
-	public String getNotiTitle() {
-		return notiTitle;
-	}
-
-	public void setNotiTitle(String notiTitle) {
-		this.notiTitle = notiTitle;
-	}
-
-	public int getNotiCount() {
-		return notiCount;
-	}
-
-	public void setNotiCount(int notiCount) {
-		this.notiCount = notiCount;
-	}
 
 	public int getCount() {
 		return count;
@@ -72,9 +45,10 @@ public class ChartDto {
 	@Override
 	public String toString() {
 		return "ChartDto [infoBoaringDate=" + infoBoaringDate + ", rsvGender=" + rsvGender + ", infoAirNm=" + infoAirNm
-				+ ", noticeNo=" + noticeNo + ", notiTitle=" + notiTitle + ", notiCount=" + notiCount + ", count="
-				+ count + "]";
+				+ ", count=" + count + "]";
 	}
+
+	
 
 	
 
