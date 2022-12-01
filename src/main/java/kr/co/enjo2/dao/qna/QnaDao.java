@@ -288,4 +288,6 @@ public List<QnaDto> findMainInfo() {
 		}
 		return result;
 	}
+	
+	
 }
