@@ -54,8 +54,8 @@ public class FlightDao {
 		         pstmt1.setString(5, reserveDto.getMemberNation());
 		         // 성별
 		         pstmt1.setString(6, reserveDto.getMemberGender());
-		         
-		         pstmt1.setString(7, "RESERVED");
+		         // 예약 상태 (default "RESERVED")
+		         pstmt1.setString(7, reserveDto.getStatus());
 
 		         result = pstmt1.executeUpdate();
 
@@ -65,38 +65,42 @@ public class FlightDao {
 
 		         ////// 예약 정보 key 갖고 오기 ( select 1. rownum을 사용하여 최신 정보의 키값을 조회한다. 2. 시퀀스를 조회한다 )
 		         // 시퀀스를 조회한다.... 쉬우니까...ㅠㅠ
-		         pstmt2 = conn.prepareStatement("select reserve_seq.currval as pk from dual");
+		         //pstmt2 = conn.prepareStatement("select reserve_seq.currval as pk from dual");
 
-		         rs = pstmt2.executeQuery();
-		         int reservationNo = 0;
-		         while (rs.next()) {
-		            reservationNo = rs.getInt("pk");
-		         }
+		         //rs = pstmt2.executeQuery();
+		         //int reservationNo = 0;
+		         //while (rs.next()) {
+		         //   reservationNo = rs.getInt("pk");
+		         //}
 		         
-		         if (reservationNo == 0) {
-		            throw new SQLException();
-		         }
+		         //if (reservationNo == 0) {
+		         //   throw new SQLException();
+		         //}
 
 		         ////// 가는 편, 오는 편 정보 저장하기 (insert)
 		         for (int i = 0; i < 2; ++i) {
 		            String sql = "insert into "
-		                     + "rsv_info(info_no, rsv_no, INFO_BOARDING_DATE, INFO_AIR_NM, INFO_DEPART_TIME, INFO_ARRIVE_TIME, INFO_PRICE, INFO_DIRECTION) "
-		                     + "values(rsv_info_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
+		                     + "rsv_info(info_no, rsv_no, INFO_BOARDING_DATE, INFO_AIR_NM, INFO_DEPART_TIME, INFO_ARRIVE_TIME, INFO_PRICE, INFO_DIRECTION, info_depart_place, info_arrive_place) "
+		                     + "values(rsv_info_seq.nextval, reserve_seq.currval, ?, ?, ?, ?, ?, ?, ?, ?)";
 		            pstmt3 = conn.prepareStatement(sql);
 		            // 승객 정보 primaryKey
-		            pstmt3.setInt(1, reservationNo);
+		            //pstmt3.setInt(1, reservationNo);
 		            // 예약 일자
-		            pstmt3.setString(2, reserveInfo[i].getBoardingDate());
+		            pstmt3.setString(1, reserveInfo[i].getBoardingDate());
 		            // 항공편
-		            pstmt3.setString(3, reserveInfo[i].getAirlineNm());
+		            pstmt3.setString(2, reserveInfo[i].getAirlineNm());
 		            // 출발 시간
-		            pstmt3.setString(4, reserveInfo[i].getDepartTime());
+		            pstmt3.setString(3, reserveInfo[i].getDepartTime());
 		            // 도착 시간
-		            pstmt3.setString(5, reserveInfo[i].getArriveTime());
+		            pstmt3.setString(4, reserveInfo[i].getArriveTime());
 		            // 가격
-		            pstmt3.setString(6, reserveInfo[i].getPrice());
+		            pstmt3.setString(5, reserveInfo[i].getPrice());
 		            // 가는 편 정보
-		            pstmt3.setString(7, reserveInfo[i].getDirection());
+		            pstmt3.setString(6, reserveInfo[i].getDirection());
+		            // 출발지
+		            pstmt3.setString(7, reserveInfo[i].getDepartPlace());
+		            // 도착지
+		            pstmt3.setString(8, reserveInfo[i].getArrivePlace());
 
 		            result = pstmt3.executeUpdate();
 		            if (result == 0) {

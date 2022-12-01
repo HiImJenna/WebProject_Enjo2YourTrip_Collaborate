@@ -1,95 +1,116 @@
 package kr.co.enjo2.dto.flight;
 
 public class FlightReserveInfoDto {
-   
-   ////DB의 힘을 빌리는 영역 /////////////////////////
-   private int flightInfoNo;
-   private int reservationNo;
-   /////////////////////////////
-   
-   // 가거나 돌아오는 날짜 (탑승 날짜)
-   private String boardingDate;
-   // 항공편
-   private String airlineNm;
-   // 출발시간
-   private String departTime;
-   // 도착시간
-   private String arriveTime;
-   // 금액
-   private String price;
-   // 왕편(start)  복편(end) 정보
-   private String direction = "start";
 
-   public String getBoardingDate() {
-      return boardingDate;
-   }
+	// 예약정보번호
+	private int flightInfoNo;
+	// 예약 번호
+	private int reservationNo;
+	// 가거나 돌아오는 날짜 (탑승 날짜)
+	private String boardingDate;
+	// 항공편
+	private String airlineNm;
+	// 출발시간
+	private String departTime;
+	// 도착시간
+	private String arriveTime;
+	// 출발지
+	private String departPlace;
+	// 도착지
+	private String arrivePlace;
+	// 금액
+	private String price;
+	// 왕편(start) 복편(end) 정보
+	private String direction = "start";
 
-   public void setBoardingDate(String boardingDate) {
-      this.boardingDate = boardingDate;
-   }
+	public String getBoardingDate() {
+		return boardingDate;
+	}
 
-   public int getFlightInfoNo() {
-      return flightInfoNo;
-   }
+	public void setBoardingDate(String boardingDate) {
+		this.boardingDate = boardingDate;
+	}
 
-   public FlightReserveInfoDto() {}
+	public int getFlightInfoNo() {
+		return flightInfoNo;
+	}
 
-   public void setFlightInfoNo(int flightInfoNo) {
-      this.flightInfoNo = flightInfoNo;
-   }
+	public FlightReserveInfoDto() {
+	}
 
-   public int getReservationNo() {
-      return reservationNo;
-   }
+	public void setFlightInfoNo(int flightInfoNo) {
+		this.flightInfoNo = flightInfoNo;
+	}
 
-   public void setReservationNo(int reservationNo) {
-      this.reservationNo = reservationNo;
-   }
+	public int getReservationNo() {
+		return reservationNo;
+	}
 
-   public String getAirlineNm() {
-      return airlineNm;
-   }
+	public void setReservationNo(int reservationNo) {
+		this.reservationNo = reservationNo;
+	}
 
-   public void setAirlineNm(String airlineNm) {
-      this.airlineNm = airlineNm;
-   }
+	public String getAirlineNm() {
+		return airlineNm;
+	}
 
-   public String getDepartTime() {
-      return departTime;
-   }
+	public void setAirlineNm(String airlineNm) {
+		this.airlineNm = airlineNm;
+	}
 
-   public void setDepartTime(String departTime) {
-      this.departTime = departTime;
-   }
+	public String getDepartTime() {
+		return departTime;
+	}
 
-   public String getArriveTime() {
-      return arriveTime;
-   }
+	public void setDepartTime(String departTime) {
+		this.departTime = departTime;
+	}
 
-   public void setArriveTime(String arriveTime) {
-      this.arriveTime = arriveTime;
-   }
+	public String getArriveTime() {
+		return arriveTime;
+	}
 
-   public String getPrice() {
-      return price;
-   }
+	public void setArriveTime(String arriveTime) {
+		this.arriveTime = arriveTime;
+	}
 
-   public void setPrice(String price) {
-      this.price = price;
-   }
+	public String getPrice() {
+		return price;
+	}
 
-   public String getDirection() {
-      return direction;
-   }
+	public void setPrice(String price) {
+		this.price = price;
+	}
 
-   public void setDirection(String direction) {
-      this.direction = direction;
-   }
+	public String getDirection() {
+		return direction;
+	}
 
-   @Override
-   public String toString() {
-      return "FlightReserveInfoDto [flightInfoNo=" + flightInfoNo + ", reservationNo=" + reservationNo
-            + ", boardingDate=" + boardingDate + ", airlineNm=" + airlineNm + ", departTime=" + departTime
-            + ", arriveTime=" + arriveTime + ", price=" + price + ", direction=" + direction + "]";
-   }
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+
+	public String getDepartPlace() {
+		return departPlace;
+	}
+
+	public void setDepartPlace(String departPlace) {
+		this.departPlace = departPlace;
+	}
+
+	public String getArrivePlace() {
+		return arrivePlace;
+	}
+
+	public void setArrivePlace(String arrivePlace) {
+		this.arrivePlace = arrivePlace;
+	}
+
+	@Override
+	public String toString() {
+		return "FlightReserveInfoDto [flightInfoNo=" + flightInfoNo + ", reservationNo=" + reservationNo
+				+ ", boardingDate=" + boardingDate + ", airlineNm=" + airlineNm + ", departTime=" + departTime
+				+ ", arriveTime=" + arriveTime + ", departPlace=" + departPlace + ", arrivePlace=" + arrivePlace
+				+ ", price=" + price + ", direction=" + direction + "]";
+	}
 }

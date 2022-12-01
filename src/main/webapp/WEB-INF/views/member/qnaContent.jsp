@@ -49,6 +49,13 @@
 				<input type="button" value="목록가기" class="culture-btn"
 					   style="float: left; margin-left: 7px; height: 30px;" `/>
 			</a>
+			<c:if test="${not empty sessionScope.userid && requestScope.replyStatus eq 'true'}">
+				<a
+					href="${request.getContextPath}qnaReplyView.do?no=${requestScope.no}">
+					<input type="button" value="답글쓰기" class="culture-btn"
+					style="float: left; margin-left: 7px; height: 30px;" />
+				</a>
+			</c:if>
 		</div>
 	</div>
 	<footer>
