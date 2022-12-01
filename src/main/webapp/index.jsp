@@ -47,7 +47,7 @@
 				}
 				for(const qna of qnaList){
 					let tempHtml = `<tr>
-										<td><a href="noticeContent.do?no=\${qna.no}">\${qna.title}</a></td>
+										<td><a href="qnaContent.do?no=\${qna.no}">\${qna.title}</a></td>
 										<td style="font-size : 10pt; text-align:right">\${qna.date}</td>
 									</tr>`
 					$('#qnaTable').append(tempHtml);

@@ -22,9 +22,6 @@ public class MainPageInfoService implements Action {
 		ActionForward forward = null;
 		try {
 			
-			System.out.println("=======================");
-			System.out.println("MainPageInfoService");
-			
 			NoticeDao noticeDao = new NoticeDao();
 			QnaDao qnaDao = new QnaDao();
 			
