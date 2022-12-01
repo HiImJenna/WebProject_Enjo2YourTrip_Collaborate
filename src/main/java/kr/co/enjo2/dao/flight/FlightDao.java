@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -12,11 +14,10 @@ import javax.sql.DataSource;
 
 import kr.co.enjo2.dto.flight.FlightReserveDto;
 import kr.co.enjo2.dto.flight.FlightReserveInfoDto;
+import kr.co.enjo2.dto.flight.FlightTotalDto;
 
 public class FlightDao {
-	
-	
-	
+
 	DataSource ds = null;
 
 	public FlightDao() throws NamingException {
@@ -144,9 +145,9 @@ public class FlightDao {
 
 	// ********* ReserveInfo ********
 	public int saveRsvInfo(FlightReserveInfoDto ticket) {
-		
+
 		System.out.println("FlightDao / saveRsvInfo");
-		
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int row = 0;
@@ -211,43 +212,133 @@ public class FlightDao {
 		}
 		return row;
 	}
-	
+
 	// 가장 최신 예약 조회하기
-	   public int findReserveLastOne(String userId) {
-	      Connection conn = null;
-	      PreparedStatement pstmt = null;
-	      ResultSet rs = null;
-	      int value = 0;
-	      try {
-	         conn = ds.getConnection();
-	         String sql = "select rsv_no "
-	                  + "from ("
-	                  + "        select ROWNUM as NUM, rsv_no "
-	                  + "        from reserve "
-	                  + "        where mem_id = ? "
-	                  + "        order by rsv_created_at desc"
-	                  + "     ) "
-	                  + "where NUM = 1";
-	         pstmt = conn.prepareStatement(sql);
-	         pstmt.setString(1, userId);
-	         rs = pstmt.executeQuery();
-	         while (rs.next()) {
-	            value = rs.getInt("rsv_no");
-	         }
-	      } catch (Exception e) {
-	         e.printStackTrace();
-	         System.out.println(e.getMessage());
-	      } finally {
-	         try {
-	            pstmt.close();
-	            rs.close();
-	            conn.close();
-	         } catch (Exception e2) {
-	            System.out.println(e2.getMessage());
-	         }
-	      }
-	      return value;
-	   }
-	   
-	   
+	public int findReserveLastOne(String userId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int value = 0;
+		try {
+			conn = ds.getConnection();
+			String sql = "select rsv_no " + "from (" + "        select ROWNUM as NUM, rsv_no " + "        from reserve "
+					+ "        where mem_id = ? " + "        order by rsv_created_at desc" + "     ) "
+					+ "where NUM = 1";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				value = rs.getInt("rsv_no");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		return value;
+	}
+
+	/////////////////// !!!!!!!!!!!!!!!!합치기전에 뺄것
+	/////////////////// !!!!!!!!!!!!!!!!!!//////////////////////
+	// 항공 예매 전체 리스트 출력
+	public int getTotalCount() {
+		int count = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select count(*) as cnt from reserve";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				count = rs.getInt("cnt");
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+
+		return count;
+	}
+	/////////////////////////////////////////////
+
+	public List<FlightTotalDto> findAllByPage(int page) {
+		int[] strPage = calculatePage(page);
+		List<FlightTotalDto> flightList = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+
+			String sql = "select no, id, cdate, lname, fname, birth, bdate, dplace, dtime, aplace, atime, price "
+					+ "   from("
+					+ "        SELECT ROWNUM as NUM, r.rsv_no as no, mem_id as id, TO_CHAR(r.rsv_created_at, 'YYYY-MM-DD HH24:MI') as cdate, r.rsv_last_nm as lname, "
+					+ "        r.rsv_first_nm as fname, r.rsv_birth as birth, ri.info_boarding_date as bdate, ri.INFO_DEPART_PLACE as dplace, "
+					+ "        ri.info_depart_time as dtime, ri.INFO_ARRIVE_PLACE as aplace, ri.info_arrive_time as atime, ri.info_price as price "
+					+ "		   from reserve r join rsv_info ri on r.rsv_no = ri.rsv_no order by r.rsv_no desc"
+					+ "    ) "
+					+ "   where NUM BETWEEN ? AND ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, strPage[0]);
+			pstmt.setInt(2, strPage[1]);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				FlightTotalDto flight = new FlightTotalDto();
+				flight.setReservationNo(rs.getInt("no"));
+				flight.setMemberId(rs.getString("id"));
+				flight.setRsvCreatedDate(rs.getString("cdate"));
+				flight.setMemberLastName(rs.getString("lname"));
+				flight.setMemberFirstName(rs.getString("fname"));
+				flight.setMemberBirth(rs.getString("birth"));
+				flight.setBoardingDate(rs.getString("bdate"));
+				flight.setDepartPlace(rs.getString("dplace"));
+				flight.setDepartTime(rs.getString("dtime"));
+				flight.setArrivePlace(rs.getString("aplace"));
+				flight.setArriveTime(rs.getString("atime"));
+				flight.setPrice(rs.getString("price"));
+				flightList.add(flight);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		return flightList;
+	}
+
+	/////////////////// !!!!!!!!!!!!!!!!합치기전에 뺄것
+	/////////////////// !!!!!!!!!!!!!!!!!!//////////////////////
+	private int[] calculatePage(int page) {
+		int[] arr = { 0, 0 };
+		arr[0] = 10 * page - 9;
+		arr[1] = arr[0] + 10 - 1;
+		return arr;
+	}
+	////////////////////////////////////////////
 }

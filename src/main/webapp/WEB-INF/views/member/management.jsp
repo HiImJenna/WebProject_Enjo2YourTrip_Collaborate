@@ -21,7 +21,7 @@
 <!-- jQuery -->
 <script src="/js/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap -->
-<script src="/js/bootstrap.min.js"></script>
+<!-- <script src="/js/bootstrap.min.js"></script> -->
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <style>
 .center {
@@ -96,11 +96,11 @@
 						$('#pages').append(tempHtml);
 					}
 					// 페이지 번호 붙이기
-					for(let i = pageInfo.start; i <= pageInfo.end; i++) {
+					for(let i = Number(pageInfo.start); i <= Number(pageInfo.end); i++) {
 						let tempHtml = `<li onclick = "showNotice(\${i})">\${i}</li>`;
 						
 						if (num == i) {
-							tempHtml = `<li class="active" onclick = "showNotice(\${i})">\${i}</li>`;
+							tempHtml = `<li class="active" onclick = "showNotice(${i})">\${i}</li>`;
 						}
 						
 						$('#pages').append(tempHtml);

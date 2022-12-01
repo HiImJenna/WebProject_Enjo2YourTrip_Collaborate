@@ -116,11 +116,11 @@
 							$('#page-box').append(tempHtml);
 						}
 						// 페이지 번호 붙이기
-						for(let i = pageInfo.start; i <= pageInfo.end; i++) {
+						for(let i = Number(pageInfo.start); i <= Number(pageInfo.end); i++) {
 							let tempHtml = `<li onclick = "showQna(\${i})">\${i}</li>`;
 							
 							if (num == i) {
-								tempHtml = `<li class="active" onclick = "showQna(\${i})">\${i}</li>`;
+								tempHtml = `<li class="active" onclick = "showQna(${i})">\${i}</li>`;
 							}
 							$('#page-box').append(tempHtml);
 						}

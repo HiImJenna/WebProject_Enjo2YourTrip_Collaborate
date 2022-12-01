@@ -25,10 +25,8 @@ public class ManagementService implements Action {
 		} else if (type.equals("qna")) {
 			path = "/WEB-INF/views/member/managementQna.jsp";
 		} else if (type.equals("flight")) {
-
-		} else if (type.equals("stastics")) {
-			
-		}else if (type.equals("chart")) {
+			path = "/WEB-INF/views/member/managementFlight.jsp";
+		} else if (type.equals("chart")) {
 			path = "/WEB-INF/views/member/managementChart.jsp";
 		}
 

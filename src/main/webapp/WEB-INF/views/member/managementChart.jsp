@@ -212,7 +212,7 @@
 			<c:choose>
 				<c:when test="${sessionScope.userid eq 'admin'}">
 					<a href="${request.getContextPath}management.do?type=chart">
-						<li>통계</li>
+						<li class="sub-heading">통계</li>
 					</a>
 					<a href="${request.getContextPath}management.do?type=flight">
 						<li>예매관리</li>
