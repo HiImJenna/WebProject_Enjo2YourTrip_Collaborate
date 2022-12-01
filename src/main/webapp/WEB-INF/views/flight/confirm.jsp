@@ -31,11 +31,6 @@
  -->	         <input type="button" value = "메인페이지로" href="#" onclick="location.href='index.jsp'" class="booking-submit"/>
         </div>
     </div>    
-
-    <!-- 광고 -->
-    <div class = "ad">
-
-    </div>
     
 	<!-- footer -->
 	<%

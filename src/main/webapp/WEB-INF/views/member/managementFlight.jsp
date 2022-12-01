@@ -27,7 +27,7 @@
 	<!-- main -->
 	<div class="culture-container">
 		<div class="information-frame">
-			<span class="culture-sub-heading">관리자 페이지</span>
+			<span class="culture-sub-heading">서비스정보</span>
 			<ul class="page-category">
 				<a href="${request.getContextPath}managementNotice.do">
 					<li>공지사항</li>

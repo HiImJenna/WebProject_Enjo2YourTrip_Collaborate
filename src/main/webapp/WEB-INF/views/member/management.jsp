@@ -1,5 +1,6 @@
 <!-- 관리자 페이지 공지사항 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -129,7 +130,7 @@
 	<!-- main -->
 	<div class="culture-container">
 		<div class="information-frame">
-			<span class="culture-sub-heading">관리자 페이지</span>
+			<span class="culture-sub-heading">서비스정보</span>
 			<ul class="page-category">
 				<a href="${request.getContextPath}management.do?type=notice&page=1">
 					<li class="sub-heading">공지사항</li>
@@ -173,14 +174,17 @@
 	pageContext.include("/WEB-INF/views/include/footer.jsp");
 	%>
 	</footer>
-	<!-- 포지션 앱솔루트 -->
-	<ul class="macgyver-btn">
-		<li><img src="btn-icon/plus-btn.svg"
-			style="background-color: #ffff; border-radius: 50%;"></li>
-		<li><a href="${request.getContextPath}noticeWrite.do"> <iconify-icon
-					icon="iconoir:edit-pencil" style="color: #ef6351;" width="30"
-					height="30"></iconify-icon></a></li>
-	</ul>
-
+	<c:choose>
+		<c:when test="${sessionScope.userid eq 'admin'}">
+			<!-- 포지션 앱솔루트 -->
+			<ul class="macgyver-btn">
+				<li><img src="btn-icon/plus-btn.svg"
+					style="background-color: #ffff; border-radius: 50%;"></li>
+				<li><a href="${request.getContextPath}noticeWrite.do"> <iconify-icon
+							icon="iconoir:edit-pencil" style="color: #ef6351;" width="30"
+							height="30"></iconify-icon></a></li>
+			</ul>
+		</c:when>
+	</c:choose>
 </body>
 </html>

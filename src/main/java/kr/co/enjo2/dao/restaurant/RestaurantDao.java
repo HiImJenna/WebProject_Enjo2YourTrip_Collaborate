@@ -24,7 +24,7 @@ public class RestaurantDao {
 		Context context = new InitialContext();
 		ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
 	}
-	public List<JjimDto> findAllInfo( String userId) {
+	public List<JjimDto> findAllInfo(String userId) {
 	      List<JjimDto> result = new ArrayList<>();
 	      Connection conn = null;
 	      PreparedStatement pstmt = null;
@@ -99,8 +99,8 @@ public class RestaurantDao {
 		         conn = ds.getConnection();
 		         pstmt = conn.prepareStatement(
 		        		"insert into jjim "
-		        		+ "(j_no, mem_id, j_store_nm, j_addr) "
-		        		+ "values(jjim_seq.nextval, ?, ?, ?)"
+		        		+ "(mem_id, j_store_nm, j_addr) "
+		        		+ "values(?, ?, ?)"
 		         );
 		         pstmt.setString(1, userId);
 		         pstmt.setString(2, name);

@@ -16,6 +16,29 @@
 <link href="style/common.css" rel="stylesheet" type="text/css" />
 <link href="style/management-page.css" rel="stylesheet" type="text/css" />
 <link href="style/culture-gathering.css" rel="stylesheet" type="text/css" />
+<script src="/js/jquery.twbsPagination.js"></script>
+<style>
+.center {
+  text-align: center;
+}
+.pagination {
+  display: inline-block;
+}
+
+.pagination li {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination li.active {
+  background-color: #F05400;
+  color: white;
+}
+
+.pagination li:hover:not(.active) {background-color: #ddd;}
+</style>
 <script type="text/javascript">
 	$(function() {
 		showQna(1);
@@ -89,18 +112,22 @@
 						// 이전 붙이기
 						const start = Number(pageInfo.start)-1;
 						if (pageInfo.prev == 1){
-							let tempHtml = `<li onclick = "showQna(\${start})"> 이전 </li>`
+							let tempHtml = `<li onclick = "showQna(\${start})">&laquo;</li>`
 							$('#page-box').append(tempHtml);
 						}
 						// 페이지 번호 붙이기
 						for(let i = pageInfo.start; i <= pageInfo.end; i++) {
 							let tempHtml = `<li onclick = "showQna(\${i})">\${i}</li>`;
+							
+							if (num == i) {
+								tempHtml = `<li class="active" onclick = "showQna(\${i})">\${i}</li>`;
+							}
 							$('#page-box').append(tempHtml);
 						}
 						// 이후 붙이기
 						const end = Number(pageInfo.end) + 1;
 						if (pageInfo.next == 1){
-							let tempHtml = `<li onclick = "showQna(\${end})">다음</li>`
+							let tempHtml = `<li onclick = "showQna(\${end})">&raquo;</li>`
 							$('#page-box').append(tempHtml);
 						}
 						// 페이징 처리 끝
@@ -131,7 +158,7 @@
 	<!-- main -->
 	<div class="culture-container">
 		<div class="information-frame">
-			<span class="culture-sub-heading">관리자 페이지</span>
+			<span class="culture-sub-heading">서비스정보</span>
 			<ul class="page-category">
 				<a href="${request.getContextPath}management.do?type=notice">
 					<li>공지사항</li>
@@ -139,7 +166,7 @@
 				<a href="${request.getContextPath}management.do?type=qna">
 					<li class="sub-heading">문의사항</li>
 				</a>
-				<a href="${request.getContextPath}managementChart.do">
+				<a href="${request.getContextPath}management.do?type=chart">
 					<li>통계</li>
 				</a>
 				<a href="${request.getContextPath}managementFlight.do">
@@ -148,8 +175,10 @@
 			</ul>
 			<table class="management-table2" id="qnaTable">
 			</table>
+			<div class="pagination center">
 			<ul class="paging-btn" id="page-box">
 			</ul>
+			</div>
 		</div>
 	</div>
 

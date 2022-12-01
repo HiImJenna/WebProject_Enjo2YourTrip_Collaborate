@@ -70,7 +70,7 @@
 		
 		<!-- ***************************************** -->
 		<div>
-			<span class="sub-heading">관리페이지</span>
+			<span class="sub-heading">서비스정보</span>
 		</div>
 		<div class="menu-btn">
 			<a href="${request.getContextPath}management.do?type=notice">

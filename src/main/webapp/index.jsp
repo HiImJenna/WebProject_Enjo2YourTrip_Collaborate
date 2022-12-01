@@ -118,7 +118,7 @@
 			<table class="content-table" style="float : left;">
 				<thead>
 					<th scope="col" colspan="2" width="100%">
-					<a href="${request.getContextPath}management.do?type=notice"><b>NOTICE</b></a></th>
+					<a href="${request.getContextPath}management.do?type=notice"><b>공지사항</b></a></th>
 				</thead>
 				<tbody id="noticeTable"></tbody>
 			</table>
@@ -127,7 +127,7 @@
 			<table class="content-table" style="float : right;">
 				<thead>
 					<th scope="col" colspan="2" width="100%">
-					<a href="${request.getContextPath}management.do?type=qna"><b>QNA</b></a></th>
+					<a href="${request.getContextPath}management.do?type=qna"><b>문의사항</b></a></th>
 				</thead>
 				<tbody id="qnaTable"></tbody>
 			</table>
