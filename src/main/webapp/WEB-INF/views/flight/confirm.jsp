@@ -31,12 +31,12 @@
  -->	         <input type="button" value = "메인페이지로" href="#" onclick="location.href='index.jsp'" class="booking-submit"/>
         </div>
     </div>    
-    
+<footer>    
 	<!-- footer -->
 	<%
 	pageContext.include("/WEB-INF/views/include/footer.jsp");
 	%>
-
+</footer>
 
 </body>
 </html>

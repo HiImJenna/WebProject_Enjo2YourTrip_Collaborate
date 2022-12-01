@@ -19,45 +19,35 @@ public class TotalCheckService implements Action {
 		String sdepPlandTime = request.getParameter("sdepPlandTime"); //출발시간 
 		String sarrPlandTime = request.getParameter("sarrPlandTime"); //도착시간 
 		String sprice = request.getParameter("sprice"); //가격
+		String sdept = "김포";
+		String sarr = "제주";
 		
 		request.setAttribute("sdateM", sdateM);
 		request.setAttribute("sairlineNm", sairlineNm);
 		request.setAttribute("sdepPlandTime", sdepPlandTime);
 		request.setAttribute("sarrPlandTime", sarrPlandTime);
 		request.setAttribute("sprice", sprice);
+		request.setAttribute("sdept", sdept);
+		request.setAttribute("sarr", sarr);
 		
-		
-		/*
-		 * System.out.println("가는 편 : " + sdateM);
-		 */		
 		/* 오는 편 */ 
 		String edateM = request.getParameter("edateM"); //오는 날짜
 		String eairlineNm = request.getParameter("eairlineNm"); //항공편
 		String edepPlandTime = request.getParameter("edepPlandTime"); //출발시간 
 		String earrPlandTime = request.getParameter("earrPlandTime"); //도착시간 
 		String eprice = request.getParameter("eprice"); //가격
+		String edept = "제주";
+		String earr = "김포";
+
 
 		request.setAttribute("edateM", edateM);
 		request.setAttribute("eairlineNm", eairlineNm);
 		request.setAttribute("edepPlandTime", edepPlandTime);
 		request.setAttribute("earrPlandTime", earrPlandTime);
 		request.setAttribute("eprice", eprice);
+		request.setAttribute("edept", edept);
+		request.setAttribute("earr", earr);
 
-		/*
-		 * System.out.println("오는 편 : " + edateM);
-		 */
-		//****** 승객 인원 ~ ******
-	//	String tadult = request.getParameter("tadult"); //성인 1명
-	//	String sadult = request.getParameter("sadult"); //성인 2명
-	//	String fadult = request.getParameter("fadult"); //성인 3명
-
-	//	request.setAttribute("tadult", tadult);
-	//	request.setAttribute("sadult", sadult);
-	//	request.setAttribute("fadult", fadult);
-
-	//	System.out.println("승객 수 : " + tadult);
-
-		
 		/* 승객 정보 */ 
 	    String passSnm = request.getParameter("passSnm"); //성
 		String passLnm = request.getParameter("passLnm"); //이름
@@ -70,8 +60,6 @@ public class TotalCheckService implements Action {
 		request.setAttribute("bday", bday);
 		request.setAttribute("nation", nation);
 		request.setAttribute("gender", gender);		
-
-	//	System.out.println("승객 정보 : " + passSnm); => 승객정보 정상적으로 넘어옴
 
 		forward.setPath("/WEB-INF/views/flight/totalCheck.jsp");
 		return forward;

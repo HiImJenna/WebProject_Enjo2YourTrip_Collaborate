@@ -1,5 +1,7 @@
 package kr.co.enjo2.service.member;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,11 +14,25 @@ public class MyFlightService implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		ActionForward action = new ActionForward();
-		action.setRedirect(false);
-		action.setPath("/WEB-INF/views/member/myFlight.jsp");
-		return action;
+		ActionForward forward = null;
+
+		 try {
+	         String userId = (String) request.getSession().getAttribute("userid");
+	         
+	         if(userId==null) {
+	            response.setContentType("text/html; charset=UTF-8");
+	               PrintWriter out = response.getWriter();
+	               out.println("<script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script><script>swal(\"로그인이 필요한 서비스입니다.\"); history.go(-1);</script>");
+	         }else {
+	            forward = new ActionForward();
+	            forward.setPath("/WEB-INF/views/member/myFlight.jsp");
+	         }
+	      } catch (Exception e) {
+	         System.out.println(e.getMessage());
+	      }
+		 
+		 return forward;
+
 	}
 
 }
