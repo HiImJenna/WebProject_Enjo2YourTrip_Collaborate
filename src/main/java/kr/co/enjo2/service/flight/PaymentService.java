@@ -15,7 +15,6 @@ public class PaymentService implements Action {
 	   public ActionForward execute(HttpServletRequest request, HttpServletResponse response) {
 	      ActionForward forward = new ActionForward();
 	      forward.setRedirect(false);
-	      //forward.setPath("https://www.daum.net");
 	      try {
 	         // 승객 정보 얻기
 	         FlightReserveDto reserveDto = getReserve(request);
@@ -47,6 +46,10 @@ public class PaymentService implements Action {
 	      String sarrPlandTime = request.getParameter("sarrPlandTime");
 	      // 성별
 	      String sprice = request.getParameter("sprice");
+	      // 출발지
+	      String departPlace = request.getParameter("gimpu");
+	      // 도착지
+	      String arrivePlace = request.getParameter("jeju");
 
 	      // 출력 확인
 			/*
@@ -63,6 +66,8 @@ public class PaymentService implements Action {
 	      reserveInfo[0].setDepartTime(sdepPlandTime);
 	      reserveInfo[0].setArriveTime(sarrPlandTime);
 	      reserveInfo[0].setPrice(sprice);
+	      reserveInfo[0].setDepartPlace(departPlace);
+	      reserveInfo[0].setArrivePlace(arrivePlace);
 	      reserveInfo[0].setDirection("start");
 
 	      /////////////////////////////////////////////////////////////
@@ -92,6 +97,8 @@ public class PaymentService implements Action {
 	      reserveInfo[1].setDepartTime(edepPlandTime);
 	      reserveInfo[1].setArriveTime(earrPlandTime);
 	      reserveInfo[1].setPrice(eprice);
+	      reserveInfo[1].setDepartPlace(arrivePlace);
+	      reserveInfo[1].setArrivePlace(departPlace);
 	      reserveInfo[1].setDirection("end");
 	      
 	      return reserveInfo;
@@ -138,6 +145,7 @@ public class PaymentService implements Action {
 	      reserveDto.setMemberBirth(bday);
 	      reserveDto.setMemberNation(nation);
 	      reserveDto.setMemberGender(gender);
+	      reserveDto.setStatus("RESERVED");
 
 	      return reserveDto;
 	   }
