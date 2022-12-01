@@ -21,33 +21,59 @@ public class QnaDao {
 		Context context = new InitialContext();
 		ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
 	}
+	
+	public int saveOne(QnaDto qna) {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn
+					.prepareStatement("insert into qna(q_no, mem_id, q_ref, q_title, q_content, q_created_at, q_count) "
+							+         "values(qna_seq.nextval, ?, ?, ?, ?, sysdate, 0)");
+			pstmt.setString(1, qna.getMemberId());
+			pstmt.setInt(2, qna.getQnaRef());
+			pstmt.setString(3, qna.getTitle());
+			pstmt.setString(4, qna.getContent());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		return result;
+	}
 
-public int saveOne(QnaDto qna, String userId) {
-  int result = 0;
-  Connection conn = null;
-  PreparedStatement pstmt = null;
-  try {
-    conn = ds.getConnection();
-    pstmt = conn.prepareStatement(
-        "insert into qna(q_no, mem_id, q_ref, q_title, q_content, q_created_at, q_count) " +
-        "values(qna_seq.nextval, ?, qna_seq.currval, ?, ?, sysdate, 0)"
-    );
-    pstmt.setString(1, userId);
-    pstmt.setString(2, qna.getTitle());
-    pstmt.setString(3, qna.getContent());
-    result = pstmt.executeUpdate();
-  } catch (Exception e) {
-    System.out.println(e.getMessage());
-  } finally {
-    try {
-      pstmt.close();
-      conn.close();
-    } catch (Exception e2) {
-      System.out.println(e2.getMessage());
-    }
-  }
-  return result;
-}
+	public int saveOne(QnaDto qna, String userId) {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = ds.getConnection();
+			pstmt = conn
+					.prepareStatement("insert into qna(q_no, mem_id, q_ref, q_title, q_content, q_created_at, q_count) "
+							+ "values(qna_seq.nextval, ?, qna_seq.currval, ?, ?, sysdate, 0)");
+			pstmt.setString(1, userId);
+			pstmt.setString(2, qna.getTitle());
+			pstmt.setString(3, qna.getContent());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		return result;
+	}
 
 public List<QnaDto> findMainInfo() {
       List<QnaDto> list = new ArrayList<>();

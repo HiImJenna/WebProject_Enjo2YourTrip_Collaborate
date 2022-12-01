@@ -18,6 +18,7 @@ import kr.co.enjo2.service.qna.QnaContentEditViewService;
 import kr.co.enjo2.service.qna.QnaContentService;
 import kr.co.enjo2.service.qna.QnaDeleteOkService;
 import kr.co.enjo2.service.qna.QnaListService;
+import kr.co.enjo2.service.qna.QnaReplyOkService;
 import kr.co.enjo2.service.qna.QnaReplyViewService;
 import kr.co.enjo2.service.qna.QnaViewService;
 import kr.co.enjo2.service.qna.QnaWriteService;
@@ -185,8 +186,8 @@ public class BasicController extends HttpServlet {
              forward = action.execute(request, response);
          } else if(url_Command.equals("/qnaReplyWriteOk.do")) {
              // QnA 답글 작성
-             //action = new QnaReplyViewService();
-             //forward = action.execute(request, response);
+             action = new QnaReplyOkService();
+             forward = action.execute(request, response);
          }
     	
     	if(forward != null) {

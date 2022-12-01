@@ -48,6 +48,7 @@
 
 			 	<form name="bw" id="gathering-form" action="${pageContext.request.contextPath}/qnaReplyWriteOk.do" method="POST">
 					<div class="text-size text-size-margin">제목</div>
+					<input type="hidden" name="no" value="${requestScope.no}">
 					<input type = "text;" style="resize: none; width: 920px; height: 30px;" name="title" form="gathering-form" maxlength="" class="post-gap" value = ""/>
 					<div class="text-size text-size-margin">내용</div>
 					<textarea style="resize: none;" name="content" form="gathering-form" cols="135" rows="25"
