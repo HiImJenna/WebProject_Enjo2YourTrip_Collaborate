@@ -256,13 +256,5 @@
       pageContext.include("/WEB-INF/views/include/footer.jsp");
       %>
    </footer>
-
-   <!-- 포지션 앱솔루트 -->
-   <ul class="macgyver-btn">
-      <li><img src="btn-icon/plus-btn.svg"
-         style="background-color: #ffff; border-radius: 50%;"></li>
-      <li><iconify-icon icon="iconoir:edit-pencil"
-            style="color: #ef6351;" width="30" height="30"></iconify-icon></li>
-   </ul>
 </body>
 </html>

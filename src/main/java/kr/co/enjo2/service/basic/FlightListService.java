@@ -29,7 +29,7 @@ public class FlightListService implements Action {
 				JSONObject obj = new JSONObject();
 				obj.put("resnum", n.getReservationNo());
 				obj.put("id", n.getMemberId());
-				obj.put("resdate", n.getRsvCreatedDate());
+				obj.put("resdate", n.getRsvDate());
 				obj.put("lname", n.getMemberLastName());
 				obj.put("fname", n.getMemberFirstName());
 				obj.put("birth", n.getMemberBirth());
