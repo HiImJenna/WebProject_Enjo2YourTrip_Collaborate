@@ -25,7 +25,6 @@ public class FlightDao {
 		ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
 	}
 
-
 	public int saveFlightReservation(FlightReserveDto reserveDto, FlightReserveInfoDto[] reserveInfo) {
 		Connection conn = null;
 		PreparedStatement pstmt1 = null;
@@ -137,7 +136,6 @@ public class FlightDao {
 		}
 		return result;
 	}
-
 
 	// ********* ReserveInfo ********
 	public int saveRsvInfo(FlightReserveInfoDto ticket) {
@@ -251,6 +249,7 @@ public class FlightDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<FlightTotalDto> flightList = new ArrayList<>();
+		
 		try {
 			conn = ds.getConnection();
 			String sql = "select no, userid, rdate, bdate, dplace, dtime, aplace, atime, lname, fname, birth, price " + "from"
@@ -284,6 +283,18 @@ public class FlightDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
+		}
+		
+		return flightList;
+	}
 
 	/////////////////// !!!!!!!!!!!!!!!!합치기전에 뺄것
 	/////////////////// !!!!!!!!!!!!!!!!!!//////////////////////
@@ -315,7 +326,7 @@ public class FlightDao {
 				System.out.println(e2.getMessage());
 			}
 		}
-		return flightList;
+		return count;
 	}
 
 	private int[] calculatePage(int page) {
@@ -340,6 +351,16 @@ public class FlightDao {
 			while (rs.next()) {
 				count = rs.getInt("cnt");
 			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				pstmt.close();
+				rs.close();
+				conn.close();
+			} catch (Exception e2) {
+				System.out.println(e2.getMessage());
+			}
 		}
 		return count;
 	}
@@ -359,8 +380,7 @@ public class FlightDao {
 					+ "        r.rsv_first_nm as fname, r.rsv_birth as birth, ri.info_boarding_date as bdate, ri.INFO_DEPART_PLACE as dplace, "
 					+ "        ri.info_depart_time as dtime, ri.INFO_ARRIVE_PLACE as aplace, ri.info_arrive_time as atime, ri.info_price as price "
 					+ "		   from reserve r join rsv_info ri on r.rsv_no = ri.rsv_no order by r.rsv_no desc"
-					+ "    ) "
-					+ "   where NUM BETWEEN ? AND ?";
+					+ "    ) " + "   where NUM BETWEEN ? AND ?";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, strPage[0]);
@@ -370,7 +390,7 @@ public class FlightDao {
 				FlightTotalDto flight = new FlightTotalDto();
 				flight.setReservationNo(rs.getInt("no"));
 				flight.setMemberId(rs.getString("id"));
-				flight.setRsvCreatedDate(rs.getString("cdate"));
+				flight.setRsvDate(rs.getString("cdate"));
 				flight.setMemberLastName(rs.getString("lname"));
 				flight.setMemberFirstName(rs.getString("fname"));
 				flight.setMemberBirth(rs.getString("birth"));
