@@ -65,7 +65,6 @@
 						page : num
 					},
 					success: function(data){
-						alert('하이하이');
 						const flightList = data.flightList;
 						console.log(data);
 						
