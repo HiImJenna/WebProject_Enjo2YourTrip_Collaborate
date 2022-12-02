@@ -82,8 +82,8 @@ pageContext.include("/WEB-INF/views/include/header.jsp");
 		      <th scope="row"style = "color: #f05542">가는 편</th>
 		      <td>${sdateM}</td>
 		      <td>${sairlineNm}</td>
-		      <td>김포</td>
-		      <td>제주</td>
+		      <td>${sdept}</td>
+		      <td>${sarr}</td>
 		      <td>${sdepPlandTime}</td>
 		      <td>${sarrPlandTime}</td>
 		      <td>${sprice}</td>
@@ -92,8 +92,8 @@ pageContext.include("/WEB-INF/views/include/header.jsp");
 		      <th scope="row"style = "color: #f05542">오는 편</th>
 		      <td>${edateM}</td>
 		      <td>${eairlineNm}</td>
-		      <td>제주</td>
-		      <td>김포</td>
+		      <td>${edept}</td>
+		      <td>${earr}</td>
 		      <td>${edepPlandTime}</td>
 		      <td>${earrPlandTime}</td>
 		      <td>${eprice}</td>
@@ -135,6 +135,11 @@ pageContext.include("/WEB-INF/views/include/header.jsp");
 	<input type = "hidden" id = "sdepPlandTime" name = "sdepPlandTime" value = "${sdepPlandTime}">
 	<input type = "hidden" id = "sarrPlandTime" name = "sarrPlandTime" value = "${sarrPlandTime}">
 	<input type = "hidden" id = "sprice" name = "sprice" value = "${sprice}">
+	
+	<input type = "hidden" id = "airport" name = "gimpo" value = "김포">
+	<input type = "hidden" id = "airport" name = "jeju" value = "제주">
+	
+	
 	
 	<input type = "hidden" id = "edateM" name = "edateM" value = "${edateM}">
 	<input type = "hidden" id = "eairlineNm" name = "eairlineNm" value = "${eairlineNm}">

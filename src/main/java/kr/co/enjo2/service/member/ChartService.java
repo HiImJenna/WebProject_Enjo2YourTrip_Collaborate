@@ -31,6 +31,7 @@ public class ChartService implements Action {
 				JSONObject totalObj = new JSONObject();
 				String rsvDate = rsvArr.get(i).getInfoBoaringDate();
 				int cnt = rsvArr.get(i).getCount();
+				
 				totalObj.put("categories", rsvDate);
 				totalObj.put("count", cnt);
 				categories.add(rsvDate);

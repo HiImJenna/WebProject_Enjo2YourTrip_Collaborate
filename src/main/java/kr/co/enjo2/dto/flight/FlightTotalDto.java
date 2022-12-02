@@ -1,202 +1,210 @@
 package kr.co.enjo2.dto.flight;
 
 public class FlightTotalDto {
-   
-//////////////////////////////rsv_info DTO/////////////////////////////////
-   
-   //// DB의 힘을 빌리는 영역 /////////////////////////
-   private String flightInfoNo;
-   private int reservationNo;
-   /////////////////////////////
 
-   // 가거나 돌아오는 날짜 (탑승 날짜)
-   private String boardingDate;
-   // 항공편
-   private String airlineNm;
-   // 출발시간
-   private String departTime;
-   // 도착시간
-   private String arriveTime;
-   // 금액
-   private String price;
-   // 왕편(start) 복편(end) 정보
-   private String direction = "start";
-   // 출발 공항
-   private String departPlace;
-   // 도착 공항
-   private String arrivePlace;
+//////////////////////////////rsv_info DTO/////////////////////////////////
+
+	// 예약정보번호
+	private int flightInfoNo;
+	// 예약 번호
+	private int reservationNo;
+	// 가거나 돌아오는 날짜 (탑승 날짜)
+	private String boardingDate;
+	// 항공편
+	private String airlineNm;
+	// 출발시간
+	private String departTime;
+	// 도착시간
+	private String arriveTime;
+	// 출발지
+	private String departPlace;
+	// 도착지
+	private String arrivePlace;
+	// 금액
+	private String price;
+	// 왕편(start) 복편(end) 정보
+	private String direction = "start";
 
 //////////////////////////////reservation DTO/////////////////////////////////
-   
-   private String memberId;
-   private String rsvCreatedDate;
-   private String memberLastName;
-   private String memberFirstName;
-   private String memberBirth;
-   private String memberNation;
-   private String memberGender;
-   private String status;
-   
-   public String getFlightInfoNo() {
-      return flightInfoNo;
-   }
 
-   public FlightTotalDto() {
-      
-   }
+	// 예약 번호
+	private int rsvNo;
+	// 사용자, 회원 아이디
+	private String memberId;
+	// 예약 날짜
+	private String rsvDate;
+	// 성, 이름
+	private String memberLastName;
+	private String memberFirstName;
+	// 생년월일
+	private String memberBirth;
+	// 국적
+	private String memberNation;
+	// 성별
+	private String memberGender;
+	// 예약 상태
+	private String status;
 
-   public int getReservationNo() {
-      return reservationNo;
-   }
+	public int getFlightInfoNo() {
+		return flightInfoNo;
+	}
 
-   public void setReservationNo(int reservationNo) {
-      this.reservationNo = reservationNo;
-   }
+	public void setFlightInfoNo(int flightInfoNo) {
+		this.flightInfoNo = flightInfoNo;
+	}
 
-   public String getBoardingDate() {
-      return boardingDate;
-   }
+	public int getReservationNo() {
+		return reservationNo;
+	}
 
-   public void setBoardingDate(String boardingDate) {
-      this.boardingDate = boardingDate;
-   }
+	public void setReservationNo(int reservationNo) {
+		this.reservationNo = reservationNo;
+	}
 
-   public String getAirlineNm() {
-      return airlineNm;
-   }
+	public String getBoardingDate() {
+		return boardingDate;
+	}
 
-   public void setAirlineNm(String airlineNm) {
-      this.airlineNm = airlineNm;
-   }
+	public void setBoardingDate(String boardingDate) {
+		this.boardingDate = boardingDate;
+	}
 
-   public String getDepartTime() {
-      return departTime;
-   }
+	public String getAirlineNm() {
+		return airlineNm;
+	}
 
-   public void setDepartTime(String departTime) {
-      this.departTime = departTime;
-   }
+	public void setAirlineNm(String airlineNm) {
+		this.airlineNm = airlineNm;
+	}
 
-   public String getArriveTime() {
-      return arriveTime;
-   }
+	public String getDepartTime() {
+		return departTime;
+	}
 
-   public void setArriveTime(String arriveTime) {
-      this.arriveTime = arriveTime;
-   }
+	public void setDepartTime(String departTime) {
+		this.departTime = departTime;
+	}
 
-   public String getPrice() {
-      return price;
-   }
+	public String getArriveTime() {
+		return arriveTime;
+	}
 
-   public void setPrice(String price) {
-      this.price = price;
-   }
+	public void setArriveTime(String arriveTime) {
+		this.arriveTime = arriveTime;
+	}
 
-   public String getDirection() {
-      return direction;
-   }
+	public String getDepartPlace() {
+		return departPlace;
+	}
 
-   public void setDirection(String direction) {
-      this.direction = direction;
-   }
+	public void setDepartPlace(String departPlace) {
+		this.departPlace = departPlace;
+	}
 
-   public String getDepartPlace() {
-      return departPlace;
-   }
+	public String getArrivePlace() {
+		return arrivePlace;
+	}
 
-   public void setDepartPlace(String departPlace) {
-      this.departPlace = departPlace;
-   }
+	public void setArrivePlace(String arrivePlace) {
+		this.arrivePlace = arrivePlace;
+	}
 
-   public String getArrivePlace() {
-      return arrivePlace;
-   }
+	public String getPrice() {
+		return price;
+	}
 
-   public void setArrivePlace(String arrivePlace) {
-      this.arrivePlace = arrivePlace;
-   }
+	public void setPrice(String price) {
+		this.price = price;
+	}
 
-   public String getMemberId() {
-      return memberId;
-   }
+	public String getDirection() {
+		return direction;
+	}
 
-   public void setMemberId(String memberId) {
-      this.memberId = memberId;
-   }
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
 
-   public String getRsvCreatedDate() {
-      return rsvCreatedDate;
-   }
+	public int getRsvNo() {
+		return rsvNo;
+	}
 
-   public void setRsvCreatedDate(String rsvCreatedDate) {
-      this.rsvCreatedDate = rsvCreatedDate;
-   }
+	public void setRsvNo(int rsvNo) {
+		this.rsvNo = rsvNo;
+	}
 
-   public String getMemberLastName() {
-      return memberLastName;
-   }
+	public String getMemberId() {
+		return memberId;
+	}
 
-   public void setMemberLastName(String memberLastName) {
-      this.memberLastName = memberLastName;
-   }
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
 
-   public String getMemberFirstName() {
-      return memberFirstName;
-   }
+	public String getMemberLastName() {
+		return memberLastName;
+	}
 
-   public void setMemberFirstName(String memberFirstName) {
-      this.memberFirstName = memberFirstName;
-   }
+	public void setMemberLastName(String memberLastName) {
+		this.memberLastName = memberLastName;
+	}
 
-   public String getMemberBirth() {
-      return memberBirth;
-   }
+	public String getMemberFirstName() {
+		return memberFirstName;
+	}
 
-   public void setMemberBirth(String memberBirth) {
-      this.memberBirth = memberBirth;
-   }
+	public void setMemberFirstName(String memberFirstName) {
+		this.memberFirstName = memberFirstName;
+	}
 
-   public String getMemberNation() {
-      return memberNation;
-   }
+	public String getMemberBirth() {
+		return memberBirth;
+	}
 
-   public void setMemberNation(String memberNation) {
-      this.memberNation = memberNation;
-   }
+	public void setMemberBirth(String memberBirth) {
+		this.memberBirth = memberBirth;
+	}
 
-   public String getMemberGender() {
-      return memberGender;
-   }
+	public String getMemberNation() {
+		return memberNation;
+	}
 
-   public void setMemberGender(String memberGender) {
-      this.memberGender = memberGender;
-   }
+	public void setMemberNation(String memberNation) {
+		this.memberNation = memberNation;
+	}
 
-   public String getStatus() {
-      return status;
-   }
+	public String getMemberGender() {
+		return memberGender;
+	}
 
-   public void setStatus(String status) {
-      this.status = status;
-   }
+	public void setMemberGender(String memberGender) {
+		this.memberGender = memberGender;
+	}
 
-   public void setFlightInfoNo(String flightInfoNo) {
-      this.flightInfoNo = flightInfoNo;
-   }
+	public String getStatus() {
+		return status;
+	}
 
-   @Override
-   public String toString() {
-      return "FlightTotalDto [flightInfoNo=" + flightInfoNo + ", reservationNo=" + reservationNo + ", boardingDate="
-            + boardingDate + ", airlineNm=" + airlineNm + ", departTime=" + departTime + ", arriveTime="
-            + arriveTime + ", price=" + price + ", direction=" + direction + ", departPlace=" + departPlace
-            + ", arrivePlace=" + arrivePlace + ", memberId=" + memberId + ", rsvCreatedDate=" + rsvCreatedDate
-            + ", memberLastName=" + memberLastName + ", memberFirstName=" + memberFirstName + ", memberBirth="
-            + memberBirth + ", memberNation=" + memberNation + ", memberGender=" + memberGender + ", status="
-            + status + "]";
-   }
-   
-   
-   
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
+	public String getRsvDate() {
+		return rsvDate;
+	}
+
+	public void setRsvDate(String rsvDate) {
+		this.rsvDate = rsvDate;
+	}
+
+	@Override
+	public String toString() {
+		return "FlightTotalDto [flightInfoNo=" + flightInfoNo + ", reservationNo=" + reservationNo + ", boardingDate="
+				+ boardingDate + ", airlineNm=" + airlineNm + ", departTime=" + departTime + ", arriveTime="
+				+ arriveTime + ", departPlace=" + departPlace + ", arrivePlace=" + arrivePlace + ", price=" + price
+				+ ", direction=" + direction + ", rsvNo=" + rsvNo + ", memberId=" + memberId + ", rsvDate=" + rsvDate
+				+ ", memberLastName=" + memberLastName + ", memberFirstName=" + memberFirstName + ", memberBirth="
+				+ memberBirth + ", memberNation=" + memberNation + ", memberGender=" + memberGender + ", status="
+				+ status + "]";
+	}
 }

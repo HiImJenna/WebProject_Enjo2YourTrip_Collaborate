@@ -24,124 +24,120 @@ public class FlightDao {
 		Context context = new InitialContext();
 		ds = (DataSource) context.lookup("java:comp/env/jdbc/oracle");
 	}
-	
-	   public int saveFlightReservation(FlightReserveDto reserveDto, FlightReserveInfoDto[] reserveInfo) {
-		      Connection conn = null;
-		      PreparedStatement pstmt1 = null;
-		      PreparedStatement pstmt2 = null;
-		      PreparedStatement pstmt3 = null;
-		      int result = 0;
-		      ResultSet rs = null;
-		      try {
-		         conn = ds.getConnection();
-		         conn.setAutoCommit(false);
 
-		         ////// 승객 정보 (예약 정보) 저장 하기 (insert)
-		         pstmt1 = conn.prepareStatement(
-		                 "insert into "
-		               + "reserve(rsv_no, mem_id, rsv_created_at, rsv_last_nm, rsv_first_nm, rsv_birth, rsv_nation, rsv_gender, rsv_status) "
-		               + "values(reserve_seq.nextval, ?, sysdate, ?, ?, ?, ?, ?, ?)"
-		         );
 
-		         // 멤버 아이디
-		         pstmt1.setString(1, reserveDto.getMemberId());
-		         // 성
-		         pstmt1.setString(2, reserveDto.getMemberLastName());
-		         // 이름
-		         pstmt1.setString(3, reserveDto.getMemberFirstName());
-		         // 생년월일
-		         pstmt1.setString(4, reserveDto.getMemberBirth());
-		         // 국가
-		         pstmt1.setString(5, reserveDto.getMemberNation());
-		         // 성별
-		         pstmt1.setString(6, reserveDto.getMemberGender());
-		         // 예약 상태 (default "RESERVED")
-		         pstmt1.setString(7, reserveDto.getStatus());
+	public int saveFlightReservation(FlightReserveDto reserveDto, FlightReserveInfoDto[] reserveInfo) {
+		Connection conn = null;
+		PreparedStatement pstmt1 = null;
+		PreparedStatement pstmt2 = null;
+		PreparedStatement pstmt3 = null;
+		int result = 0;
+		ResultSet rs = null;
+		try {
+			conn = ds.getConnection();
+			conn.setAutoCommit(false);
 
-		         result = pstmt1.executeUpdate();
+			////// 승객 정보 (예약 정보) 저장 하기 (insert)
+			pstmt1 = conn.prepareStatement("insert into "
+					+ "reserve(rsv_no, mem_id, rsv_created_at, rsv_last_nm, rsv_first_nm, rsv_birth, rsv_nation, rsv_gender, rsv_status) "
+					+ "values(reserve_seq.nextval, ?, sysdate, ?, ?, ?, ?, ?, ?)");
 
-		         if (result == 0) {
-		            throw new SQLException();
-		         }
+			// 멤버 아이디
+			pstmt1.setString(1, reserveDto.getMemberId());
+			// 성
+			pstmt1.setString(2, reserveDto.getMemberLastName());
+			// 이름
+			pstmt1.setString(3, reserveDto.getMemberFirstName());
+			// 생년월일
+			pstmt1.setString(4, reserveDto.getMemberBirth());
+			// 국가
+			pstmt1.setString(5, reserveDto.getMemberNation());
+			// 성별
+			pstmt1.setString(6, reserveDto.getMemberGender());
 
-		         ////// 예약 정보 key 갖고 오기 ( select 1. rownum을 사용하여 최신 정보의 키값을 조회한다. 2. 시퀀스를 조회한다 )
-		         // 시퀀스를 조회한다.... 쉬우니까...ㅠㅠ
-		         //pstmt2 = conn.prepareStatement("select reserve_seq.currval as pk from dual");
+			pstmt1.setString(7, "RESERVED");
 
-		         //rs = pstmt2.executeQuery();
-		         //int reservationNo = 0;
-		         //while (rs.next()) {
-		         //   reservationNo = rs.getInt("pk");
-		         //}
-		         
-		         //if (reservationNo == 0) {
-		         //   throw new SQLException();
-		         //}
+			result = pstmt1.executeUpdate();
 
-		         ////// 가는 편, 오는 편 정보 저장하기 (insert)
-		         for (int i = 0; i < 2; ++i) {
-		            String sql = "insert into "
-		                     + "rsv_info(info_no, rsv_no, INFO_BOARDING_DATE, INFO_AIR_NM, INFO_DEPART_TIME, INFO_ARRIVE_TIME, INFO_PRICE, INFO_DIRECTION, info_depart_place, info_arrive_place) "
-		                     + "values(rsv_info_seq.nextval, reserve_seq.currval, ?, ?, ?, ?, ?, ?, ?, ?)";
-		            pstmt3 = conn.prepareStatement(sql);
-		            // 승객 정보 primaryKey
-		            //pstmt3.setInt(1, reservationNo);
-		            // 예약 일자
-		            pstmt3.setString(1, reserveInfo[i].getBoardingDate());
-		            // 항공편
-		            pstmt3.setString(2, reserveInfo[i].getAirlineNm());
-		            // 출발 시간
-		            pstmt3.setString(3, reserveInfo[i].getDepartTime());
-		            // 도착 시간
-		            pstmt3.setString(4, reserveInfo[i].getArriveTime());
-		            // 가격
-		            pstmt3.setString(5, reserveInfo[i].getPrice());
-		            // 가는 편 정보
-		            pstmt3.setString(6, reserveInfo[i].getDirection());
-		            // 출발지
-		            pstmt3.setString(7, reserveInfo[i].getDepartPlace());
-		            // 도착지
-		            pstmt3.setString(8, reserveInfo[i].getArrivePlace());
+			if (result == 0) {
+				throw new SQLException();
+			}
 
-		            result = pstmt3.executeUpdate();
-		            if (result == 0) {
-		               throw new SQLException();
-		            }
-		         }
+			////// 예약 정보 key 갖고 오기 ( select 1. rownum을 사용하여 최신 정보의 키값을 조회한다. 2. 시퀀스를 조회한다 )
+			// 시퀀스를 조회한다.... 쉬우니까...ㅠㅠ
+			pstmt2 = conn.prepareStatement("select reserve_seq.currval as pk from dual");
 
-		         conn.commit();
-		         conn.setAutoCommit(true);
-		      } catch (SQLException e) {
-		         System.out.println(e.getMessage());
-		         e.getStackTrace();
-		         try {
-		            conn.rollback();
-		         } catch (Exception e1) {
-		            e1.printStackTrace();
-		         }
-		      } finally {
-		         try {
-		            if (pstmt1 != null) {
-		               pstmt1.close();
-		            }
-		            if (pstmt2 != null) {
-		               pstmt1.close();
-		            }
-		            if (pstmt3 != null) {
-		               pstmt1.close();
-		            }
-		            if (rs != null) {
-		               rs.close();
-		            }
-		            if (conn != null) {
-		               conn.close();
-		            }
-		         } catch (Exception e2) {
-		            System.out.println(e2.getStackTrace());
-		         }
-		      }
-		      return result;
-		   }
+			rs = pstmt2.executeQuery();
+			int reservationNo = 0;
+			while (rs.next()) {
+				reservationNo = rs.getInt("pk");
+			}
+
+			if (reservationNo == 0) {
+				throw new SQLException();
+			}
+
+			////// 가는 편, 오는 편 정보 저장하기 (insert)
+			for (int i = 0; i < 2; ++i) {
+				String sql = "insert into "
+						+ "rsv_info(info_no, rsv_no, INFO_BOARDING_DATE, INFO_AIR_NM, INFO_DEPART_TIME, INFO_ARRIVE_TIME, INFO_PRICE, INFO_DIRECTION) "
+						+ "values(rsv_info_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
+				pstmt3 = conn.prepareStatement(sql);
+				// 승객 정보 primaryKey
+				pstmt3.setInt(1, reservationNo);
+				// 예약 일자
+				pstmt3.setString(2, reserveInfo[i].getBoardingDate());
+				// 항공편
+				pstmt3.setString(3, reserveInfo[i].getAirlineNm());
+				// 출발 시간
+				pstmt3.setString(4, reserveInfo[i].getDepartTime());
+				// 도착 시간
+				pstmt3.setString(5, reserveInfo[i].getArriveTime());
+				// 가격
+				pstmt3.setString(6, reserveInfo[i].getPrice());
+				// 가는 편 정보
+				pstmt3.setString(7, reserveInfo[i].getDirection());
+
+				result = pstmt3.executeUpdate();
+				if (result == 0) {
+					throw new SQLException();
+				}
+			}
+
+			conn.commit();
+			conn.setAutoCommit(true);
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			e.getStackTrace();
+			try {
+				conn.rollback();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				if (pstmt1 != null) {
+					pstmt1.close();
+				}
+				if (pstmt2 != null) {
+					pstmt1.close();
+				}
+				if (pstmt3 != null) {
+					pstmt1.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e2) {
+				System.out.println(e2.getStackTrace());
+			}
+		}
+		return result;
+	}
+
 
 	// ********* ReserveInfo ********
 	public int saveRsvInfo(FlightReserveInfoDto ticket) {
@@ -245,6 +241,50 @@ public class FlightDao {
 		return value;
 	}
 
+	// 유저별 항공 예약 조회
+	public List<FlightTotalDto> findUserRsvInfo(String userId, int page) {
+
+		int[] strPage = calculatePage(page);
+
+		FlightTotalDto flight = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<FlightTotalDto> flightList = new ArrayList<>();
+		try {
+			conn = ds.getConnection();
+			String sql = "select no, userid, rdate, bdate, dplace, dtime, aplace, atime, lname, fname, birth, price " + "from"
+					+ "          (select ROWNUM as NUM, r.rsv_no as no, r.mem_id as userid, TO_CHAR(r.rsv_created_at, 'YYYY-MM-DD HH24:MI') as rdate, r.rsv_last_nm as lname, r.rsv_first_nm as fname, r.rsv_birth as birth, "
+					+ "           r.rsv_nation as nation, r.rsv_gender as gender, r.rsv_status as status, ri.info_no as info_no, ri.info_boarding_date as bdate, ri.info_air_nm as aname, ri.info_depart_time as dtime,"
+					+ "           ri.info_arrive_time as atime, ri.info_depart_place as dplace, ri.info_arrive_place as aplace, ri.info_price as price, ri.info_direction as dir\r\n"
+					+ "           from reserve r join rsv_info ri on r.rsv_no = ri.rsv_no where r.mem_id = ? order by r.rsv_no desc) "
+					+ "where NUM between ? and ?";
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, userId); // 물음표
+			pstmt.setInt(2, strPage[0]);
+			pstmt.setInt(3, strPage[1]);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				flight = new FlightTotalDto();
+				flight.setReservationNo(rs.getInt("no"));
+				flight.setBoardingDate(rs.getString("bdate"));
+				flight.setMemberId(rs.getString("userid"));
+				flight.setRsvDate(rs.getString("rdate"));
+				flight.setDepartPlace(rs.getString("dplace"));
+				flight.setDepartTime(rs.getString("dtime"));
+				flight.setArrivePlace(rs.getString("aplace"));
+				flight.setArriveTime(rs.getString("atime"));
+				flight.setMemberLastName(rs.getString("lname"));
+				flight.setMemberFirstName(rs.getString("fname"));
+				flight.setMemberBirth(rs.getString("birth"));
+				flight.setPrice(rs.getString("price"));
+				flightList.add(flight);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+
 	/////////////////// !!!!!!!!!!!!!!!!합치기전에 뺄것
 	/////////////////// !!!!!!!!!!!!!!!!!!//////////////////////
 	// 항공 예매 전체 리스트 출력
@@ -275,10 +315,34 @@ public class FlightDao {
 				System.out.println(e2.getMessage());
 			}
 		}
+		return flightList;
+	}
 
+	private int[] calculatePage(int page) {
+		int[] arr = { 0, 0 };
+		arr[0] = 10 * page - 9;
+		arr[1] = arr[0] + 10 - 1;
+		return arr;
+	}
+
+	public int getTotalCount(String userId) {
+		int count = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = ds.getConnection();
+			String sql = "select count(*) as cnt from reserve where mem_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				count = rs.getInt("cnt");
+			}
+		}
 		return count;
 	}
-	/////////////////////////////////////////////
 
 	public List<FlightTotalDto> findAllByPage(int page) {
 		int[] strPage = calculatePage(page);
@@ -331,14 +395,4 @@ public class FlightDao {
 		}
 		return flightList;
 	}
-
-	/////////////////// !!!!!!!!!!!!!!!!합치기전에 뺄것
-	/////////////////// !!!!!!!!!!!!!!!!!!//////////////////////
-	private int[] calculatePage(int page) {
-		int[] arr = { 0, 0 };
-		arr[0] = 10 * page - 9;
-		arr[1] = arr[0] + 10 - 1;
-		return arr;
-	}
-	////////////////////////////////////////////
 }
