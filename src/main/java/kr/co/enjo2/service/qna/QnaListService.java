@@ -41,8 +41,7 @@ public class QnaListService implements Action {
 			//////////////////// 페이지 계산 ////////////////////////
 			
 			// 계시글 수 DB에서 얻기 (무조건 부모 기준)
-			//int totalPageCount = qnaDao.getTotalCount();
-			int totalPageCount = 2;
+			int totalPageCount = qnaDao.getTotalCount();
 			
 			int numOfTotalPage = (totalPageCount / 10) + ( (totalPageCount % 10 == 0) ? 0 : 1);
 			

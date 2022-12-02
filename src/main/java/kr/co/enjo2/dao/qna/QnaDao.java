@@ -158,8 +158,7 @@ public List<QnaDto> findMainInfo() {
 			
 			conn = ds.getConnection();
 	         String sql = "select q_no, mem_id, q_ref, q_title, q_content, TO_CHAR(q_created_at, 'yy-MM-DD HH24:MI') as timeAt, q_count as cnt "
-	         		+     "from qna A join("
-	         		+ "                      select key "
+	         		+     "from qna A join(select key "
 	         		+ "                      from ("
 	         		+ "                        select ROWNUM as NUM, q_no as key "
 	         		+ "                        from qna "
