@@ -198,28 +198,28 @@
    pageContext.include("/WEB-INF/views/include/header.jsp");
    %>
 
-   <!-- main -->
-   <div class="culture-container"></div>
-   <div class="information-frame">
-      <span class="culture-sub-heading">서비스정보</span>
-      <ul class="page-category">
-         <a href="${request.getContextPath}management.do?type=notice">
-            <li>공지사항</li>
-         </a>
-         <a href="${request.getContextPath}management.do?type=qna">
-            <li>문의사항</li>
-         </a>
-         <c:choose>
-            <c:when test="${not empty sessionScope.userid}">
-               <a href="${request.getContextPath}management.do?type=chart">
-                  <li>통계</li>
-               </a>
-               <a href="${request.getContextPath}management.do?type=flight">
-                  <li>예매관리</li>
-               </a>
-            </c:when>
-         </c:choose>
-      </ul>
+	<!-- main -->
+	<div class="culture-container"></div>
+	<div class="information-frame">
+		<span class="culture-sub-heading">서비스정보</span>
+		<ul class="page-category">
+			<a href="${request.getContextPath}management.do?type=notice">
+				<li>공지사항</li>
+			</a>
+			<a href="${request.getContextPath}management.do?type=qna">
+				<li>문의사항</li>
+			</a>
+			<c:choose>
+				<c:when test="${sessionScope.userid eq 'admin'}">
+					<a href="${request.getContextPath}management.do?type=chart">
+						<li class="sub-heading">통계</li>
+					</a>
+					<a href="${request.getContextPath}management.do?type=flight">
+						<li>예매관리</li>
+					</a>
+				</c:when>
+			</c:choose>
+		</ul>
 
        <section>
          <div id="chartwrapper1">

@@ -18,8 +18,11 @@ import kr.co.enjo2.service.qna.QnaContentEditViewService;
 import kr.co.enjo2.service.qna.QnaContentService;
 import kr.co.enjo2.service.qna.QnaDeleteOkService;
 import kr.co.enjo2.service.qna.QnaListService;
+import kr.co.enjo2.service.qna.QnaReplyOkService;
+import kr.co.enjo2.service.qna.QnaReplyViewService;
 import kr.co.enjo2.service.qna.QnaViewService;
 import kr.co.enjo2.service.qna.QnaWriteService;
+import kr.co.enjo2.service.basic.FlightListService;
 import kr.co.enjo2.service.basic.MainPageInfoService;
 import kr.co.enjo2.service.member.JoinViewService;
 import kr.co.enjo2.service.member.ManagementService;
@@ -177,6 +180,18 @@ public class BasicController extends HttpServlet {
          } else if(url_Command.equals("/mainInfo.do")) {
              // 메인 페이지 비동기 정보 전달
              action = new MainPageInfoService();
+             forward = action.execute(request, response);
+         } else if(url_Command.equals("/flightList.do")) {
+          // 승객예매정보 이전, 번호, 이후 리스트 볼수 있음(관리자 기능)
+          action = new FlightListService();
+          forward = action.execute(request, response);
+        } else if(url_Command.equals("/qnaReplyView.do")) {
+             // QnA 답글 페이지 요청
+             action = new QnaReplyViewService();
+             forward = action.execute(request, response);
+         } else if(url_Command.equals("/qnaReplyWriteOk.do")) {
+             // QnA 답글 작성
+             action = new QnaReplyOkService();
              forward = action.execute(request, response);
          }
     	

@@ -1,17 +1,23 @@
 package kr.co.enjo2.dto.flight;
 
 public class FlightReserveDto {
-	
+	// 예약 번호
+	private int rsvNo;
+	// 사용자, 회원 아이디
 	private String memberId;
+	// 예약 날짜
 	private int rsvDate;
+	// 성, 이름
 	private String memberLastName;
 	private String memberFirstName;
+	// 생년월일
 	private String memberBirth;
+	// 국적
 	private String memberNation;
+	// 성별
 	private String memberGender;
+	// 예약 상태
 	private String status;
-	
-	
 	
 	public String getStatus() {
 		return status;

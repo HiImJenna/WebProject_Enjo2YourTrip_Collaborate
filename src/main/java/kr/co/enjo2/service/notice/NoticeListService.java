@@ -96,35 +96,4 @@ public class NoticeListService implements Action {
 
 		return null;
 	}
-
 }
-/*
- * 
- * {
- * 	noticeList = [{가나다 : 123 , 가나다 :123 },{가나다 : 123 , 가나다 :123 },{가나다 : 123 , 가나다 :123 }]
- * }
- {
- 	pageInfo = {
-		  		prev : 1,
-		  		next :2,
-		  		start : 이전페이지번호,
-		  		end : 다음페이지번호
-		  },
-	noticeList = {
-			  		[
-			  			{1,2,3,4,},
-			  			{1,2,3,4,5}
-			  			{1,2,3,4,5}
-			  		]
-			  } 
-  }
-  
-  
-  
-  
- * pageobj = 
- * */
-/*
- * jsonobj = 
- * 
- * */
