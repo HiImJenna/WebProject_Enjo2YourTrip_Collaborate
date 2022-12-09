@@ -1,0 +1,37 @@
+.member-information, .withdrawal-subheading {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.member-information {
+  margin-bottom: 1.75rem;
+}
+
+.withdrawal-infomation {
+  width: 15rem;
+}
+
+.withdrawal-btn { 
+  background-color: var(--information-page-btn);
+  color: #ffff;
+  width: 15.438rem;
+  height: 1.938rem;
+  text-align : center;
+  font-size: 0.875rem;
+  font-weight: bold;
+  border-radius: 5px;
+  border: solid 2px var(--information-page-btn);
+}
+
+.information-withdrawal {
+  border-radius: 15px;
+  border: solid 1px var(--border-color);
+  padding: 3rem 0;
+  width: 27.125rem;
+  height: 34.625rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4.375rem;
+}

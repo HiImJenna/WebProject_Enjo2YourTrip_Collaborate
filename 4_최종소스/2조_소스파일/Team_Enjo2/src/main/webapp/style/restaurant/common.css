@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+:root {
+  --footer-color : #495058;
+  --culture-page-btn : #EF6351;
+  --subheading-btn-bottom : #F05542;
+  --review-culture-place-name: #F05542;
+  --comment-number-color : #F05542;
+  --management-table : #F05542;
+  --table-header : #f38375;
+  --information-page-btn : #f38375;
+  --brand-name : #FC506E;
+  --border-color : #d9d9d9;
+  --date-color : #8e8e8e;
+  --input-background: rgba(123, 123, 123, 0.05);
+}
+
+.sub-heading{
+  border-bottom: solid 0.313rem var(--subheading-btn-bottom);
+  font-size: 1.125rem;
+  font-weight: bold;
+  color:#000000;
+}
+
+.culture-sub-heading{
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.culture-btn {
+  background-color: var(--culture-page-btn);
+  border-radius: 5px;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  color: #fff;
+  font-weight: 500;
+  border: none;
+}
+
+.back-btn-gathering{
+  width: 30.813rem;
+}
+
+.text-size {
+  font-size: .8rem;
+}
+
+.comment-section > textarea {
+  border: none;
+  background-color: var(--input-background);
+  padding: .2rem .5rem; 
+  resize: none;
+  border: solid 1px var(--border-color);
+}
+
+.page-category {
+  display: flex;
+  font-size: 1.125rem;
+  color: var(--date-color);
+  font-weight: bold;
+  gap: 2rem;
+}
+
+a {
+  text-decoration: none; 
+  color: black; 
+}
+
+.menu-btn, .more {
+  cursor: pointer;
+}
+
+.macgyver-btn {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+}
+
+.macgyver-btn iconify-icon {
+  border-radius: 50%;
+  border: solid 1px var(--border-color);
+  padding: 0.7rem;
+  background-color: #ffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.paging-btn {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.information-frame {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-wrap: no-wrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* left: 0;
+  top: 0; */
+  /* display: flex; */
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color:rgba(0, 0, 0, 0.8);
+  display: none;
+}

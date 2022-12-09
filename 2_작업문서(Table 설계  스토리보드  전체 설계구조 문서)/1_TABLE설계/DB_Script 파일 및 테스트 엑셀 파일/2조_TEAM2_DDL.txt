@@ -1,0 +1,607 @@
+/* 회원(사용자) */
+CREATE TABLE Member (
+	MEM_ID VARCHAR2(20) NOT NULL, /* 회원아이디 */
+	MEM_NIC VARCHAR2(20) NOT NULL, /* 닉네임 */
+	MEM_PWD VARCHAR2(20) NOT NULL, /* 비밀번호 */
+	MEM_EMAIL VARCHAR2(40) NOT NULL, /* 이메일 */
+	MEM_TYPE VARCHAR2(10) NOT NULL, /* 회원구분(일반, 관리자) */
+	MEM_PRO VARCHAR2(40) NOT NULL /* 프로필사진 */
+);
+
+COMMENT ON TABLE Member IS '회원(사용자)';
+
+COMMENT ON COLUMN Member.MEM_ID IS '회원아이디';
+
+COMMENT ON COLUMN Member.MEM_NIC IS '닉네임';
+
+COMMENT ON COLUMN Member.MEM_PWD IS '비밀번호';
+
+COMMENT ON COLUMN Member.MEM_EMAIL IS '이메일';
+
+COMMENT ON COLUMN Member.MEM_TYPE IS '회원구분(일반, 관리자)';
+
+COMMENT ON COLUMN Member.MEM_PRO IS '프로필사진';
+
+CREATE UNIQUE INDEX PK_Member
+	ON Member (
+		MEM_ID ASC
+	);
+
+ALTER TABLE Member
+	ADD
+		CONSTRAINT PK_Member
+		PRIMARY KEY (
+			MEM_ID
+		);
+
+/* 항공-회원 (예약) */
+CREATE TABLE Reserve (
+	RSV_NO INTEGER NOT NULL, /* 예약번호 */
+	MEM_ID VARCHAR2(20), /* 회원아이디 */
+	RSV_CREATED_AT DATE NOT NULL, /* 예약날짜 */
+	RSV_LAST_NM VARCHAR2(10) NOT NULL, /* 성 */
+	RSV_FIRST_NM VARCHAR2(10) NOT NULL, /* 이름 */
+	RSV_BIRTH VARCHAR2(20) NOT NULL, /* 생년월일 */
+	RSV_NATION VARCHAR2(100) NOT NULL, /* 국적 */
+	RSV_GENDER VARCHAR2(10) NOT NULL, /* 성별 */
+	RSV_STATUS VARCHAR2(10) NOT NULL /* 예약상태 */
+);
+
+COMMENT ON TABLE Reserve IS '항공-회원 (예약)';
+
+COMMENT ON COLUMN Reserve.RSV_NO IS '예약번호';
+
+COMMENT ON COLUMN Reserve.MEM_ID IS '회원아이디';
+
+COMMENT ON COLUMN Reserve.RSV_CREATED_AT IS '예약날짜';
+
+COMMENT ON COLUMN Reserve.RSV_LAST_NM IS '성';
+
+COMMENT ON COLUMN Reserve.RSV_FIRST_NM IS '이름';
+
+COMMENT ON COLUMN Reserve.RSV_BIRTH IS '생년월일';
+
+COMMENT ON COLUMN Reserve.RSV_NATION IS '국적';
+
+COMMENT ON COLUMN Reserve.RSV_GENDER IS '성별';
+
+COMMENT ON COLUMN Reserve.RSV_STATUS IS '예약상태';
+
+CREATE UNIQUE INDEX PK_Reserve
+	ON Reserve (
+		RSV_NO ASC
+	);
+
+ALTER TABLE Reserve
+	ADD
+		CONSTRAINT PK_Reserve
+		PRIMARY KEY (
+			RSV_NO
+		);
+
+/* 문의 */
+CREATE TABLE QnA (
+	Q_NO INTEGER NOT NULL, /* 문의번호 */
+	MEM_ID VARCHAR2(20) NOT NULL, /* 회원아이디(일반회원) */
+	Q_REF INTEGER NOT NULL, /* 문의번호참조(답글) */
+	Q_TITLE VARCHAR2(255) NOT NULL, /* 제목 */
+	Q_CONTENT NVARCHAR2(1000) NOT NULL, /* 내용 */
+	Q_CREATED_AT DATE NOT NULL, /* 작성일 */
+	Q_COUNT INTEGER DEFAULT 0 NOT NULL /* 조회수 */
+);
+
+COMMENT ON TABLE QnA IS '문의';
+
+COMMENT ON COLUMN QnA.Q_NO IS '문의번호';
+
+COMMENT ON COLUMN QnA.MEM_ID IS '회원아이디(일반회원)';
+
+COMMENT ON COLUMN QnA.Q_REF IS '문의번호참조(답글)';
+
+COMMENT ON COLUMN QnA.Q_TITLE IS '제목';
+
+COMMENT ON COLUMN QnA.Q_CONTENT IS '내용';
+
+COMMENT ON COLUMN QnA.Q_CREATED_AT IS '작성일';
+
+COMMENT ON COLUMN QnA.Q_COUNT IS '조회수';
+
+CREATE UNIQUE INDEX PK_QnA
+	ON QnA (
+		Q_NO ASC
+	);
+
+ALTER TABLE QnA
+	ADD
+		CONSTRAINT PK_QnA
+		PRIMARY KEY (
+			Q_NO
+		);
+
+/* 후기-맛집 */
+CREATE TABLE Rest_Review (
+	RREVIEW_NO INTEGER NOT NULL, /* 맛집후기번호 */
+	MEM_ID VARCHAR2(20) NOT NULL, /* 회원아이디 */
+	RREVIEW_CONTENT NVARCHAR2(1000) NOT NULL, /* 내용 */
+	RREVIEW_CREATED_AT DATE NOT NULL /* 작성일 */
+);
+
+COMMENT ON TABLE Rest_Review IS '후기-맛집';
+
+COMMENT ON COLUMN Rest_Review.RREVIEW_NO IS '맛집후기번호';
+
+COMMENT ON COLUMN Rest_Review.MEM_ID IS '회원아이디';
+
+COMMENT ON COLUMN Rest_Review.RREVIEW_CONTENT IS '내용';
+
+COMMENT ON COLUMN Rest_Review.RREVIEW_CREATED_AT IS '작성일';
+
+CREATE UNIQUE INDEX PK_Rest_Review
+	ON Rest_Review (
+		RREVIEW_NO ASC
+	);
+
+ALTER TABLE Rest_Review
+	ADD
+		CONSTRAINT PK_Rest_Review
+		PRIMARY KEY (
+			RREVIEW_NO
+		);
+
+/* 공지사항 */
+CREATE TABLE Notice (
+	NOTICE_NO INTEGER NOT NULL, /* 공지사항번호 */
+	MEM_ID VARCHAR2(20), /* 회원아이디(관리자) */
+	NOTI_TITLE VARCHAR2(50) NOT NULL, /* 제목 */
+	NOTI_CONTENT NVARCHAR2(1000) NOT NULL, /* 내용 */
+	NOTI_CREATED_AT DATE NOT NULL, /* 작성일자 */
+	NOTI_COUNT INTEGER DEFAULT 0 NOT NULL /* 조회수 */
+);
+
+COMMENT ON TABLE Notice IS '공지사항';
+
+COMMENT ON COLUMN Notice.NOTICE_NO IS '공지사항번호';
+
+COMMENT ON COLUMN Notice.MEM_ID IS '회원아이디(관리자)';
+
+COMMENT ON COLUMN Notice.NOTI_TITLE IS '제목';
+
+COMMENT ON COLUMN Notice.NOTI_CONTENT IS '내용';
+
+COMMENT ON COLUMN Notice.NOTI_CREATED_AT IS '작성일자';
+
+COMMENT ON COLUMN Notice.NOTI_COUNT IS '조회수';
+
+CREATE UNIQUE INDEX PK_Notice
+	ON Notice (
+		NOTICE_NO ASC
+	);
+
+ALTER TABLE Notice
+	ADD
+		CONSTRAINT PK_Notice
+		PRIMARY KEY (
+			NOTICE_NO
+		);
+
+/* 사용자 자동 결제 정보 */
+CREATE TABLE Payment (
+	PAY_NO INTEGER NOT NULL, /* 정보번호 */
+	MEM_ID VARCHAR2(20) NOT NULL, /* 회원아이디 */
+	PAY_CARD_INFO VARCHAR2(30) NOT NULL, /* 카드번호 */
+	PAY_CARD_EXP DATE NOT NULL /* 카드유효기간 */
+);
+
+COMMENT ON TABLE Payment IS '사용자 자동 결제 정보';
+
+COMMENT ON COLUMN Payment.PAY_NO IS '정보번호';
+
+COMMENT ON COLUMN Payment.MEM_ID IS '회원아이디';
+
+COMMENT ON COLUMN Payment.PAY_CARD_INFO IS '카드번호';
+
+COMMENT ON COLUMN Payment.PAY_CARD_EXP IS '카드유효기간';
+
+CREATE UNIQUE INDEX PK_Payment
+	ON Payment (
+		PAY_NO ASC
+	);
+
+ALTER TABLE Payment
+	ADD
+		CONSTRAINT PK_Payment
+		PRIMARY KEY (
+			PAY_NO
+		);
+
+/* 예약티켓정보 */
+CREATE TABLE RSV_Info (
+	INFO_NO INTEGER NOT NULL, /* 예약정보번호 */
+	RSV_NO INTEGER NOT NULL, /* 예약번호 */
+	INFO_BOARDING_DATE VARCHAR2(20) NOT NULL, /* 날짜 */
+	INFO_AIR_NM VARCHAR2(50) NOT NULL, /* 항공사이름 */
+	INFO_DEPART_TIME VARCHAR2(20) NOT NULL, /* 출발시간 */
+	INFO_ARRIVE_TIME VARCHAR2(20) NOT NULL, /* 도착시간 */
+	INFO_DEPART_PLACE VARCHAR2(20) NOT NULL, /* 출발지 */
+	INFO_ARRIVE_PLACE VARCHAR2(20) NOT NULL, /* 도착지 */
+	INFO_PRICE VARCHAR2(20) NOT NULL, /* 가격 */
+	INFO_DIRECTION VARCHAR2(20) NOT NULL /* 오는지가는지구분 */
+);
+
+COMMENT ON TABLE RSV_Info IS '예약티켓정보';
+
+COMMENT ON COLUMN RSV_Info.INFO_NO IS '예약정보번호';
+
+COMMENT ON COLUMN RSV_Info.RSV_NO IS '예약번호';
+
+COMMENT ON COLUMN RSV_Info.INFO_BOARDING_DATE IS '날짜';
+
+COMMENT ON COLUMN RSV_Info.INFO_AIR_NM IS '항공사이름';
+
+COMMENT ON COLUMN RSV_Info.INFO_DEPART_TIME IS '출발시간';
+
+COMMENT ON COLUMN RSV_Info.INFO_ARRIVE_TIME IS '도착시간';
+
+COMMENT ON COLUMN RSV_Info.INFO_DEPART_PLACE IS '출발지';
+
+COMMENT ON COLUMN RSV_Info.INFO_ARRIVE_PLACE IS '도착지';
+
+COMMENT ON COLUMN RSV_Info.INFO_PRICE IS '가격';
+
+COMMENT ON COLUMN RSV_Info.INFO_DIRECTION IS '오는지가는지구분';
+
+CREATE UNIQUE INDEX PK_RSV_Info
+	ON RSV_Info (
+		INFO_NO ASC
+	);
+
+ALTER TABLE RSV_Info
+	ADD
+		CONSTRAINT PK_RSV_Info
+		PRIMARY KEY (
+			INFO_NO
+		);
+
+/* 찜 */
+CREATE TABLE Jjim (
+	J_STORE_NM VARCHAR2(50) NOT NULL, /* 상호명 */
+	MEM_ID VARCHAR2(20) NOT NULL, /* 회원아이디 */
+	J_ADDR VARCHAR2(100) NOT NULL /* 가게주소 */
+);
+
+COMMENT ON TABLE Jjim IS '찜';
+
+COMMENT ON COLUMN Jjim.J_STORE_NM IS '상호명';
+
+COMMENT ON COLUMN Jjim.MEM_ID IS '회원아이디';
+
+COMMENT ON COLUMN Jjim.J_ADDR IS '가게주소';
+
+CREATE UNIQUE INDEX PK_Jjim
+	ON Jjim (
+		J_STORE_NM ASC,
+		MEM_ID ASC
+	);
+
+ALTER TABLE Jjim
+	ADD
+		CONSTRAINT PK_Jjim
+		PRIMARY KEY (
+			J_STORE_NM,
+			MEM_ID
+		);
+
+/* 모임-게시글 */
+CREATE TABLE Meet_Board (
+	MB_NO INTEGER NOT NULL, /* 모임게시글번호 */
+	MEM_ID VARCHAR2(20) NOT NULL, /* 회원아이디 */
+	MB_TITLE NVARCHAR2(30) NOT NULL, /* 제목 */
+	MB_CONTENT NVARCHAR2(100) NOT NULL, /* 내용 */
+	MB_CREATED_AT DATE NOT NULL /* 작성일자 */
+);
+
+COMMENT ON TABLE Meet_Board IS '모임-게시글';
+
+COMMENT ON COLUMN Meet_Board.MB_NO IS '모임게시글번호';
+
+COMMENT ON COLUMN Meet_Board.MEM_ID IS '회원아이디';
+
+COMMENT ON COLUMN Meet_Board.MB_TITLE IS '제목';
+
+COMMENT ON COLUMN Meet_Board.MB_CONTENT IS '내용';
+
+COMMENT ON COLUMN Meet_Board.MB_CREATED_AT IS '작성일자';
+
+CREATE UNIQUE INDEX PK_Meet_Board
+	ON Meet_Board (
+		MB_NO ASC
+	);
+
+ALTER TABLE Meet_Board
+	ADD
+		CONSTRAINT PK_Meet_Board
+		PRIMARY KEY (
+			MB_NO
+		);
+
+/* 모임-참여 */
+CREATE TABLE Meet_Join (
+	ME_NO INTEGER NOT NULL, /* 모임참여번호 */
+	MEM_ID VARCHAR2(20) NOT NULL, /* 회원아이디 */
+	MB_NO INTEGER NOT NULL /* 모임게시글번호 */
+);
+
+COMMENT ON TABLE Meet_Join IS '모임-참여';
+
+COMMENT ON COLUMN Meet_Join.ME_NO IS '모임참여번호';
+
+COMMENT ON COLUMN Meet_Join.MEM_ID IS '회원아이디';
+
+COMMENT ON COLUMN Meet_Join.MB_NO IS '모임게시글번호';
+
+CREATE UNIQUE INDEX PK_Meet_Join
+	ON Meet_Join (
+		ME_NO ASC
+	);
+
+ALTER TABLE Meet_Join
+	ADD
+		CONSTRAINT PK_Meet_Join
+		PRIMARY KEY (
+			ME_NO
+		);
+
+/* 모임-댓글 */
+CREATE TABLE Meet_Reply (
+	MR_NO INTEGER NOT NULL, /* 모임답글번호 */
+	MEM_ID VARCHAR2(20) NOT NULL, /* 회원아이디 */
+	MB_NO INTEGER NOT NULL, /* 모임게시글번호 */
+	MR_COMMENT NVARCHAR2(100) NOT NULL, /* 댓글내용 */
+	MR_CREATED_AT DATE NOT NULL /* 작성일자 */
+);
+
+COMMENT ON TABLE Meet_Reply IS '모임-댓글';
+
+COMMENT ON COLUMN Meet_Reply.MR_NO IS '모임답글번호';
+
+COMMENT ON COLUMN Meet_Reply.MEM_ID IS '회원아이디';
+
+COMMENT ON COLUMN Meet_Reply.MB_NO IS '모임게시글번호';
+
+COMMENT ON COLUMN Meet_Reply.MR_COMMENT IS '댓글내용';
+
+COMMENT ON COLUMN Meet_Reply.MR_CREATED_AT IS '작성일자';
+
+CREATE UNIQUE INDEX PK_Meet_Reply
+	ON Meet_Reply (
+		MR_NO ASC
+	);
+
+ALTER TABLE Meet_Reply
+	ADD
+		CONSTRAINT PK_Meet_Reply
+		PRIMARY KEY (
+			MR_NO
+		);
+
+/* 후기-댓글 */
+CREATE TABLE Cul_Re_Cm (
+	CUL_CO INTEGER NOT NULL, /* 후기댓글번호 */
+	MEM_ID VARCHAR2(20) NOT NULL, /* 회원아이디 */
+	CUL_NO INTEGER NOT NULL, /* 문화공간번호 */
+	CUL_COMMENT NVARCHAR2(100) NOT NULL, /* 댓글 */
+	CUL_CREATED_AT DATE NOT NULL /* 작성일자 */
+);
+
+COMMENT ON TABLE Cul_Re_Cm IS '후기-댓글';
+
+COMMENT ON COLUMN Cul_Re_Cm.CUL_CO IS '후기댓글번호';
+
+COMMENT ON COLUMN Cul_Re_Cm.MEM_ID IS '회원아이디';
+
+COMMENT ON COLUMN Cul_Re_Cm.CUL_NO IS '문화공간번호';
+
+COMMENT ON COLUMN Cul_Re_Cm.CUL_COMMENT IS '댓글';
+
+COMMENT ON COLUMN Cul_Re_Cm.CUL_CREATED_AT IS '작성일자';
+
+CREATE UNIQUE INDEX PK_Cul_Re_Cm
+	ON Cul_Re_Cm (
+		CUL_CO ASC
+	);
+
+ALTER TABLE Cul_Re_Cm
+	ADD
+		CONSTRAINT PK_Cul_Re_Cm
+		PRIMARY KEY (
+			CUL_CO
+		);
+
+/* 후기-문화공간 */
+CREATE TABLE Cul_Review (
+	CUL_NO INTEGER NOT NULL, /* 문화공간번호 */
+	CUL_GU NVARCHAR2(10) /* 지역구명 */
+);
+
+COMMENT ON TABLE Cul_Review IS '후기-문화공간';
+
+COMMENT ON COLUMN Cul_Review.CUL_NO IS '문화공간번호';
+
+COMMENT ON COLUMN Cul_Review.CUL_GU IS '지역구명';
+
+CREATE UNIQUE INDEX PK_Cul_Review
+	ON Cul_Review (
+		CUL_NO ASC
+	);
+
+ALTER TABLE Cul_Review
+	ADD
+		CONSTRAINT PK_Cul_Review
+		PRIMARY KEY (
+			CUL_NO
+		);
+
+ALTER TABLE Reserve
+	ADD
+		CONSTRAINT FK_Member_TO_Reserve
+		FOREIGN KEY (
+			MEM_ID
+		)
+		REFERENCES Member (
+			MEM_ID
+		)
+		ON DELETE SET NULL;
+
+ALTER TABLE QnA
+	ADD
+		CONSTRAINT FK_Member_TO_QnA
+		FOREIGN KEY (
+			MEM_ID
+		)
+		REFERENCES Member (
+			MEM_ID
+		)
+		ON DELETE CASCADE;
+
+ALTER TABLE QnA
+	ADD
+		CONSTRAINT FK_QnA_TO_QnA
+		FOREIGN KEY (
+			Q_REF
+		)
+		REFERENCES QnA (
+			Q_NO
+		)
+		ON DELETE CASCADE;
+
+ALTER TABLE Rest_Review
+	ADD
+		CONSTRAINT FK_Member_TO_Rest_Review
+		FOREIGN KEY (
+			MEM_ID
+		)
+		REFERENCES Member (
+			MEM_ID
+		)
+		ON DELETE CASCADE;
+
+ALTER TABLE Notice
+	ADD
+		CONSTRAINT FK_Member_TO_Notice
+		FOREIGN KEY (
+			MEM_ID
+		)
+		REFERENCES Member (
+			MEM_ID
+		)
+		ON DELETE SET NULL;
+
+ALTER TABLE Payment
+	ADD
+		CONSTRAINT FK_Member_TO_Payment
+		FOREIGN KEY (
+			MEM_ID
+		)
+		REFERENCES Member (
+			MEM_ID
+		)
+		ON DELETE CASCADE;
+
+ALTER TABLE RSV_Info
+	ADD
+		CONSTRAINT FK_Reserve_TO_RSV_Info
+		FOREIGN KEY (
+			RSV_NO
+		)
+		REFERENCES Reserve (
+			RSV_NO
+		)
+		ON DELETE CASCADE;
+
+ALTER TABLE Jjim
+	ADD
+		CONSTRAINT FK_Member_TO_Jjim
+		FOREIGN KEY (
+			MEM_ID
+		)
+		REFERENCES Member (
+			MEM_ID
+		)
+		ON DELETE CASCADE;
+
+ALTER TABLE Meet_Board
+	ADD
+		CONSTRAINT FK_Member_TO_Meet_Board
+		FOREIGN KEY (
+			MEM_ID
+		)
+		REFERENCES Member (
+			MEM_ID
+		)
+		ON DELETE CASCADE;
+
+ALTER TABLE Meet_Join
+	ADD
+		CONSTRAINT FK_Member_TO_Meet_Join
+		FOREIGN KEY (
+			MEM_ID
+		)
+		REFERENCES Member (
+			MEM_ID
+		)
+		ON DELETE CASCADE;
+
+ALTER TABLE Meet_Join
+	ADD
+		CONSTRAINT FK_Meet_Board_TO_Meet_Join
+		FOREIGN KEY (
+			MB_NO
+		)
+		REFERENCES Meet_Board (
+			MB_NO
+		)
+		ON DELETE CASCADE;
+
+ALTER TABLE Meet_Reply
+	ADD
+		CONSTRAINT FK_Member_TO_Meet_Reply
+		FOREIGN KEY (
+			MEM_ID
+		)
+		REFERENCES Member (
+			MEM_ID
+		)
+		ON DELETE CASCADE;
+
+ALTER TABLE Meet_Reply
+	ADD
+		CONSTRAINT FK_Meet_Board_TO_Meet_Reply
+		FOREIGN KEY (
+			MB_NO
+		)
+		REFERENCES Meet_Board (
+			MB_NO
+		)
+		ON DELETE CASCADE;
+
+ALTER TABLE Cul_Re_Cm
+	ADD
+		CONSTRAINT FK_Member_TO_Cul_Re_Cm
+		FOREIGN KEY (
+			MEM_ID
+		)
+		REFERENCES Member (
+			MEM_ID
+		)
+		ON DELETE CASCADE;
+
+ALTER TABLE Cul_Re_Cm
+	ADD
+		CONSTRAINT FK_Cul_Review_TO_Cul_Re_Cm
+		FOREIGN KEY (
+			CUL_NO
+		)
+		REFERENCES Cul_Review (
+			CUL_NO
+		)
+		ON DELETE CASCADE;
